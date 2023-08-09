@@ -1,0 +1,50 @@
+#homelaout {
+  .flayoutapbar {
+    background-color: $secondary !important;
+    width: calc(100% - 90px) !important;
+    left: 90px !important;
+    transition: width 0.5s ease;
+
+    @include lg {
+      width: calc(100% - 190px) !important;
+      left: 190px !important;
+    }
+  }
+
+
+  .v-main {
+    background: linear-gradient(180deg, $secondary 0 200px, white 200px 100%);
+  }
+
+  .v-toolbar__content {
+    height: 65px !important;
+    display: inline-block !important;
+
+    .d-flex.align-center {
+      height: 100%;
+    }
+
+    .v-btn.v-btn--icon.v-theme--light.v-btn--density-default.v-btn--size-default.v-btn--variant-text {
+      margin-right: 60px;
+    }
+
+    .homecart {
+      margin: 30px;
+    }
+
+    @include lg {
+      height: 90px !important;
+    }
+  }
+
+  #logo {
+    position: fixed !important;
+    z-index: 1000;
+    width: 90px;
+    transition: width 0.5s ease;
+
+    @include lg {
+      width: 190px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+#prolaout {
+
+  .appbar {
+    // background: transparent;
+    color: #B8860B;
+    opacity: 0.5;
+
+    .v-toolbar-title__placeholder {
+      font-size: 16px;
+    }
+
+    .v-btn__content {
+      font-size: 12px;
+    }
+
+    .v-badge__badge.v-theme--light {
+      background: transparent;
+      color: #A2071B;
+      font-size: 8px;
+
+    }
+  }
+
+
+}

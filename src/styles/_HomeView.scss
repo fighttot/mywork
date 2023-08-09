@@ -1,0 +1,172 @@
+.bgbox {
+  position: relative;
+  height: 43vw;
+  background: $secondary;
+
+  @include lg {
+    .mainimg {
+      height: 100%;
+      width: 95%;
+      top: 25px;
+    }
+  }
+}
+
+.bgbox2 {
+  background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
+  height: 8vw;
+}
+
+.show {
+  position: absolute;
+  width: 25%;
+  height: 50%;
+  top: 25%;
+  left: 60%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: none;
+
+  @include md {
+    display: block;
+  }
+}
+
+
+#section01 {
+  width: 100%;
+
+  .four {
+    width: 90%;
+    margin: 20px auto;
+    margin-bottom: 50px;
+  }
+
+
+
+  .text {
+    height: 1000px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      content: ' ';
+      height: 100%;
+      width: 100%;
+      background: url('@/assets/photo3.png') no-repeat center/cover;
+    }
+  }
+
+  .textimg {
+    position: absolute;
+    left: 10%;
+    width: 90%;
+    height: 85%;
+    transform: rotate(-6deg);
+
+  }
+}
+
+#section03 {
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  position: relative;
+
+  @include md {
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+
+  @include xl {
+    padding-top: 140px;
+    padding-bottom: 30px;
+  }
+
+  @include xxl {
+    padding-top: 180px;
+    padding-bottom: 50px;
+  }
+
+  .eightwidth {
+    width: 80%;
+    margin: auto;
+    position: relative;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    background-color: $secondary;
+    width: 90%;
+    top: 120px;
+    height: 300px;
+
+    @include sm {
+      top: 160px;
+      height: 350px;
+    }
+
+    @include md {
+      top: 200px;
+      height: 455px;
+    }
+
+    @include lg {
+      top: 200px;
+      height: 590px;
+    }
+
+
+    @include xl {
+      top: 300px;
+      height: 660px;
+    }
+
+    @include xxl {
+      top: 350px;
+      height: 860px;
+    }
+
+    @include xxxl {
+      top: 390px;
+      height: 960px;
+    }
+  }
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    background: linear-gradient(90deg, $secondary 0 5%, #1D2547 5% 100%);
+    width: 100%;
+    bottom: -100px;
+    right: 0;
+    height: 200px;
+    z-index: 0;
+  }
+
+  .mySwiper {
+    position: absolute;
+    width: 30%;
+    height: 90%;
+    left: 17%;
+    top: -70px;
+  }
+
+  .photo {
+    // height: 500px
+    width: 50%;
+    left: 50%;
+    z-index: 1;
+  }
+
+
+}
+
+#footer {
+  background: linear-gradient(90deg, $secondary 0 5%, #1D2547 5% 100%);
+  width: 100%;
+  height: 100px;
+}
