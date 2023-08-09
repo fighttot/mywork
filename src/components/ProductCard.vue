@@ -29,11 +29,11 @@
           }" :loop="true">
             <swiper-slide v-for="(item, i) in  images" :key="i">
               <RouterLink :to="/proHome/ + _id" class="text-decoration-none">
-                <VImg :src="item" cover></VImg>
+                <VImg :src="item" cover style="width: 100%; height: 100%;"></VImg>
               </RouterLink>
             </swiper-slide>
           </swiper>
-          <div class="click d-flex align-center flex-column" :style="`color: ${textColor};`">
+          <div class="click d-flex align-center flex-column justify-center" :style="`color: ${textColor};`">
             <!-- ▲click!! -->
             <span>◄</span>
             <span>c</span>
@@ -57,8 +57,6 @@ import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-// gsap動畫
-
 // Import Swiper styles
 import 'swiper/css'
 
