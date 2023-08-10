@@ -1,12 +1,18 @@
 <template>
-  <VRow>
-    <VCol cols="6">
-      <LoginView></LoginView>
-    </VCol>
-    <VCol cols="6">
-      <RegisterView></RegisterView>
-    </VCol>
-  </VRow>
+  <section class="inthislogon">
+    <VRow class="mainwindow d-flex align-center justify-center">
+      <VCol cols="6">
+        <div class="shadow">
+          <LoginView class="wid"></LoginView>
+        </div>
+      </VCol>
+      <VCol cols="6">
+        <div class="shadow">
+          <RegisterView class="wid"></RegisterView>
+        </div>
+      </VCol>
+    </VRow>
+  </section>
 </template>
 <script setup>
 

@@ -354,12 +354,14 @@ const addLike = async () => {
     product.value = data.result
     const idx = product.value.peopleSay.findIndex(item => item.user.account === user.account)
     if (idx > -1) { repeat.value = true }
-    const lico = await apiAuth.post('/products/red',
-      {
-        app: product.value._id
-      })
-    if (lico.data.result) { colorLike.value = true } else {
-      colorLike.value = false
+    if (user.isLogin) {
+      const lico = await apiAuth.post('/products/red',
+        {
+          app: product.value._id
+        })
+      if (lico.data.result) { colorLike.value = true } else {
+        colorLike.value = false
+      }
     }
     const { data: togather } = await api.get('/products')
     toga.value = togather.result.filter((item) => {

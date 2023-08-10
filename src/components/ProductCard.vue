@@ -164,11 +164,13 @@ const addLike = async () => {
 
 (async () => {
   try {
-    const { data } = await apiAuth.post('/products/red',
-      {
-        app: props._id
-      })
-    if (data.result) { colorLike.value = 'red' }
+    if (user.isLogin) {
+      const { data } = await apiAuth.post('/products/red',
+        {
+          app: props._id
+        })
+      if (data.result) { colorLike.value = 'red' }
+    }
   } catch (error) {
     createSnackbar({
       text: error.response.data.message,

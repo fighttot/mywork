@@ -89,24 +89,6 @@ const thcubes = computed(() => {
   return products.value.slice(products.value.length - 7, products.value.length - 3)
 })
 
-// (async () => {
-//   try {
-//     const data = await api.get('/products')
-//     products.value.push(...data.data.result)
-//   } catch (error) {
-//     console.log(error)
-//     createSnackbar({
-//       text: error.response.data.message,
-//       showCloseButton: false,
-//       snackbarProps: {
-//         timeout: 2000,
-//         color: 'red',
-//         location: 'bottom'
-//       }
-//     })
-//   }
-// })()
-
 gsap.registerPlugin(ScrollTrigger)
 onMounted(async () => {
   try {

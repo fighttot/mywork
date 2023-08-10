@@ -151,7 +151,7 @@ router.beforeEach(async (to, from, next) => {
   if (user.isLogin && ['/loginRrgister'].includes(to.path)) {
     next('/')
   } else if (to.meta.login && !user.isLogin) {
-    next('/login')
+    next('/loginRrgister')
   } else if (to.meta.admin && !user.isAdmin) {
     next('/')
   } else {

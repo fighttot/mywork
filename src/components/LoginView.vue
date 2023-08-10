@@ -1,24 +1,26 @@
 <template>
-  <VContainer>
-    <VRow>
-      <VCol cols="12">
-        <h1>登入</h1>
-      </VCol>
-      <VDivider></VDivider>
-      <VCol cols="12">
-        <VForm :disabled="isSubmitting" @submit.prevent="submit">
-          <VTextField label="帳號" counter maxlength="20" v-model="account.value.value"
-            :error-messages="account.errorMessage.value"></VTextField>
-          <VTextField label="密碼" counter maxlength="20" type="password" v-model="password.value.value"
-            :error-messages="password.errorMessage.value"></VTextField>
-          <div class="text-center">
-            <VBtn type="submit" color="green">登入</VBtn>
-            <VBtn color="primary" @click="handleReset">重製</VBtn>
-          </div>
-        </VForm>
-      </VCol>
-    </VRow>
-  </VContainer>
+  <section class="logincom">
+    <VContainer>
+      <VRow class="text-center">
+        <VCol cols="12">
+          <h1>登入</h1>
+        </VCol>
+        <VDivider></VDivider>
+        <VCol cols="12">
+          <VForm :disabled="isSubmitting" @submit.prevent="submit">
+            <VTextField label="帳號" counter maxlength="20" v-model="account.value.value"
+              :error-messages="account.errorMessage.value"></VTextField>
+            <VTextField label="密碼" counter maxlength="20" type="password" v-model="password.value.value"
+              :error-messages="password.errorMessage.value"></VTextField>
+            <div class="text-center">
+              <VBtn type="submit" color="green">登入</VBtn>
+              <VBtn color="primary" @click="handleReset">重製</VBtn>
+            </div>
+          </VForm>
+        </VCol>
+      </VRow>
+    </VContainer>
+  </section>
 </template>
 
 <script setup>

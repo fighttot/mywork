@@ -96,7 +96,6 @@
     <VMain>
       <RouterView></RouterView>
     </VMain>
-    <VBtn to="/" v-if="$route.path === '/loginRrgister'">首頁</VBtn>
   </section>
 </template>
 
