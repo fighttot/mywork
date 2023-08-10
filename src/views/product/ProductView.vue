@@ -15,34 +15,35 @@
         <VCol cols="12">
           <VRow>
             <VCol cols="6">
-              <VTable :style="`color:${product.textColor}`" class="mainveiw">
+              <VTable :style="`color:${product.color}`" class="mainveiw">
                 <thead>
                   <tr>
-                    <th :style="`background-color:${product.color};color: ${product.textColor};`">作品名</th>
-                    <td :style="`background-color:${product.color};`">{{ product.name }}</td>
+                    <th :style="`color: ${product.color};`">作品名</th>
+                    <td>{{ product.name }}</td>
                   </tr>
                   <tr>
-                    <th :style="`background-color:${product.color};color: ${product.textColor};`">分類</th>
-                    <td :style="`background-color:${product.color};`">{{ product.category }}</td>
+                    <th :style="`color: ${product.color};`">分類</th>
+                    <td>{{ product.category }}</td>
                   </tr>
                   <tr>
-                    <th :style="`background-color:${product.color};color: ${product.textColor};`">製造商</th>
-                    <td :style="`background-color:${product.color};`">{{ product.manufacturers }}</td>
+                    <th :style="`color: ${product.color};`">製造商</th>
+                    <td>{{ product.manufacturers }}</td>
                   </tr>
                   <tr>
-                    <th :style="`background-color:${product.color};color: ${product.textColor};`">價格</th>
-                    <td :style="`background-color:${product.color};`">{{ product.price }}</td>
+                    <th :style="`color: ${product.color};`">價格</th>
+                    <td>{{ product.price }}</td>
                   </tr>
                 </thead>
               </VTable>
             </VCol>
-            <VCol :style="`color: ${product.textColor}; background-color:${product.color};`" class="txt">
+            <VCol :style="`color: ${product.color};`" class="txt">
               <VRow class="d-flex align-center flex-column justify-center" style="text-align: center; height: 100%;">
                 <VCol>
                   <p>{{ product.description }}</p>
                 </VCol>
                 <VCol>
-                  <VForm :disabled="isSubmitting" @submit.prevent="submitCart">
+                  <VForm :disabled="isSubmitting" @submit.prevent="submitCart"
+                    :style="`border-bottom: 15px solid ${product.color};`" class="underline">
                     <VTextField v-model.number="quantity.value.value" type="number" label="數量" min="0"
                       :error-messages="quantity.errorMessage.value"></VTextField>
                     <VBtn :style="`background-color:${product.color};color: ${product.textColor};`" type="submit">加入購物車
@@ -62,6 +63,7 @@
         </VCol>
       </VRow>
     </VContainer>
+
     <VOverlay :model-value="!product.sell" persistent class="align-center justify-center text-center">
       <h1 class="text-red"> 已下架 </h1>
       <VBtn to="/"> 回上頁</VBtn>
@@ -129,18 +131,35 @@
             <VTextField v-model="text.value.value" label="留言" counter maxlength="150"
               :error-messages="text.errorMessage.value"></VTextField>
           </VCardText>
-          <VBtn type="submit" class="otherbtn" :style="`background-color:${product.color};color: ${product.textColor};`">
+          <VBtn type="submit" class="otherbtn">
             確認</VBtn>
         </VCard>
 
       </VForm>
     </VDialog>
-
   </section>
+  <VContainer>
+    <section class="gastlike">
+      <div class="link" :style="`border-bottom: 5px solid ${product.color};`">
+        <span :style="`background-color:${product.color};color: ${product.textColor};`"> 關聯商品</span>
+      </div>
+      <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :slidesPerView="'auto'" :coverflowEffect="{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }" :pagination="true" :modules="modules" class="mySwiper" :initialSlide="2">
+        <swiper-slide v-for="pog in toga" :key="pog._id">
+          <VImg :src="pog.images[0]"></VImg>
+        </swiper-slide>
+      </swiper>
+    </section>
+  </VContainer>
 </template>
 
 <script setup>
-import { ref, reactive, watch } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import { useRoute } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
@@ -154,10 +173,11 @@ import 'swiper/css'
 
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
 
 // import required modules
-import { Pagination, Autoplay, Navigation } from 'swiper/modules'
-const modules = [Pagination, Autoplay, Navigation]
+import { EffectCoverflow, Pagination, Autoplay, Navigation } from 'swiper/modules'
+const modules = [EffectCoverflow, Pagination, Autoplay, Navigation]
 
 const router = useRoute()
 const createSnackbar = useSnackbar()
@@ -165,6 +185,7 @@ const user = useUserStore()
 const dialog = ref(false)
 const repeat = ref(false)
 const drawer = ref(false)
+const toga = ref([])
 
 watch(drawer, () => {
   if (drawer.value) {
@@ -174,9 +195,6 @@ watch(drawer, () => {
     document.documentElement.style.overflow = 'auto'
     document.documentElement.style.height = ''
   }
-})
-const form = reactive({
-  text: ''
 })
 
 const review = async (i, id) => {
@@ -316,30 +334,13 @@ const addLike = async () => {
       }
     })
   }
-}
+};
 
 (async () => {
   try {
     const { data } = await api.get('/products/' + router.params.id)
-    // 一個等於怎麼寫?
     product.value = data.result
-    // product.value.peopleSay = Array.from({ length: 100 }, (people) => {
-    //   return product.value.peopleSay[0]
-    // })
-    // product.value._id = data.result._id
-    // product.value.name = data.result.name
-    // product.value.price = data.result.price
-    // product.value.images = data.result.images
-    // product.value.description = data.result.description
-    // product.value.category = data.result.category
-    // product.value.manufacturers = data.result.manufacturers
-    // product.value.sell = data.result.sell
-    // product.value.color = data.result.color
-    // product.value.peopleSay = data.result.peopleSay
-    // const say = await api.get('/products/' + router.params.id + '/say')
-    // product.value.peopleSay = say.data.result
     const idx = product.value.peopleSay.findIndex(item => item.user.account === user.account)
-    console.log(idx)
     if (idx > -1) { repeat.value = true }
     const lico = await apiAuth.post('/products/red',
       {
@@ -348,6 +349,12 @@ const addLike = async () => {
     if (lico.data.result) { colorLike.value = true } else {
       colorLike.value = false
     }
+    const { data: togather } = await api.get('/products')
+    toga.value = togather.result.filter((item) => {
+      return item.category === data.result.category
+    })
+    const idp = togather.result.findIndex(item => item._id === product.value._id)
+    toga.value.splice(idp, 1)
     document.title = '購物網 |' + product.value.name
   } catch (error) {
     createSnackbar({
@@ -361,4 +368,37 @@ const addLike = async () => {
     })
   }
 })()
+
+// onMounted(async () => {
+//   try {
+//     const { data } = await api.get('/products/' + router.params.id)
+//     product.value = data.result
+//     const idx = product.value.peopleSay.findIndex(item => item.user.account === user.account)
+//     console.log(idx)
+//     if (idx > -1) { repeat.value = true }
+//     const lico = await apiAuth.post('/products/red',
+//       {
+//         app: product.value._id
+//       })
+//     if (lico.data.result) { colorLike.value = true } else {
+//       colorLike.value = false
+//     }
+//     const { data: togather } = await api.get('/products')
+//     toga.value = togather.result.filter((item) => {
+//       return item.manufacturers === data.result.manufacturers
+//     })
+//     await nextTick()
+//     document.title = '購物網 |' + product.value.name
+//   } catch (error) {
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom'
+//       }
+//     })
+//   }
+// })
 </script>

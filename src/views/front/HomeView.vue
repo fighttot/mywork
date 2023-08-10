@@ -41,7 +41,7 @@
       }" :autoplay="{
   delay: 3500,
   disableOnInteraction: false,
-}" :modules="modules" :loop="true" class="mySwiper">
+}" :pagination="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="thcube in thcubes" :key="thcube._id"><img
             style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
         </swiper-slide>
@@ -58,7 +58,7 @@
 </template>
 <script setup>
 import { api } from '@/plugins/axios'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -100,5 +100,22 @@ const thcubes = computed(() => {
     })
   }
 })()
-
+// onMounted(async () => {
+//   try {
+//     const data = await api.get('/products')
+//     products.value.push(...data.data.result)
+//     await nextTick()
+//   } catch (error) {
+//     console.log(error)
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom'
+//       }
+//     })
+//   }
+// })
 </script>

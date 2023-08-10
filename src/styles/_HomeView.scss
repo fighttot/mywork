@@ -160,6 +160,10 @@
     top: -70px;
   }
 
+  .swiper-pagination-bullet-active {
+    background-color: $primary;
+  }
+
   .photo {
     // height: 500px
     width: 50%;

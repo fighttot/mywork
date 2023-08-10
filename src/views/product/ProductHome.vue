@@ -9,7 +9,6 @@
 
       </VCol>
     </VRow>
-    <!-- {{ cardRefs.length }} -->
   </VContainer>
 </template>
 
