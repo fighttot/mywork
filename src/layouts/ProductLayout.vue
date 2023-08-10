@@ -93,7 +93,7 @@
     </VAppBar>
   </section>
   <VMain>
-    <RouterView></RouterView>
+    <RouterView :key="$route.path"></RouterView>
   </VMain>
 </template>
 

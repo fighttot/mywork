@@ -13,7 +13,7 @@
 
         <VCol cols="12">
           <VRow>
-            <VCol cols="6">
+            <VCol cols="6" class="animationtable">
               <VTable :style="`color:${product.color}`" class="mainveiw">
                 <thead>
                   <tr>
@@ -36,7 +36,8 @@
               </VTable>
             </VCol>
             <VCol :style="`color: ${product.color};`" class="txt">
-              <VRow class="d-flex align-center flex-column justify-center" style="text-align: center; height: 100%;">
+              <VRow class="d-flex align-center flex-column justify-center animationfield"
+                style="text-align: center; height: 100%;">
                 <VCol>
                   <p>{{ product.description }}</p>
                 </VCol>
@@ -130,7 +131,7 @@
             <VTextField v-model="text.value.value" label="留言" counter maxlength="150"
               :error-messages="text.errorMessage.value"></VTextField>
           </VCardText>
-          <VBtn type="submit" class="otherbtn">
+          <VBtn type="submit" class="otherbtn" :style="`background-color:${product.textColor};color: ${product.color};`">
             確認</VBtn>
         </VCard>
 
@@ -150,7 +151,9 @@
         slideShadows: true,
       }" :speed="2000" :pagination="true" :modules="modules" class="mySwiper" :initialSlide="2">
         <swiper-slide v-for="pog in toga" :key="pog._id">
-          <VImg :src="pog.images[0]" cover></VImg>
+          <RouterLink :to="/proHome/ + pog._id">
+            <VImg :src="pog.images[0]" cover></VImg>
+          </RouterLink>
         </swiper-slide>
       </swiper>
     </section>
@@ -158,13 +161,16 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import { useRoute } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
 import * as yup from 'yup'
 import { useForm, useField } from 'vee-validate'
 import { useUserStore } from '@/store/user'
+// gsap
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // Import Swiper styles
@@ -176,6 +182,7 @@ import 'swiper/css/effect-coverflow'
 
 // import required modules
 import { EffectCoverflow, Pagination, Autoplay, Navigation } from 'swiper/modules'
+
 const modules = [EffectCoverflow, Pagination, Autoplay, Navigation]
 
 const router = useRoute()
@@ -368,4 +375,40 @@ const addLike = async () => {
   }
 })()
 
+gsap.registerPlugin(ScrollTrigger)
+onMounted(() => {
+  gsap.from('.animationtable', {
+    scrollTrigger: {
+      trigger: '.animationtable',
+      start: 'top 60%',
+      end: 'bottom center'
+      // markers: true
+    },
+    x: 100,
+    opacity: 0,
+    duration: 2,
+    ease: 'none'
+  })
+  gsap.from('.animationfield', {
+    scrollTrigger: {
+      trigger: '.animationfield',
+      start: 'top 60%',
+      end: 'bottom center'
+    },
+    opacity: 0,
+    duration: 1,
+    ease: 'none'
+  })
+  gsap.from('.gastlike', {
+    scrollTrigger: {
+      trigger: '.gastlike',
+      start: 'top 60%',
+      end: 'bottom center'
+    },
+    y: -50,
+    opacity: 0,
+    duration: 3,
+    ease: 'none'
+  })
+})
 </script>

@@ -62,13 +62,13 @@ onMounted(async () => {
           opacity: 1,
           duration: 1,
           yoyo: true,
-          ease: 'power2.out'
+          ease: 'none'
         })
         .to(title, {
           opacity: 1,
           duration: 1,
           yoyo: true,
-          ease: 'power2.out'
+          ease: 'none'
         })
     })
     const clicks = document.querySelectorAll('.click')
@@ -83,7 +83,7 @@ onMounted(async () => {
         y: 100,
         opacity: 0,
         duration: 1,
-        ease: 'none'
+        ease: 'back'
       })
     })
   } catch (error) {

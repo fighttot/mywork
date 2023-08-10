@@ -9,7 +9,7 @@
   <section class="section01">
     <div class="four">
       <VRow>
-        <VCol cols="12" md="4" class="d-flex align-center" v-for="card in cards" :key="card._id">
+        <VCol cols="12" md="4" class="d-flex align-center photo3" v-for="card in cards" :key="card._id">
           <RouterLink :to="/proHome/ + card._id" class=toroup>
             <div class="text">
               <VImg class="textimg" :src="card.images[0]" cover></VImg>
@@ -41,8 +41,10 @@
         shadowScale: 0.94,
       }" :autoplay="{ delay: 4000, disableOnInteraction: false, }" :speed="2000" :pagination="true" :modules="modules"
         class="mySwiper">
-        <swiper-slide v-for="thcube in thcubes" :key="thcube._id"><img
-            style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
+        <swiper-slide v-for="thcube in thcubes" :key="thcube._id">
+          <RouterLink :to="/proHome/ + thcube._id">
+            <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
+          </RouterLink>
         </swiper-slide>
       </swiper>
 
@@ -57,8 +59,13 @@
 </template>
 <script setup>
 import { api } from '@/plugins/axios'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
+
+// gsap動畫
+
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
@@ -80,9 +87,28 @@ const cards = computed(() => {
 })
 const thcubes = computed(() => {
   return products.value.slice(products.value.length - 7, products.value.length - 3)
-});
+})
 
-(async () => {
+// (async () => {
+//   try {
+//     const data = await api.get('/products')
+//     products.value.push(...data.data.result)
+//   } catch (error) {
+//     console.log(error)
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom'
+//       }
+//     })
+//   }
+// })()
+
+gsap.registerPlugin(ScrollTrigger)
+onMounted(async () => {
   try {
     const data = await api.get('/products')
     products.value.push(...data.data.result)
@@ -98,5 +124,22 @@ const thcubes = computed(() => {
       }
     })
   }
-})()
+  await nextTick()
+  gsap.from('.photo3', {
+    scrollTrigger: {
+      trigger: '.four',
+      start: 'top 60%',
+      end: 'bottom center'
+    },
+    stagger: {
+      each: 0.5,
+      from: 'start',
+      ease: 'back.in(5)'
+    },
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: 'back'
+  })
+})
 </script>
