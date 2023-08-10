@@ -71,9 +71,11 @@
 
 
 .gastlike {
-  height: 240px;
+  height: 430px;
+  padding-bottom: 150px;
 
   .mySwiper {
+    margin-top: 50px;
     height: 100%;
     width: 80%;
   }
@@ -87,8 +89,9 @@
     background-color: $primary;
   }
 
+
   .link {
-    width: 80%;
+    width: 85%;
     margin: auto;
     margin-bottom: 10px;
     border-bottom-left-radius: 5px;

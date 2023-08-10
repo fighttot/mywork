@@ -6,20 +6,21 @@
     <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
   </div>
   <div class="bgbox2"></div>
-  <section id="section01">
+  <section class="section01">
     <div class="four">
       <VRow>
-        <VCol cols="12" md="4" class="d-flex align-center text" v-for="card in cards" :key="card._id">
-
-          <VImg class="textimg" :src="card.images[0]" cover></VImg>
-
+        <VCol cols="12" md="4" class="d-flex align-center" v-for="card in cards" :key="card._id">
+          <RouterLink :to="/proHome/ + card._id" class=toroup>
+            <div class="text">
+              <VImg class="textimg" :src="card.images[0]" cover></VImg>
+            </div>
+          </RouterLink>
         </VCol>
-
       </VRow>
     </div>
   </section>
 
-  <section id="section02">
+  <section class="section02">
     <v-parallax src="@/assets/littorio004.jpg">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
         <h1 class="text-h4 font-weight-thin mb-4">
@@ -31,17 +32,15 @@
       </div>
     </v-parallax>
   </section>
-  <section id="section03">
+  <section class="section03">
     <div class="eightwidth">
       <swiper :effect="'cube'" :grabCursor="true" :cubeEffect="{
         shadow: true,
         slideShadows: true,
         shadowOffset: 20,
         shadowScale: 0.94,
-      }" :autoplay="{
-  delay: 3500,
-  disableOnInteraction: false,
-}" :pagination="true" :modules="modules" class="mySwiper">
+      }" :autoplay="{ delay: 4000, disableOnInteraction: false, }" :speed="2000" :pagination="true" :modules="modules"
+        class="mySwiper">
         <swiper-slide v-for="thcube in thcubes" :key="thcube._id"><img
             style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
         </swiper-slide>
@@ -52,13 +51,13 @@
     </div>
   </section>
 
-  <section id="footer">
+  <section class="footer">
 
   </section>
 </template>
 <script setup>
 import { api } from '@/plugins/axios'
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -100,22 +99,4 @@ const thcubes = computed(() => {
     })
   }
 })()
-// onMounted(async () => {
-//   try {
-//     const data = await api.get('/products')
-//     products.value.push(...data.data.result)
-//     await nextTick()
-//   } catch (error) {
-//     console.log(error)
-//     createSnackbar({
-//       text: error.response.data.message,
-//       showCloseButton: false,
-//       snackbarProps: {
-//         timeout: 2000,
-//         color: 'red',
-//         location: 'bottom'
-//       }
-//     })
-//   }
-// })
 </script>

@@ -2,7 +2,6 @@
   <section id="proviewpage">
     <VContainer>
       <VRow>
-
         <VCol cols="12">
           <swiper :pagination="{ type: 'fraction', }" :navigation="true" :modules="modules" :loop="true" :speed="3000"
             :autoplay="{ delay: 5000, disableOnInteraction: false, }" class="mySwiper">
@@ -149,9 +148,9 @@
         depth: 100,
         modifier: 1,
         slideShadows: true,
-      }" :pagination="true" :modules="modules" class="mySwiper" :initialSlide="2">
+      }" :speed="2000" :pagination="true" :modules="modules" class="mySwiper" :initialSlide="2">
         <swiper-slide v-for="pog in toga" :key="pog._id">
-          <VImg :src="pog.images[0]"></VImg>
+          <VImg :src="pog.images[0]" cover></VImg>
         </swiper-slide>
       </swiper>
     </section>
@@ -159,7 +158,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, nextTick } from 'vue'
+import { ref, watch } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import { useRoute } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
@@ -369,36 +368,4 @@ const addLike = async () => {
   }
 })()
 
-// onMounted(async () => {
-//   try {
-//     const { data } = await api.get('/products/' + router.params.id)
-//     product.value = data.result
-//     const idx = product.value.peopleSay.findIndex(item => item.user.account === user.account)
-//     console.log(idx)
-//     if (idx > -1) { repeat.value = true }
-//     const lico = await apiAuth.post('/products/red',
-//       {
-//         app: product.value._id
-//       })
-//     if (lico.data.result) { colorLike.value = true } else {
-//       colorLike.value = false
-//     }
-//     const { data: togather } = await api.get('/products')
-//     toga.value = togather.result.filter((item) => {
-//       return item.manufacturers === data.result.manufacturers
-//     })
-//     await nextTick()
-//     document.title = '購物網 |' + product.value.name
-//   } catch (error) {
-//     createSnackbar({
-//       text: error.response.data.message,
-//       showCloseButton: false,
-//       snackbarProps: {
-//         timeout: 2000,
-//         color: 'red',
-//         location: 'bottom'
-//       }
-//     })
-//   }
-// })
 </script>
