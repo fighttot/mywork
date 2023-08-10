@@ -59,7 +59,9 @@
       content: ' ';
       height: 100%;
       width: 100%;
-      background: url('@/assets/photo3.png') no-repeat center/cover;
+      background: url('@/assets/photo3.png') no-repeat;
+      background-position: 60% top;
+      background-size: cover;
     }
   }
 

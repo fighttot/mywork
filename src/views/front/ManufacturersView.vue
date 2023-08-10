@@ -5,4 +5,9 @@
     </div>
     <div class="bgbox2"></div>
   </section>
+  <VContainer>
+    <section class="manufacturers">
+
+    </section>
+  </VContainer>
 </template>

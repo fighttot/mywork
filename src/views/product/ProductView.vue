@@ -3,6 +3,12 @@
     <VContainer>
       <VRow>
         <VCol cols="12">
+          <section class="trantext" :style="`border-left: 1px solid ${product.textColor};`">
+            <span :style="`color:${product.textColor}`">{{ product.name }}</span><br>
+            <span :style="`color:${product.textColor}`">{{ product.category }}</span><br><br>
+            <span :style="`color:${product.textColor}`">${{ product.price }}</span><br>
+            <span :style="`color:${product.textColor}`">{{ product.manufacturers }}</span>
+          </section>
           <swiper :pagination="{ type: 'fraction', }" :navigation="true" :modules="modules" :loop="true" :speed="3000"
             :autoplay="{ delay: 5000, disableOnInteraction: false, }" class="mySwiper">
             <swiper-slide v-for="(item, i) in product.images" :key="i">
