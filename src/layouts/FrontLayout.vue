@@ -1,7 +1,7 @@
 <template>
   <section id="homelaout">
     <router-link to="/">
-      <VImg src="@/assets/logo2.png" id="logo"></VImg>
+      <VImg src="@/assets/logo2.png" id="logo" v-if="$route.path !== '/loginRrgister'"></VImg>
     </router-link>
     <VNavigationDrawer v-model="drawer" location="right" temporary v-if="isMobile">
       <VList nav>

@@ -11,12 +11,13 @@
   .wid {
     position: relative;
     width: 80%;
+    height: 550px;
     margin: auto;
-    background: linear-gradient(-45deg, $secondary , $primary);
-    background-image: url('@/assets/Zuikaku.jpg');
-    // box-shadow: 5px 5px 15px rgba();
+    background: linear-gradient(65deg, rgba($primary , $alpha: 0.5) 25%, transparent 25%),
+      linear-gradient(345deg, rgba($primary , $alpha: 0.6) 25%, transparent 25%),
+      url('@/assets/york.jpg') center top / cover no-repeat;
     border-radius: 50px;
-
+    color: $secondary;
   }
 
   .shadow {
@@ -29,7 +30,7 @@
       position: absolute;
       width: 80%;
       height: 100%;
-      background-color: $therd;
+      background-color: rgba($therd , $alpha: 0.8);
       top: 10%;
       left: 15%;
       z-index: 0;
@@ -37,4 +38,77 @@
     }
   }
 
+}
+
+//登入
+.logincom {
+  text-shadow: 5px 5px 5px $therd;
+  font-weight: bolder;
+
+
+  .v-container {
+    height: 100%
+  }
+
+  .tableheight {
+    height: 100%;
+  }
+
+  .v-btn {
+    color: $secondary;
+    background: transparent;
+    box-shadow: 0 0 0 0;
+    text-shadow: 3px 3px 3px $therd;
+    font-weight: bolder;
+
+    &:hover {
+      text-shadow: 0px 0px 0px;
+
+      background: rgba($primary , $alpha: 0.7);
+      box-shadow: 2px 2px 2px 2px rgba($therd , $alpha: 0.5);
+    }
+  }
+
+  @include md {
+    .v-btn {
+      margin: 0 10px;
+    }
+  }
+}
+
+//註冊
+.regicom {
+  font-weight: bolder;
+  text-shadow: 5px 5px 5px $therd;
+
+  .v-btn {
+    color: $secondary;
+    background: transparent;
+    box-shadow: 0 0 0 0;
+    text-shadow: 3px 3px 3px $therd;
+    font-weight: bolder;
+
+    &:hover {
+      text-shadow: 0px 0px 0px;
+
+      background: rgba($primary , $alpha: 0.7);
+      box-shadow: 2px 2px 2px 2px rgba($therd , $alpha: 0.5);
+    }
+  }
+
+  @include md {
+    .v-btn {
+      margin: 0 10px;
+    }
+  }
+
+}
+
+.lidcover {
+  height: 100%;
+  width: 50%;
+  background-color: rgba($primary , $alpha: 0.5);
+  backdrop-filter: 0.8;
+  position: absolute;
+  z-index: 8;
 }

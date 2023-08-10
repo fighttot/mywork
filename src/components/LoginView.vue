@@ -1,20 +1,20 @@
 <template>
   <section class="logincom">
     <VContainer>
-      <VRow class="text-center">
+      <VRow class="text-center tableheight">
         <VCol cols="12">
           <h1>登入</h1>
         </VCol>
         <VDivider></VDivider>
         <VCol cols="12">
           <VForm :disabled="isSubmitting" @submit.prevent="submit">
-            <VTextField label="帳號" counter maxlength="20" v-model="account.value.value"
+            <VTextField label="帳號:" counter maxlength="20" v-model="account.value.value"
               :error-messages="account.errorMessage.value"></VTextField>
-            <VTextField label="密碼" counter maxlength="20" type="password" v-model="password.value.value"
+            <VTextField label="密碼:" counter maxlength="20" type="password" v-model="password.value.value"
               :error-messages="password.errorMessage.value"></VTextField>
             <div class="text-center">
-              <VBtn type="submit" color="green">登入</VBtn>
-              <VBtn color="primary" @click="handleReset">重製</VBtn>
+              <VBtn type="submit">登入</VBtn>
+              <VBtn @click="handleReset">重製</VBtn>
             </div>
           </VForm>
         </VCol>
