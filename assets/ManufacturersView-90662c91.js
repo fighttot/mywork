@@ -1,1 +1,0 @@
-import{_ as e}from"./71b8e0fl_cL._AC_SL1500-811e8b6d.js";import{_ as o,f as t,h as c,y as s,i as a,l as r}from"./index-c57fb7bc.js";const _={},n={class:"othertitle"},i={class:"bgbox"},l=s("div",{class:"bgbox2"},null,-1);function d(m,f){return t(),c("section",n,[s("div",i,[a(r,{class:"mainimg",src:e,cover:""})]),l])}const u=o(_,[["render",d]]);export{u as default};
