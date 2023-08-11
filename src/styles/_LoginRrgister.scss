@@ -157,8 +157,8 @@
   // background-color: rgba($primary , $alpha: 0.5);
 
   backdrop-filter: 0.8;
-  background: url('@/assets/JPDoor.png') no-repeat center/cover;
-  background: url('@/assets/JPDoor.png') no-repeat center/cover, rgba($secondary , $alpha: 0.9);
+  background: url('@/assets/JPdoor.png') no-repeat center/cover;
+  background: url('@/assets/JPdoor.png') no-repeat center/cover, rgba($secondary , $alpha: 0.9);
   // url('@/assets/JPDoor.png') no-repeat center/cover;
   backdrop-filter: blur(15px);
   position: absolute;
