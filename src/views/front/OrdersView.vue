@@ -14,6 +14,8 @@
               <th>商品</th>
               <th>狀態</th>
               <th>修改日期</th>
+              <th>地址</th>
+              <th>付費方式</th>
               <th>取消</th>
             </tr>
           </thead>
@@ -31,8 +33,12 @@
               </td>
               <td> {{ order.ok }}</td>
               <td>{{ new Date(order.changedate).toLocaleString() }}</td>
+              <td>{{ order.seventhome }}</td>
+              <td>貨到付款</td>
               <td>
-                <VBtn @click="editorder(order._id, 5)">取消</VBtn>
+                <VBtn @click="editorder(order._id, 5)"
+                  :disabled="order.ok === '取消確認中' || order.ok === '訂單已完成' || order.ok === '訂單已取消' ? true : false">取消訂單
+                </VBtn>
               </td>
             </tr>
 

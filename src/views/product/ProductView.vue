@@ -284,7 +284,6 @@ const { isSubmitting, handleSubmit } = useForm({
   validationSchema: schema,
   initialValues: {
     quantity: 0
-    // ,text: ''
   }
 })
 const quantity = useField('quantity')

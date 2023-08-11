@@ -51,9 +51,23 @@
       </VCol>
       <VCol cols="12" class="text-center">
         <p>總金額:{{ total }}</p>
-        <VBtn color="green" @click="submit" :disabled="!canCheckout">結帳</VBtn>
+        <VBtn color="green" @click="dialog = true">結帳</VBtn>
       </VCol>
     </VRow>
+
+    <VDialog v-model="dialog" width="400px" persistent>
+      <v-card class="text-center">
+        <VCardTitle>結帳資訊</VCardTitle>
+        <VForm :disabled="isSubmitting" @submit.prevent="submit">
+          <VSelect :items="seventhomeItems" label="便利商店貨到付款" v-model="seventhome.value.value"
+            :error-messages="seventhome.errorMessage.value"></VSelect>
+          <VTextField label="哪一家店?" v-model="paypoint.value.value" :error-messages="paypoint.errorMessage.value">
+          </VTextField>
+          <VBtn color="green" @click="submit" :disabled="!canCheckout">結帳</VBtn>
+          <VBtn @click="dialog = false">取消</VBtn>
+        </VForm>
+      </v-card>
+    </VDialog>
   </VContainer>
 </template>
 <script setup>
@@ -62,11 +76,15 @@ import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
+import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()
 const user = useUserStore()
 const cart = ref([])
+const dialog = ref(false)
+const seventhomeItems = ['萊爾富', '7-11', '全家']
 const updateCart = async (product, quantity) => {
   try {
     const { data } = await apiAuth.post('users/cart',
@@ -118,11 +136,32 @@ const total = computed(() => {
   }
 })()
 
-const submit = async (req, res) => {
+const schema = yup.object({
+  seventhome: yup
+    .string()
+    .required('缺少製造商')
+    .test('地址錯誤', (value) => seventhomeItems.includes(value)),
+  paypoint: yup
+    .string()
+    .required('缺少店址')
+})
+
+const { handleSubmit, isSubmitting, handleReset } = useForm({
+  validationSchema: schema
+})
+
+const seventhome = useField('seventhome')
+const paypoint = useField('paypoint')
+
+const submit = handleSubmit(async (values) => {
   try {
-    await apiAuth.post('/orders')
+    await apiAuth.post('/orders', {
+      seventhome: values.seventhome + values.paypoint
+    })
     user.cart = 0
     router.push('/orders')
+    dialog.value = false
+    handleReset()
   } catch (error) {
     createSnackbar({
       text: error.response.data.message,
@@ -134,5 +173,5 @@ const submit = async (req, res) => {
       }
     })
   }
-}
+})
 </script>

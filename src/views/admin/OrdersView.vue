@@ -20,6 +20,8 @@
               <th>金額</th>
               <th>商品</th>
               <th>狀態</th>
+              <th>付款方式</th>
+              <th>地址</th>
               <th>修改日期</th>
               <th>編輯</th>
             </tr>
@@ -38,14 +40,20 @@
                 </ul>
               </td>
               <td> {{ order.ok }}</td>
+              <td> 貨到付款</td>
+              <td> {{ order.seventhome }}</td>
               <td>{{ new Date(order.changedate).toLocaleString() }}</td>
 
               <td>
-                <VBtn @click="editorder(order._id, 2)">確認</VBtn>
+                <VBtn @click="editorder(order._id, 2)" :disabled="order.ok === '訂單確認中' ? false : true">
+                  成立訂單</VBtn>
 
-                <VBtn @click="editorder(order._id, 3)">完成</VBtn>
+                <VBtn @click="editorder(order._id, 3)" :disabled="order.ok === '訂單已成立' ? false : true">
+                  完成訂單
+                </VBtn>
 
-                <VBtn @click="editorder(order._id, 4)">取消</VBtn>
+                <VBtn @click="editorder(order._id, 4)"
+                  :disabled="order.ok === '訂單已完成' || order.ok === '訂單已取消' ? true : false">取消訂單</VBtn>
               </td>
             </tr>
           </tbody>
