@@ -12,6 +12,9 @@
               <th>日期</th>
               <th>金額</th>
               <th>商品</th>
+              <th>狀態</th>
+              <th>修改日期</th>
+              <th>取消</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +28,11 @@
                     {{ item.product.name }}*{{ item.quantity }}
                   </li>
                 </ul>
+              </td>
+              <td> {{ order.ok }}</td>
+              <td>{{ new Date(order.changedate).toLocaleString() }}</td>
+              <td>
+                <VBtn @click="editorder(order._id, 5)">取消</VBtn>
               </td>
             </tr>
 
@@ -41,7 +49,32 @@ import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 
 const createSnackbar = useSnackbar()
-const orders = ref([]);
+const orders = ref([])
+
+const editorder = async (id, check) => {
+  try {
+    const backans = await apiAuth.post('/orders/edituseorder', {
+      id,
+      check
+    })
+
+    const idx = orders.value.findIndex(item => item._id === id)
+
+    orders.value[idx].ok = backans.data.result.ok
+    orders.value[idx].changedate = backans.data.result.changedate
+  } catch (error) {
+    console.log(error)
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
 
 (async () => {
   try {

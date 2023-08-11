@@ -94,6 +94,11 @@
                   <td>{{ item.text }}</td>
                   <td>{{ new Date(item.date).toLocaleString() }}</td>
                 </template>
+                <template v-if="item.review">
+                  <td>{{ item.user.name }}</td>
+                  <td>管理員審核中</td>
+                  <td>{{ new Date(item.date).toLocaleString() }}</td>
+                </template>
               </tr>
             </template>
             <template v-if="user.role === 1">
@@ -410,7 +415,7 @@ onMounted(() => {
   gsap.from('.gastlike', {
     scrollTrigger: {
       trigger: '.gastlike',
-      start: 'top 60%',
+      start: 'top 70%',
       end: 'bottom center'
     },
     y: -50,

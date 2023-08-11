@@ -8,7 +8,7 @@
     height: 100%;
   }
 
-  .wid {
+  .wida {
     position: relative;
     width: 80%;
     height: 550px;
@@ -18,9 +18,38 @@
       url('@/assets/york.jpg') center top / cover no-repeat;
     border-radius: 50px;
     color: $secondary;
+
+    .v-form {
+      background-color: rgba(255, 255, 255, 0.3) !important;
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+    }
+
+
   }
 
-  .shadow {
+  .widb {
+    position: relative;
+    width: 70%;
+    top: -30px;
+    height: 800px;
+    margin: auto;
+    background: linear-gradient(65deg, rgba($primary , $alpha: 0.5) 25%, transparent 25%),
+      linear-gradient(345deg, rgba($primary , $alpha: 0.6) 25%, transparent 25%),
+      url('@/assets/york.jpg') center top / cover no-repeat;
+    border-radius: 50px;
+    color: $secondary;
+
+    .v-form {
+      background-color: rgba(255, 255, 255, 0.3) !important;
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+    }
+
+
+  }
+
+  .shadowa {
     position: relative;
     width: 100%;
     height: 100%;
@@ -38,6 +67,24 @@
     }
   }
 
+
+  .shadowb {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      width: 70%;
+      height: 100%;
+      background-color: rgba($therd , $alpha: 0.8);
+      top: 5%;
+      left: 20%;
+      z-index: 0;
+      border-radius: 50px;
+    }
+  }
 }
 
 //登入
@@ -107,8 +154,52 @@
 .lidcover {
   height: 100%;
   width: 50%;
-  background-color: rgba($primary , $alpha: 0.5);
+  // background-color: rgba($primary , $alpha: 0.5);
+
   backdrop-filter: 0.8;
+  background: url('@/assets/JPDoor.png') no-repeat center/cover;
+  background: url('@/assets/JPDoor.png') no-repeat center/cover, rgba($secondary , $alpha: 0.9);
+  // url('@/assets/JPDoor.png') no-repeat center/cover;
+  backdrop-filter: blur(15px);
   position: absolute;
-  z-index: 8;
+  z-index: 3;
+
+
+  .bt1,
+  .bt2 {
+    position: absolute !important;
+    background-color: $secondary !important;
+    border: 10px solid #3a1d09;
+    height: 200px !important;
+    border-radius: 50px !important;
+    font-weight: bolder;
+  }
+
+  .bt1 {
+    right: -35px !important;
+  }
+
+  .bt2 {
+    left: -35px !important;
+  }
+
+  .bt1home,
+  .bt2home {
+    position: absolute !important;
+    background-color: $secondary !important;
+    border: 10px solid #3a1d09;
+    border-radius: 20px !important;
+    font-weight: bolder;
+  }
+
+
+  .bt1home {
+    top: calc(50% + 90px);
+    right: -23px !important;
+  }
+
+  .bt2home {
+    top: calc(50% + 90px);
+    left: -23px !important;
+  }
 }

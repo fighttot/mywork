@@ -15,10 +15,13 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>日期</th>
+              <th>建立日期</th>
               <th>使用者</th>
               <th>金額</th>
               <th>商品</th>
+              <th>狀態</th>
+              <th>修改日期</th>
+              <th>編輯</th>
             </tr>
           </thead>
           <tbody>
@@ -34,6 +37,16 @@
                   </li>
                 </ul>
               </td>
+              <td> {{ order.ok }}</td>
+              <td>{{ new Date(order.changedate).toLocaleString() }}</td>
+
+              <td>
+                <VBtn @click="editorder(order._id, 2)">確認</VBtn>
+
+                <VBtn @click="editorder(order._id, 3)">完成</VBtn>
+
+                <VBtn @click="editorder(order._id, 4)">取消</VBtn>
+              </td>
             </tr>
           </tbody>
         </VTable>
@@ -47,7 +60,32 @@ import { ref } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 const createSnackbar = useSnackbar()
-const orders = ref([]);
+const orders = ref([])
+
+const editorder = async (id, check) => {
+  try {
+    const backans = await apiAuth.post('/orders/editorder', {
+      id,
+      check
+    })
+
+    const idx = orders.value.findIndex(item => item._id === id)
+    orders.value[idx].ok = backans.data.result.ok
+    orders.value[idx].changedate = backans.data.result.changedate
+  } catch (error) {
+    console.log(error)
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
+
 (async () => {
   try {
     const { data } = await apiAuth.get('/orders/all')

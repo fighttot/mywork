@@ -41,7 +41,7 @@
         <!-- <VAppBarTitle>型影不離</VAppBarTitle> -->
 
         <template v-if="!isMobile">
-          <VBtn variant="text" :active="false" to='/manufacturers'>廠商介紹</VBtn>
+          <VBtn variant="text" :active="false" to='/manufacturers' prepend-icon="mdi-package-variant">廠商介紹</VBtn>
           <VBtn variant="text" :active="false" to='/proHome' prepend-icon="mdi-tag">商品一覽</VBtn>
           <VBtn variant="text" :active="false" to='/like' v-if="user.isLogin" prepend-icon="mdi-heart">
             <VBadge color="success" :content="user.like" floating></VBadge>
