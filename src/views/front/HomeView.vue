@@ -7,6 +7,9 @@
   </div>
   <div class="bgbox2"></div>
   <section class="section01">
+    <div class="text-center photo3title">
+      <p>NEW PICK</p>
+    </div>
     <div class="four">
       <VRow>
         <VCol cols="12" md="4" class="d-flex align-center photo3" v-for="card in cards" :key="card._id">
@@ -17,6 +20,7 @@
           </RouterLink>
         </VCol>
       </VRow>
+
     </div>
   </section>
 
@@ -50,10 +54,18 @@
 
       <VImg src="@/assets/aqa.png" class="photo"></VImg>
       <!-- <img src="@/assets/aua.jpg"> -->
+      <div class="d-flex flex-column  justify-center align-center cubetext">
+        <span class="cubetextanimate">主</span>
+        <span class="cubetextanimate">打</span>
+        <span class="cubetextanimate">商</span>
+        <span class="cubetextanimate">品</span>
+        <span class="cubetextanimate">喲</span>
+        <span class="cubetextanimate">!</span>
+      </div>
     </div>
   </section>
 
-  <section class="footer">
+  <section class="homefooter">
 
   </section>
 </template>
@@ -122,6 +134,39 @@ onMounted(async () => {
     opacity: 0,
     duration: 1,
     ease: 'back'
+  })
+  gsap.from('.photo3title', {
+    scrollTrigger: {
+      trigger: '.four',
+      start: 'top 70%',
+      end: 'bottom center'
+    },
+    y: -100,
+    opacity: 0,
+    duration: 0.5,
+    ease: 'back.in(5)'
+  })
+
+  const titles = document.querySelectorAll('.cubetextanimate')
+  titles.forEach((title) => {
+    const tl = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 4
+    })
+
+    tl
+      .from(title, {
+        opacity: 0.5,
+        duration: 1,
+        yoyo: true,
+        ease: 'none'
+      })
+      .to(title, {
+        opacity: 0.5,
+        duration: 1,
+        yoyo: true,
+        ease: 'none'
+      })
   })
 })
 </script>

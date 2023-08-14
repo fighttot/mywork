@@ -1,80 +1,83 @@
 <template>
-  <section class="othertitle">
-    <div class="bgbox">
-      <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
-    </div>
-    <div class="bgbox2"></div>
-  </section>
-  <VContainer>
-    <VRow>
-      <VCol cols="12">
-        <h1>購物車</h1>
-      </VCol>
-      <VCol cols="12">
-        <VTable>
-          <thead>
-            <tr>
-              <th>圖片</th>
-              <th>名稱</th>
-              <th>單價</th>
-              <th>數量</th>
-              <th>小記</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for=" item in cart" :key="item._id" :class="{ 'bg-red-lighten-5': !item.product.sell }">
-              <td>
-                <VImg :src="item.product.images[0]" cover aspect-ratio="1"></VImg>
-              </td>
-              <td :style="`color: ${item.product.textColor};`">{{ item.product.name }}</td>
-              <td :style="`background-color: ${item.product.color};`">{{ item.product.price }}</td>
-              <td>
-                <VBtn color="primary" variant="text" icon="mdi-minus" @click="updateCart(item.product._id, -1)"></VBtn>
-                {{ item.quantity }}
-                <VBtn color="primary" variant="text" icon="mdi-plus" @click="updateCart(item.product._id, 1)"></VBtn>
-              </td>
-              <td>
-                {{ item.quantity * item.product.price }}
-              </td>
-              <td>
-                <VBtn color="red" variant="text" icon="mdi-delete"
-                  @click="updateCart(item.product._id, item.quantity * -1)">
-                </VBtn>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="6" class="text-center" v-if="cart.length === 0">沒有商品</td>
-            </tr>
-          </tbody>
-        </VTable>
-      </VCol>
-      <VCol cols="12" class="text-center">
-        <p>總金額:{{ total }}</p>
-        <VBtn color="green" @click="dialog = true">結帳</VBtn>
-      </VCol>
-    </VRow>
+  <section class="cardview ">
+    <section class="othertitle">
+      <div class="bgbox">
+        <VImg class="mainimg" src="@/assets/Zuikaku.jpg" cover></VImg>
+      </div>
+      <div class="bgbox2"></div>
+    </section>
+    <VContainer>
+      <VRow>
+        <VCol cols="12">
+          <h1>購物車</h1>
+        </VCol>
+        <VCol cols="12">
+          <VTable>
+            <thead>
+              <tr>
+                <th>圖片</th>
+                <th>名稱</th>
+                <th>單價</th>
+                <th>數量</th>
+                <th>小記</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for=" item in cart" :key="item._id" :class="{ 'bg-red-lighten-5': !item.product.sell }">
+                <td>
+                  <VImg :src="item.product.images[0]" cover aspect-ratio="1"></VImg>
+                </td>
+                <td :style="`color: ${item.product.textColor};`">{{ item.product.name }}</td>
+                <td :style="`background-color: ${item.product.color};`">{{ item.product.price }}</td>
+                <td>
+                  <VBtn color="primary" variant="text" icon="mdi-minus" @click="updateCart(item.product._id, -1)"></VBtn>
+                  {{ item.quantity }}
+                  <VBtn color="primary" variant="text" icon="mdi-plus" @click="updateCart(item.product._id, 1)"></VBtn>
+                </td>
+                <td>
+                  {{ item.quantity * item.product.price }}
+                </td>
+                <td>
+                  <VBtn color="red" variant="text" icon="mdi-delete"
+                    @click="updateCart(item.product._id, item.quantity * -1)">
+                  </VBtn>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="text-center" v-if="cart.length === 0">沒有商品</td>
+              </tr>
+            </tbody>
+          </VTable>
+        </VCol>
+        <VCol cols="12" class="text-center">
+          <p>總金額:{{ total }}</p>
+          <VBtn color="green" @click="dialog = true">結帳</VBtn>
+        </VCol>
+      </VRow>
 
-    <VDialog v-model="dialog" width="400px" persistent>
-      <v-card class="text-center">
-        <VCardTitle>結帳資訊</VCardTitle>
-        <VForm :disabled="isSubmitting" @submit.prevent="submit">
-          <VSelect :items="seventhomeItems" label="便利商店貨到付款" v-model="seventhome.value.value"
-            :error-messages="seventhome.errorMessage.value" v-if="!paynext"></VSelect>
-          <VSelect label="付款方式?" v-model="payway.value.value" :error-messages="payway.errorMessage.value" v-if="paynext"
-            :items="paynextItems">
-          </VSelect>
-          <VTextField label="哪一家店?" v-model="paypoint.value.value" :error-messages="paypoint.errorMessage.value"
-            v-if="!paynext">
-          </VTextField>
-          <VBtn @click="paynext = true" v-if="!paynext">上一步</VBtn>
-          <VBtn @click="payupnext" v-if="paynext">下一步</VBtn>
-          <VBtn color="green" @click="submit" :disabled="!canCheckout">結帳</VBtn>
-          <VBtn @click="dialog = false, handleReset()">取消</VBtn>
-        </VForm>
-      </v-card>
-    </VDialog>
-  </VContainer>
+      <VDialog v-model="dialog" width="400px" persistent>
+        <v-card class="text-center">
+          <VCardTitle>結帳資訊</VCardTitle>
+          <VForm :disabled="isSubmitting" @submit.prevent="submit">
+            <VSelect :items="seventhomeItems" label="便利商店貨到付款" v-model="seventhome.value.value"
+              :error-messages="seventhome.errorMessage.value" v-if="!paynext"></VSelect>
+            <VSelect label="付款方式?" v-model="payway.value.value" :error-messages="payway.errorMessage.value" v-if="paynext"
+              :items="paynextItems">
+            </VSelect>
+            <VTextField label="哪一家店?" v-model="paypoint.value.value" :error-messages="paypoint.errorMessage.value"
+              v-if="!paynext">
+            </VTextField>
+            <VBtn @click="paynext = true" v-if="!paynext">上一步</VBtn>
+            <VBtn @click="payupnext" v-if="paynext">下一步</VBtn>
+            <VBtn color="green" @click="submit" :disabled="!canCheckout">結帳</VBtn>
+            <VBtn @click="dialog = false, handleReset()">取消</VBtn>
+          </VForm>
+        </v-card>
+      </VDialog>
+    </VContainer>
+    <FooTer></FooTer>
+  </section>
 </template>
 <script setup>
 import { ref, computed } from 'vue'
@@ -84,6 +87,7 @@ import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
+import FooTer from '@/components/FooTer.vue'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()

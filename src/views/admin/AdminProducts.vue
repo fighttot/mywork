@@ -1,5 +1,5 @@
 <template>
-  <section class="othertitle">
+  <section class="backtop">
     <div class="bgbox">
       <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
     </div>
@@ -35,7 +35,7 @@
             </v-toolbar>
           </template>
           <template #[`item.images`]="{ item }">
-            <VImg :src="ig" v-for="(ig, i) in  item.raw.images" :key="i" cover aspect-ratio="16/9"></VImg>
+            <VImg :src="item.raw.images[0]" :key="i" cover aspect-ratio="16/9"></VImg>
           </template>
           <template #[`item.sell`]="{ item }">
             <VIcon icon="mdi-check" v-if="item.raw.sell"></VIcon>

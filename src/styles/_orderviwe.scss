@@ -1,17 +1,12 @@
-.cardview {
-  a {
-    text-decoration: none;
-    color: $therd;
-  }
-
+.orderviwe {
   .othertitle {
     .bgbox {
       position: relative;
-      height: 13vw;
+      height: 15vw;
       background: $secondary;
 
       .v-img__img {
-        object-position: center 30%;
+        object-position: center 20%;
       }
 
       @include lg {

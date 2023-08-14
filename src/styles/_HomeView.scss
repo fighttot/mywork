@@ -42,6 +42,7 @@
   width: 100%;
 
   .four {
+    position: relative;
     width: 90%;
     margin: 20px auto;
     margin-bottom: 50px;
@@ -77,6 +78,18 @@
   .toroup {
     display: inline-block;
     width: 100%
+  }
+
+  .photo3title {
+    margin-top: 20px;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: $primary;
+    transition: 1s;
+
+    &:hover {
+      text-shadow: 2px 2px 2px $therd;
+    }
   }
 }
 
@@ -186,10 +199,21 @@
     z-index: 1;
   }
 
+  .cubetext {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+
+    span {
+      margin-top: 5px;
+      color: $therd;
+      font-weight: bolder;
+    }
+  }
 
 }
 
-.footer {
+.homefooter {
   background: linear-gradient(90deg, $secondary 0 5%, $therd 5% 100%);
   width: 100%;
   height: 100px;

@@ -30,7 +30,7 @@
         </VListItem>
       </VList>
     </VNavigationDrawer>
-    <VAppBar :elevation="0" class="appbar" scroll-behavior="hide" scroll-threshold="0">
+    <VAppBar :elevation="0" class="appbar" scroll-behavior="hide" scroll-threshold="30">
       <VContainer class="d-flex align-center">
         <VSpacer></VSpacer>
         <VBtn to="/" :active="false">

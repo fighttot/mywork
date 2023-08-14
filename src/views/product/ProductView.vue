@@ -3,14 +3,15 @@
     <VContainer>
       <VRow>
         <VCol cols="12">
-          <section class="trantext" :style="`border-left: 1px solid ${product.textColor};`">
-            <span :style="`color:${product.textColor}`">{{ product.name }}</span><br>
-            <span :style="`color:${product.textColor}`">{{ product.category }}</span><br><br>
-            <span :style="`color:${product.textColor}`">${{ product.price }}</span><br>
-            <span :style="`color:${product.textColor}`">{{ product.manufacturers }}</span>
-          </section>
+
           <swiper :pagination="{ type: 'fraction', }" :navigation="true" :modules="modules" :loop="true" :speed="3000"
             :autoplay="{ delay: 5000, disableOnInteraction: false, }" class="mySwiper">
+            <section class="trantext" :style="`border-left: 1px solid ${product.textColor};`">
+              <span :style="`color:${product.textColor}`">{{ product.name }}</span><br>
+              <span :style="`color:${product.textColor}`">{{ product.category }}</span><br><br>
+              <span :style="`color:${product.textColor}`">${{ product.price }}</span><br>
+              <span :style="`color:${product.textColor}`">{{ product.manufacturers }}</span>
+            </section>
             <swiper-slide v-for="(item, i) in product.images" :key="i">
               <VImg :src="item" cover style="width: 100%; height: 100%;"></VImg>
             </swiper-slide>
@@ -169,6 +170,9 @@
       </swiper>
     </section>
   </VContainer>
+  <div style="text-align: center; margin: 10px 0 20px 0; color:#F2E1D9; text-shadow: 0px 0px 10px #000000;">
+    Copyright © PFSK. All figure in here.
+  </div>
 </template>
 
 <script setup>

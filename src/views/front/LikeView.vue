@@ -1,12 +1,12 @@
 <template>
-  <section class="othertitle">
-    <div class="bgbox">
-      <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
-    </div>
-    <div class="bgbox2"></div>
-  </section>
-  <VContainer>
-    <section class="likeview">
+  <section class="likeview">
+    <section class="othertitle">
+      <div class="bgbox">
+        <VImg class="mainimg" src="@/assets/Shoukaku.jpg" cover></VImg>
+      </div>
+      <div class="bgbox2"></div>
+    </section>
+    <VContainer>
       <VRow>
         <VCol cols="12">
           <h1>收藏</h1>
@@ -43,7 +43,6 @@
                   <VBtn color="primary" variant="text" icon="mdi-cart" @click="alonAddCart(item.product._id)"
                     v-if="item.product.sell"> </VBtn>
                 </td>
-
               </tr>
               <tr>
                 <td colspan="6" class="text-center" v-if="like.length === 0">沒有收藏</td>
@@ -58,8 +57,9 @@
           <VBtn color="green" @click="submit" :disabled="!canCheckout">全部加入購物車</VBtn>
         </VCol>
       </VRow>
-    </section>
-  </VContainer>
+    </VContainer>
+    <FooTer></FooTer>
+  </section>
 </template>
 <script setup>
 import { ref, computed } from 'vue'
@@ -67,6 +67,7 @@ import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
+import FooTer from '@/components/FooTer.vue'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()

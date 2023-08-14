@@ -10,6 +10,9 @@
       </VCol>
     </VRow>
   </VContainer>
+  <div style="text-align: center; margin: 10px 0 20px 0; color:#F2E1D9; text-shadow: 0px 0px 10px #000000;">
+    Copyright © PFSK. All figure in here.
+  </div>
 </template>
 
 <script setup>
