@@ -40,7 +40,7 @@
                 </ul>
               </td>
               <td> {{ order.ok }}</td>
-              <td> 貨到付款</td>
+              <td> {{ order.paywat }}</td>
               <td> {{ order.seventhome }}</td>
               <td>{{ new Date(order.changedate).toLocaleString() }}</td>
 

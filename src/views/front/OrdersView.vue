@@ -34,7 +34,7 @@
               <td> {{ order.ok }}</td>
               <td>{{ new Date(order.changedate).toLocaleString() }}</td>
               <td>{{ order.seventhome }}</td>
-              <td>貨到付款</td>
+              <td>{{ order.paywat }}</td>
               <td>
                 <VBtn @click="editorder(order._id, 5)"
                   :disabled="order.ok === '取消確認中' || order.ok === '訂單已完成' || order.ok === '訂單已取消' ? true : false">取消訂單

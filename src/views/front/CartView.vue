@@ -60,11 +60,17 @@
         <VCardTitle>結帳資訊</VCardTitle>
         <VForm :disabled="isSubmitting" @submit.prevent="submit">
           <VSelect :items="seventhomeItems" label="便利商店貨到付款" v-model="seventhome.value.value"
-            :error-messages="seventhome.errorMessage.value"></VSelect>
-          <VTextField label="哪一家店?" v-model="paypoint.value.value" :error-messages="paypoint.errorMessage.value">
+            :error-messages="seventhome.errorMessage.value" v-if="!paynext"></VSelect>
+          <VSelect label="付款方式?" v-model="payway.value.value" :error-messages="payway.errorMessage.value" v-if="paynext"
+            :items="paynextItems">
+          </VSelect>
+          <VTextField label="哪一家店?" v-model="paypoint.value.value" :error-messages="paypoint.errorMessage.value"
+            v-if="!paynext">
           </VTextField>
+          <VBtn @click="paynext = true" v-if="!paynext">上一步</VBtn>
+          <VBtn @click="payupnext" v-if="paynext">下一步</VBtn>
           <VBtn color="green" @click="submit" :disabled="!canCheckout">結帳</VBtn>
-          <VBtn @click="dialog = false">取消</VBtn>
+          <VBtn @click="dialog = false, handleReset()">取消</VBtn>
         </VForm>
       </v-card>
     </VDialog>
@@ -84,7 +90,9 @@ const router = useRouter()
 const user = useUserStore()
 const cart = ref([])
 const dialog = ref(false)
+const paynext = ref(true)
 const seventhomeItems = ['萊爾富', '7-11', '全家']
+const paynextItems = ['貨到付款現金', '貨到付款刷卡']
 const updateCart = async (product, quantity) => {
   try {
     const { data } = await apiAuth.post('users/cart',
@@ -143,7 +151,10 @@ const schema = yup.object({
     .test('地址錯誤', (value) => seventhomeItems.includes(value)),
   paypoint: yup
     .string()
-    .required('缺少店址')
+    .required('缺少店址'),
+  payway: yup
+    .string()
+    .required('缺少付款方式')
 })
 
 const { handleSubmit, isSubmitting, handleReset } = useForm({
@@ -152,15 +163,34 @@ const { handleSubmit, isSubmitting, handleReset } = useForm({
 
 const seventhome = useField('seventhome')
 const paypoint = useField('paypoint')
+const payway = useField('payway')
+
+const payupnext = () => {
+  if (payway.value.value) {
+    paynext.value = false
+  } else {
+    createSnackbar({
+      text: '請填寫付款方式',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
 
 const submit = handleSubmit(async (values) => {
   try {
     await apiAuth.post('/orders', {
-      seventhome: values.seventhome + values.paypoint
+      seventhome: values.seventhome + values.paypoint,
+      paywat: values.payway
     })
     user.cart = 0
     router.push('/orders')
     dialog.value = false
+    paynext.value = true
     handleReset()
   } catch (error) {
     createSnackbar({
