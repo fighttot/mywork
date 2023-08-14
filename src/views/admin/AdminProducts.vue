@@ -95,6 +95,7 @@
       </VForm>
     </VDialog>
   </VContainer>
+  <VBtn @click="pushline">推送最新商品</VBtn>
 </template>
 
 <script setup>
@@ -288,6 +289,31 @@ const textColor = useField('textColor')
 const files = ref([])
 const rawFiles = ref([])
 const fileAgent = ref(null)
+
+const pushline = async () => {
+  try {
+    await apiAuth.post('/products/lineAll/')
+    createSnackbar({
+      text: '推送成功',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom'
+      }
+    })
+  } catch (error) {
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
 
 const submit = handleSubmit(async (values) => {
   if (dialogId.value.length === 0 && files.value.length === 0) {
