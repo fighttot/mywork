@@ -5,11 +5,16 @@
     </div>
     <div class="bgbox2"></div>
   </section>
-  <VContainer class="h-100">
+  <VContainer>
     <VRow class="h-100 align-center">
       <VCol cols="12">
         <h1 class="text-center">選擇管理項目</h1>
       </VCol>
     </VRow>
   </VContainer>
+  <FooTer class="adminhomefooter"></FooTer>
 </template>
+
+<script setup>
+import FooTer from '@/components/FooTer.vue'
+</script>

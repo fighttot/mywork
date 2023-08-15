@@ -196,10 +196,8 @@
   &::before {
     content: ' ';
     position: absolute;
-    // background: $secondary;
     background: linear-gradient(225deg, transparent 0 50%, $secondary 50% 100%);
-    width: 100%;
-    // top: 300px;
+    width: 95%;
     top: 20%;
     height: 80%;
   }

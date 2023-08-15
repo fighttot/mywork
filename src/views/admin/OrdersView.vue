@@ -157,14 +157,16 @@
         </VTable>
       </VCol>
     </VRow>
-
   </VContainer>
+  <FooTer></FooTer>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
+import FooTer from '@/components/FooTer.vue'
+
 const createSnackbar = useSnackbar()
 const orders = ref([])
 

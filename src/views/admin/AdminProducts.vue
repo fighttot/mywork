@@ -96,6 +96,7 @@
     </VDialog>
   </VContainer>
   <VBtn @click="pushline">推送最新商品</VBtn>
+  <FooTer></FooTer>
 </template>
 
 <script setup>
@@ -104,6 +105,7 @@ import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
+import FooTer from '@/components/FooTer.vue'
 
 const imageEditView = ref([])
 const createSnackbar = useSnackbar()
