@@ -201,13 +201,23 @@
 
   .cubetext {
     position: absolute;
-    top: 40%;
-    right: 10%;
+    top: 35%;
+    right: 8%;
+
+    @include sm {
+      top: 40%;
+      right: 10%;
+    }
 
     span {
       margin-top: 5px;
       color: $therd;
       font-weight: bolder;
+      font-size: 10px;
+
+      @include sm {
+        font-size: 20px;
+      }
     }
   }
 

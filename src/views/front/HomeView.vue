@@ -43,8 +43,7 @@
         slideShadows: true,
         shadowOffset: 20,
         shadowScale: 0.94,
-      }" :autoplay="{ delay: 4000, disableOnInteraction: false, }" :speed="2000" :pagination="true" :modules="modules"
-        class="mySwiper">
+      }" :speed="1000" :pagination="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="thcube in thcubes" :key="thcube._id">
           <RouterLink :to="/proHome/ + thcube._id">
             <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
@@ -147,26 +146,42 @@ onMounted(async () => {
     ease: 'back.in(5)'
   })
 
-  const titles = document.querySelectorAll('.cubetextanimate')
-  titles.forEach((title) => {
-    const tl = gsap.timeline({
-      repeat: -1,
-      repeatDelay: 4
-    })
-
-    tl
-      .from(title, {
-        opacity: 0.5,
-        duration: 1,
-        yoyo: true,
-        ease: 'none'
-      })
-      .to(title, {
-        opacity: 0.5,
-        duration: 1,
-        yoyo: true,
-        ease: 'none'
-      })
+  const tl = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 1,
+    yoyo: true
   })
+
+  tl
+    .from('.cubetextanimate', {
+      opacity: 1,
+      duration: 1,
+      yoyo: true,
+      ease: 'none',
+      stagger: 1
+    })
+    .to('.cubetextanimate', {
+      opacity: 0,
+      duration: 1,
+      yoyo: true,
+      ease: 'none',
+      stagger: 1
+    }, 1)
+
+  // gsap.to('.cubetextanimate', {
+  //   repeat: -1,
+  //   // yoyo: true,
+  //   opacity: 0,
+  //   duration: 0.5,
+  //   ease: 'back.in(5)',
+  //   // stagger: 1
+  //   stagger: {
+  //     each: 1,
+  //     from: 'end',
+  //     ease: 'none',
+  //     // repeat: -1,
+  //     yoyo: true
+  //   }
+  // })
 })
 </script>

@@ -38,7 +38,7 @@
         </VBtn>
 
         <template v-if="!isMobile">
-          <VBtn variant="text" :active="false" to='/manufacturers'>廠商介紹</VBtn>
+          <VBtn variant="text" :active="false" to='/manufacturers' prepend-icon="mdi-package-variant">廠商介紹</VBtn>
           <VBtn variant="text" :active="false" to='/proHome' prepend-icon="mdi-tag">商品一覽</VBtn>
           <VSpacer></VSpacer>
           <VBtn variant="text" :active="false" to='/like' v-if="user.isLogin" prepend-icon="mdi-heart">
@@ -119,9 +119,10 @@ const navItems = computed(() => {
     { to: '/cart', text: '購物車', icon: 'mdi-cart', show: user.isLogin },
     { to: '/like', text: '收藏', icon: 'mdi-heart', show: user.isLogin },
     { to: '/orders', text: '訂單', icon: 'mdi-format-list-numbered', show: user.isLogin },
-    { to: '/proHome', text: '商品一覽', icon: 'mdi-tag', show: !user.isLogin },
-    { to: '/manufacturers', text: '廠商介紹', icon: 'mdi-home', show: !user.isLogin },
-    { to: '/admin', text: '管理', icon: 'mdi-cog', show: user.isLogin && user.isAdmin }
+    { to: '/proHome', text: '商品一覽', icon: 'mdi-tag', show: true },
+    { to: '/manufacturers', text: '廠商介紹', icon: 'mdi-package-variant', show: true },
+    { to: '/admin', text: '管理', icon: 'mdi-cog', show: user.isLogin && user.isAdmin },
+    { to: '/', text: '回首頁', icon: 'mdi-home', show: true }
   ]
 })
 
