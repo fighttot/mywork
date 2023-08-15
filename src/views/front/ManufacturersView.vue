@@ -11,23 +11,23 @@
         <div class="Mautext Mbox1">
 
           <div>
-            <VBtn to='/goodsmile' prepend-icon="mdi-chevron-right">more</VBtn>
+            <VBtn to='/proHome/goodsmile' prepend-icon="mdi-chevron-right">more</VBtn>
           </div>
         </div>
         <div class="Mautext Mbox2">
           <div>
-            <VBtn to='/alter' prepend-icon="mdi-chevron-right">more</VBtn>
+            <VBtn to='/proHome/alter' prepend-icon="mdi-chevron-right">more</VBtn>
           </div>
         </div>
         <div class="Mautext Mbox3">
 
           <div>
-            <VBtn to='/daiki' prepend-icon="mdi-chevron-right">more</VBtn>
+            <VBtn to='/proHome/daiki' prepend-icon="mdi-chevron-right">more</VBtn>
           </div>
         </div>
         <div class="Mautext Mbox4">
           <div>
-            <VBtn to='/mimeyoi' prepend-icon="mdi-chevron-right">more</VBtn>
+            <VBtn to='/proHome/mimeyoi' prepend-icon="mdi-chevron-right">more</VBtn>
           </div>
         </div>
 

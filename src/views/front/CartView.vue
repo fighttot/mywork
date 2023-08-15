@@ -118,7 +118,9 @@ const updateCart = async (product, quantity) => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -142,7 +144,9 @@ const total = computed(() => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -179,7 +183,9 @@ const payupnext = () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -203,7 +209,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }

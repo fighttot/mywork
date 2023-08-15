@@ -166,7 +166,9 @@ const tableLoadItems = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -232,7 +234,7 @@ const Reset = () => {
   }
 }
 
-const manufacturersItems = ['MIMEYOI', 'ALTER', '好微笑', '壽屋']
+const manufacturersItems = ['MIMEYOI', 'ALTER', '好微笑', 'DAIKI']
 
 const schema = yup.object({
   name: yup
@@ -299,7 +301,9 @@ const pushline = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'green',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   } catch (error) {
@@ -309,7 +313,9 @@ const pushline = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -323,7 +329,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
@@ -353,7 +361,9 @@ const submit = handleSubmit(async (values) => {
         snackbarProps: {
           timeout: 2000,
           color: 'green',
-          location: 'bottom'
+          location: 'bottom',
+          rounded: 'pill',
+          variant: 'tonal'
         }
       })
     } else {
@@ -365,7 +375,9 @@ const submit = handleSubmit(async (values) => {
         snackbarProps: {
           timeout: 2000,
           color: 'green',
-          location: 'bottom'
+          location: 'bottom',
+          rounded: 'pill',
+          variant: 'tonal'
         }
       })
     }
@@ -379,7 +391,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }

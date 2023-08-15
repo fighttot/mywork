@@ -98,7 +98,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'green',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
     const { data } = await api.post('/users/login', {
@@ -120,7 +122,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'green',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
     handleReset()
@@ -132,7 +136,9 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }

@@ -112,55 +112,55 @@ const props = defineProps({
 })
 const user = useUserStore()
 const createSnackbar = useSnackbar()
-const colorLike = ref('#F2E1D9')
+const colorLike = ref('#F2E1D9');
 
-const addCart = async () => {
-  try {
-    const { data } = await apiAuth.post('users/cart',
-      {
-        product: props._id,
-        quantity: 1
-      })
-    user.cart = data.result
-  } catch (error) {
-    createSnackbar({
-      text: error.response.data.message,
-      showCloseButton: false,
-      snackbarProps: {
-        timeout: 2000,
-        color: 'red',
-        location: 'bottom'
-      }
-    })
-  }
-}
+// const addCart = async () => {
+//   try {
+//     const { data } = await apiAuth.post('users/cart',
+//       {
+//         product: props._id,
+//         quantity: 1
+//       })
+//     user.cart = data.result
+//   } catch (error) {
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom'
+//       }
+//     })
+//   }
+// }
 
-const addLike = async () => {
-  try {
-    const { data } = await apiAuth.post('users/like',
-      {
-        product: props._id
-      })
-    user.like = data.result.length
-    const lico = await apiAuth.post('/products/red',
-      {
-        app: props._id
-      })
-    if (lico.data.result) { colorLike.value = 'red' } else {
-      colorLike.value = '#F2E1D9'
-    }
-  } catch (error) {
-    createSnackbar({
-      text: error.response.data.message,
-      showCloseButton: false,
-      snackbarProps: {
-        timeout: 2000,
-        color: 'red',
-        location: 'bottom'
-      }
-    })
-  }
-}
+// const addLike = async () => {
+//   try {
+//     const { data } = await apiAuth.post('users/like',
+//       {
+//         product: props._id
+//       })
+//     user.like = data.result.length
+//     const lico = await apiAuth.post('/products/red',
+//       {
+//         app: props._id
+//       })
+//     if (lico.data.result) { colorLike.value = 'red' } else {
+//       colorLike.value = '#F2E1D9'
+//     }
+//   } catch (error) {
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom'
+//       }
+//     })
+//   }
+// }
 
 (async () => {
   try {
@@ -178,7 +178,9 @@ const addLike = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }

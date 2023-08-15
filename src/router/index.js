@@ -66,46 +66,6 @@ const routes = [
           login: false,
           admin: false
         }
-      },
-      {
-        path: 'mimeyoi',
-        name: 'Mimeyoi',
-        component: () => import(/* webpackChunkName: "mimeyoi" */ '@/views/front/MimeyoiView.vue'),
-        meta: {
-          title: '型影不離 | MIMEYOI',
-          login: false,
-          admin: false
-        }
-      },
-      {
-        path: 'goodsmile',
-        name: 'Goodsmile',
-        component: () => import(/* webpackChunkName: "goodsmile" */ '@/views/front/GoodsmileView.vue'),
-        meta: {
-          title: '型影不離 | Goodsmile',
-          login: false,
-          admin: false
-        }
-      },
-      {
-        path: 'alter',
-        name: 'Alter',
-        component: () => import(/* webpackChunkName: "alter" */ '@/views/front/AlterView.vue'),
-        meta: {
-          title: '型影不離 | Alter',
-          login: false,
-          admin: false
-        }
-      },
-      {
-        path: 'daiki',
-        name: 'Daiki',
-        component: () => import(/* webpackChunkName: "daiki" */ '@/views/front/DaikiView.vue'),
-        meta: {
-          title: '型影不離 | Daiki',
-          login: false,
-          admin: false
-        }
       }
     ]
 
@@ -164,6 +124,46 @@ const routes = [
         component: () => import(/* webpackChunkName: "product" */ '@/views/product/ProductView.vue'),
         meta: {
           title: '型影不離 | 商品',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'mimeyoi',
+        name: 'Mimeyoi',
+        component: () => import(/* webpackChunkName: "mimeyoi" */ '@/views/product/MimeyoiView.vue'),
+        meta: {
+          title: '型影不離 | MIMEYOI',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'goodsmile',
+        name: 'Goodsmile',
+        component: () => import(/* webpackChunkName: "goodsmile" */ '@/views/product/GoodsmileView.vue'),
+        meta: {
+          title: '型影不離 | Goodsmile',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'alter',
+        name: 'Alter',
+        component: () => import(/* webpackChunkName: "alter" */ '@/views/product/AlterView.vue'),
+        meta: {
+          title: '型影不離 | Alter',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'daiki',
+        name: 'Daiki',
+        component: () => import(/* webpackChunkName: "daiki" */ '@/views/product/DaikiView.vue'),
+        meta: {
+          title: '型影不離 | Daiki',
           login: false,
           admin: false
         }

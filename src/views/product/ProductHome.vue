@@ -96,7 +96,9 @@ onMounted(async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }

@@ -267,16 +267,42 @@ const submitText = handSAY(async (values) => {
     }
     handleReset()
     dialog.value = false
-  } catch (error) {
     createSnackbar({
-      text: error.response.data.message,
+      text: '成功',
       showCloseButton: false,
       snackbarProps: {
         timeout: 2000,
-        color: 'red',
-        location: 'bottom'
+        color: 'green',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
+  } catch (error) {
+    if (error.response.data.message === '缺少JWT') {
+      createSnackbar({
+        text: '請登入或加入會員',
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill',
+          variant: 'tonal'
+        }
+      })
+    } else {
+      createSnackbar({
+        text: error.response.data.message,
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill'
+        }
+      })
+    }
   }
 })
 
@@ -301,16 +327,42 @@ const submitCart = handleSubmit(async (values) => {
       })
     user.cart = data.result
     quantity.value.value = 0
-  } catch (error) {
     createSnackbar({
-      text: error.response.data.message,
+      text: '加入成功',
       showCloseButton: false,
       snackbarProps: {
         timeout: 2000,
-        color: 'red',
-        location: 'bottom'
+        color: 'green',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
+  } catch (error) {
+    if (error.response.data.message === '缺少JWT') {
+      createSnackbar({
+        text: '請登入或加入會員',
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill',
+          variant: 'tonal'
+        }
+      })
+    } else {
+      createSnackbar({
+        text: error.response.data.message,
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill'
+        }
+      })
+    }
   }
 })
 const product = ref({
@@ -343,16 +395,42 @@ const addLike = async () => {
     if (lico.data.result) { colorLike.value = true } else {
       colorLike.value = false
     }
-  } catch (error) {
     createSnackbar({
-      text: error.response.data.message,
+      text: '操作成功',
       showCloseButton: false,
       snackbarProps: {
         timeout: 2000,
-        color: 'red',
-        location: 'bottom'
+        color: 'green',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
+  } catch (error) {
+    if (error.response.data.message === '缺少JWT') {
+      createSnackbar({
+        text: '請登入或加入會員',
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill',
+          variant: 'tonal'
+        }
+      })
+    } else {
+      createSnackbar({
+        text: error.response.data.message,
+        showCloseButton: false,
+        snackbarProps: {
+          timeout: 2000,
+          color: 'red',
+          location: 'bottom',
+          rounded: 'pill'
+        }
+      })
+    }
   }
 };
 

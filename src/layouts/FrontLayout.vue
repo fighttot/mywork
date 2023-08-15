@@ -142,7 +142,9 @@ const logout = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'green',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
     router.push('/loginRrgister')
@@ -153,7 +155,9 @@ const logout = async () => {
       snackbarProps: {
         timeout: 2000,
         color: 'red',
-        location: 'bottom'
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
       }
     })
   }
