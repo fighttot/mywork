@@ -4,6 +4,10 @@
     color: $therd;
   }
 
+  .cartheight {
+    min-height: 60vh;
+  }
+
   .othertitle {
     .bgbox {
       position: relative;
@@ -33,9 +37,4 @@
     }
   }
 
-
-  .footer {
-    position: absolute;
-    bottom: 0;
-  }
 }

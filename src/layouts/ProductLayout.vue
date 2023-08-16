@@ -34,7 +34,7 @@
       <VContainer class="d-flex align-center">
         <VSpacer></VSpacer>
         <VBtn to="/" :active="false">
-          <VAppBarTitle>型影不離</VAppBarTitle>
+          <VAppBarTitle><v-icon icon="mdi-home"></v-icon>型影不離</VAppBarTitle>
         </VBtn>
 
         <template v-if="!isMobile">

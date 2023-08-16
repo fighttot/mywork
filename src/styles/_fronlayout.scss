@@ -1,6 +1,7 @@
 #homelaout {
   .flayoutapbar {
     background-color: $secondary !important;
+    color: $therd;
     width: calc(100% - 90px) !important;
     left: 90px !important;
     transition: width 0.5s ease;

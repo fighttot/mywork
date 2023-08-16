@@ -1,14 +1,14 @@
 #prolaout {
 
   .appbar {
-    // background: transparent;
     color: #B8860B;
-    opacity: 0.5;
+
 
 
     .v-badge__badge.v-theme--light {
-      background: #B8860B;
+      background: $secondary;
       color: #A2071B;
+      font-size: 25px;
     }
   }
 

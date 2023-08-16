@@ -18,3 +18,29 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+import { gsap } from 'gsap'
+gsap.set('.Alter', {
+  perspective: 300
+})
+onMounted(() => {
+  gsap.from('.text', {
+    x: 100,
+    rotationY: 90,
+    autoAlpha: 0,
+    duration: 2,
+    ease: 'circ',
+    delay: 1
+  })
+
+  gsap.from('.logo', {
+    y: -60,
+    rotationX: 90,
+    autoAlpha: 0,
+    ease: 'back',
+    duration: 2
+  })
+})
+</script>

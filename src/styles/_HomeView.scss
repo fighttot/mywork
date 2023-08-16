@@ -105,12 +105,12 @@
   }
 
   @include xl {
-    padding-top: 140px;
+    padding-top: 100px;
     padding-bottom: 30px;
   }
 
   @include xxl {
-    padding-top: 180px;
+    padding-top: 140px;
     padding-bottom: 50px;
   }
 
@@ -126,27 +126,27 @@
     background-color: $secondary;
     width: 90%;
     top: 120px;
-    height: 300px;
+    height: 360px;
 
     @include sm {
       top: 160px;
-      height: 350px;
+      height: 450px;
     }
 
     @include md {
       top: 200px;
-      height: 455px;
+      height: 550px;
     }
 
     @include lg {
       top: 200px;
-      height: 590px;
+      height: 690px;
     }
 
 
     @include xl {
       top: 300px;
-      height: 660px;
+      height: 730px;
     }
 
     @include xxl {
@@ -163,17 +163,6 @@
       top: 390px;
       height: 1100px;
     }
-  }
-
-  &::after {
-    content: ' ';
-    position: absolute;
-    background: linear-gradient(90deg, $secondary 0 5%, $therd 5% 100%);
-    width: 100%;
-    bottom: -100px;
-    right: 0;
-    height: 200px;
-    z-index: 0;
   }
 
   .mySwiper {
@@ -206,26 +195,65 @@
 
     @include sm {
       top: 40%;
-      right: 10%;
+      right: 8%;
     }
 
     span {
       margin-top: 5px;
       color: $therd;
       font-weight: bolder;
-      font-size: 10px;
+      font-size: 20px;
 
       @include sm {
-        font-size: 20px;
+        font-size: 25px;
+      }
+
+      @include md {
+        font-size: 32px;
+      }
+
+      @include lg {
+        font-size: 40px;
+      }
+
+      @include xl {
+        font-size: 50px;
+      }
+
+      @include xxl {
+        font-size: 60px;
       }
     }
   }
 
 }
 
+.hottitle {
+  padding-top: 50px;
+  text-align: center;
+  margin: 0;
+  transition: 1s;
+  color: $primary;
+  font-size: 40px;
+
+  &:hover {
+    text-shadow: 2px 2px 2px $therd;
+  }
+
+}
+
 .homefooter {
   background: linear-gradient(90deg, $secondary 0 5%, $therd 5% 100%);
+  position: absolute;
   width: 100%;
-  height: 100px;
+  height: 80px;
+
+  @include sm {
+    height: 100px;
+  }
+
+  @include md {
+    height: 120px;
+  }
 
 }

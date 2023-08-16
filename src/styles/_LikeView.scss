@@ -4,6 +4,10 @@
     color: $therd;
   }
 
+  .likeheight {
+    min-height: 60vh;
+  }
+
   .othertitle {
     .bgbox {
       position: relative;
@@ -31,10 +35,17 @@
         background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
       }
     }
+
+
   }
 
-  .footer {
-    position: absolute;
-    bottom: 0;
+  .btnlick {
+    background-color: aqua;
+
   }
+
+  // .footer {
+  //   position: absolute;
+  //   // bottom: 0;
+  // }
 }

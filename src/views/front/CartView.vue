@@ -11,7 +11,7 @@
         <VCol cols="12">
           <h1>購物車</h1>
         </VCol>
-        <VCol cols="12">
+        <VCol cols="12" class="cartheight">
           <VTable>
             <thead>
               <tr>
@@ -76,8 +76,9 @@
         </v-card>
       </VDialog>
     </VContainer>
-    <FooTer></FooTer>
+
   </section>
+  <FooTer></FooTer>
 </template>
 <script setup>
 import { ref, computed } from 'vue'

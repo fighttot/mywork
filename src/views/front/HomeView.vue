@@ -8,7 +8,7 @@
   <div class="bgbox2"></div>
   <section class="section01">
     <div class="text-center photo3title">
-      <p>NEW PICK</p>
+      <p>最 新 上 架</p>
     </div>
     <div class="four">
       <VRow>
@@ -36,7 +36,13 @@
       </div>
     </v-parallax>
   </section>
+  <div class="hottitle">
+    <h1>
+      <pre>現  正  熱  銷</pre>
+    </h1>
+  </div>
   <section class="section03">
+
     <div class="eightwidth">
       <swiper :effect="'cube'" :grabCursor="true" :cubeEffect="{
         shadow: true,
@@ -55,11 +61,11 @@
       <!-- <img src="@/assets/aua.jpg"> -->
       <div class="d-flex flex-column  justify-center align-center cubetext">
         <span class="cubetextanimate">主</span>
-        <span class="cubetextanimate">打</span>
-        <span class="cubetextanimate">商</span>
-        <span class="cubetextanimate">品</span>
-        <span class="cubetextanimate">喲</span>
-        <span class="cubetextanimate">!</span>
+        <span class="cubetextanimate1">打</span>
+        <span class="cubetextanimate2">商</span>
+        <span class="cubetextanimate3">品</span>
+        <span class="cubetextanimate4">喲</span>
+        <span class="cubetextanimate5">!</span>
       </div>
     </div>
   </section>
@@ -139,7 +145,7 @@ onMounted(async () => {
   gsap.from('.photo3title', {
     scrollTrigger: {
       trigger: '.four',
-      start: 'top 70%',
+      start: 'top 90%',
       end: 'bottom center'
     },
     y: -100,
@@ -147,43 +153,38 @@ onMounted(async () => {
     duration: 0.5,
     ease: 'back.in(5)'
   })
-
+  gsap.from('.hottitle', {
+    scrollTrigger: {
+      trigger: '.hottitle',
+      start: 'top 40%',
+      end: 'bottom center'
+    },
+    y: -100,
+    opacity: 0,
+    duration: 0.5,
+    ease: 'back.in(5)'
+  })
   const tl = gsap.timeline({
-    repeat: -1,
-    repeatDelay: 1,
-    yoyo: true
+    defaults: {
+      duration: 1,
+      ease: 'power1.inOut'
+    },
+    // timeline 屬性設定(指整體時間軸)
+    repeat: -1
   })
 
   tl
-    .from('.cubetextanimate', {
-      opacity: 1,
-      duration: 1,
-      yoyo: true,
-      ease: 'none',
-      stagger: 1
-    })
-    .to('.cubetextanimate', {
-      opacity: 0,
-      duration: 1,
-      yoyo: true,
-      ease: 'none',
-      stagger: 1
-    }, 1)
-
-  // gsap.to('.cubetextanimate', {
-  //   repeat: -1,
-  //   // yoyo: true,
-  //   opacity: 0,
-  //   duration: 0.5,
-  //   ease: 'back.in(5)',
-  //   // stagger: 1
-  //   stagger: {
-  //     each: 1,
-  //     from: 'end',
-  //     ease: 'none',
-  //     // repeat: -1,
-  //     yoyo: true
-  //   }
-  // })
+    .to('.cubetextanimate', { opacity: 0 })
+    .to('.cubetextanimate', { opacity: 1 })
+    .to('.cubetextanimate1', { opacity: 0 })
+    .to('.cubetextanimate1', { opacity: 1 })
+    .to('.cubetextanimate2', { opacity: 0 })
+    .to('.cubetextanimate2', { opacity: 1 })
+    .to('.cubetextanimate3', { opacity: 0 })
+    .to('.cubetextanimate3', { opacity: 1 })
+    .to('.cubetextanimate4', { opacity: 0 })
+    .to('.cubetextanimate4', { opacity: 1 })
+    .to('.cubetextanimate5', { opacity: 0 })
+    .to('.cubetextanimate5', { opacity: 1 })
 })
 </script>

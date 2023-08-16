@@ -11,7 +11,7 @@
         <VCol cols="12">
           <h1>收藏</h1>
         </VCol>
-        <VCol cols="12">
+        <VCol cols="12" class="likeheight">
           <VTable>
             <thead>
               <tr>
@@ -54,7 +54,7 @@
           <p>總收藏:{{ like.length }}</p>
         </VCol>
         <VCol cols="12" class="text-center">
-          <VBtn color="green" @click="submit" :disabled="!canCheckout">全部加入購物車</VBtn>
+          <VBtn class="btnlick" @click="submit" :disabled="!canCheckout">全部加入購物車</VBtn>
         </VCol>
       </VRow>
     </VContainer>

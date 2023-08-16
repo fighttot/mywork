@@ -7,32 +7,31 @@
       <div class="bgbox2"></div>
     </section>
     <VContainer>
-      <section class="manufacturers">
-        <div class="Mautext Mbox1">
+      <div class="Mautext Mbox1">
+        <div>
+          <RouterLink :to="'/proHome/mimeyoi'"> > more</RouterLink>
+        </div>
+      </div>
 
-          <div>
-            <VBtn to='/proHome/goodsmile' prepend-icon="mdi-chevron-right">more</VBtn>
-          </div>
+      <div class="Mautext Mbox2">
+        <div>
+          <RouterLink :to="'/proHome/alter'"> > more</RouterLink>
         </div>
-        <div class="Mautext Mbox2">
-          <div>
-            <VBtn to='/proHome/alter' prepend-icon="mdi-chevron-right">more</VBtn>
-          </div>
+      </div>
+      <div class="Mautext Mbox3">
+        <div>
+          <RouterLink :to="'/proHome/daiki'"> > more</RouterLink>
         </div>
-        <div class="Mautext Mbox3">
+      </div>
+      <div class="Mautext Mbox4">
 
-          <div>
-            <VBtn to='/proHome/daiki' prepend-icon="mdi-chevron-right">more</VBtn>
-          </div>
+        <div>
+          <RouterLink :to="'/proHome/goodsmile'"> > more</RouterLink>
         </div>
-        <div class="Mautext Mbox4">
-          <div>
-            <VBtn to='/proHome/mimeyoi' prepend-icon="mdi-chevron-right">more</VBtn>
-          </div>
-        </div>
+      </div>
 
-        <VImg src="@/assets/shamico.png" cover></VImg>
-      </section>
+      <VImg src="@/assets/shamico.png" cover class="shamiko"></VImg>
+
     </VContainer>
 
   </section>
