@@ -50,7 +50,7 @@
     top: 13%;
     left: 20%;
     z-index: 3;
-    background: url('@/assets/MIMEYOIlogo.png') no-repeat 5% center/65%, radial-gradient(#ffd1d3, transparent 70% 100%);
+    background: url('@/assets/MIMEYOIlogo.png') no-repeat 5% center/65%;
 
     @include md {
       height: 12%;

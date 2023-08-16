@@ -64,6 +64,7 @@ onMounted(() => {
   shamiko.addEventListener('mouseover', (event) => {
     gsap.to('.shamiko', {
       x: -200,
+      scale: 1.3,
       rotationY: 180,
       duration: 1,
       ease: 'circ'
@@ -73,6 +74,7 @@ onMounted(() => {
   shamiko.addEventListener('mouseout', (event) => {
     gsap.to('.shamiko', {
       x: 0,
+      scale: 1,
       rotationY: 0,
       duration: 1,
       ease: 'circ'
