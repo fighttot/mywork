@@ -28,8 +28,10 @@
                 <td>
                   <VImg :src="item.product.images[0]" cover aspect-ratio="1"></VImg>
                 </td>
-                <td :style="`color: ${item.product.textColor};`">{{ item.product.name }}</td>
-                <td :style="`background-color: ${item.product.color};`">{{ item.product.price }}</td>
+                <td :style="`color: ${item.product.textColor};`">
+                  <router-link :to="`/proHome/${item.product._id}`">{{ item.product.name }}</router-link>
+                </td>
+                <td>{{ item.product.price }}</td>
                 <td>
                   <VBtn color="primary" variant="text" icon="mdi-minus" @click="updateCart(item.product._id, -1)"></VBtn>
                   {{ item.quantity }}

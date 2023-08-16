@@ -34,7 +34,7 @@
       </VList>
     </VNavigationDrawer>
     <VAppBar class="flayoutapbar" v-if="$route.path !== '/loginRrgister'" :elevation="0" scroll-behavior="hide"
-      scroll-threshold="500">
+      scroll-threshold="200">
       <!-- <VContainer class="d-flex align-center"> -->
       <div class="d-flex align-center">
 
@@ -174,7 +174,7 @@ onMounted(() => {
     paused: false,
     duration: 0.5,
     scrollTrigger: {
-      start: '500 60',
+      start: '400 60',
       end: () => '+=' + document.documentElement.scrollHeight, // 整份文件的高度
       onEnter(self) {
         // console.log(self) // 捲動軸 scrollTrigger 自己

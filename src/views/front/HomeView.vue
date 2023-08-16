@@ -166,7 +166,7 @@ onMounted(async () => {
   })
   const tl = gsap.timeline({
     defaults: {
-      duration: 1,
+      duration: 0.5,
       ease: 'power1.inOut'
     },
     // timeline 屬性設定(指整體時間軸)

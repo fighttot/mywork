@@ -6,6 +6,17 @@
 
   .cartheight {
     min-height: 60vh;
+
+    .v-table {
+      border-radius: 15px;
+
+      th {
+        background: $primary;
+      }
+
+      background-color: rgba($secondary, $alpha: 0.5);
+    }
+
   }
 
   .othertitle {
