@@ -6,7 +6,7 @@
       </div>
       <div class="bgbox2"></div>
     </section>
-    <VContainer>
+    <section class="bocheigh">
       <div class="Mautext Mbox1">
         <div>
           <RouterLink :to="'/proHome/mimeyoi'"> > more</RouterLink>
@@ -30,9 +30,8 @@
         </div>
       </div>
 
-      <VImg src="@/assets/shamico.png" cover class="shamiko"></VImg>
-
-    </VContainer>
+      <VImg src="@/assets/shamain.png" class="shamiko"></VImg>
+    </section>
 
   </section>
   <section class="Manfooter">
@@ -41,5 +40,44 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import { gsap } from 'gsap'
+gsap.set('.bocheigh', {
+  perspective: 300
+})
+onMounted(() => {
+  const tl = gsap.timeline({
+    defaults: {
+      duration: 1,
+      ease: 'power1.inOut(5)'
+    },
+    repeat: -1
+
+  })
+
+  tl
+    .to('.shamiko', { y: -100 })
+    .to('.shamiko', { y: 0 })
+
+  const shamiko = document.querySelector('.shamiko')
+
+  shamiko.addEventListener('mouseover', (event) => {
+    gsap.to('.shamiko', {
+      x: -200,
+      rotationY: 180,
+      duration: 1,
+      ease: 'circ'
+    })
+  })
+
+  shamiko.addEventListener('mouseout', (event) => {
+    gsap.to('.shamiko', {
+      x: 0,
+      rotationY: 0,
+      duration: 1,
+      ease: 'circ'
+    })
+  })
+})
 
 </script>

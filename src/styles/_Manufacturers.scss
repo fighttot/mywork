@@ -1,5 +1,9 @@
 .ManufacturersView {
   position: relative;
+  // background: url('@/assets/shabg3.png');
+  background-repeat: no-repeat;
+  // background-position: right bottom;
+  background-size: cover;
 
   .othertitle {
     .bgbox {
@@ -41,16 +45,33 @@
   }
 
   .Mbox1 {
-    height: 12%;
-    width: 22%;
-    top: 23%;
+    height: 22%;
+    width: 32%;
+    top: 13%;
     left: 20%;
-    z-index: 1;
+    z-index: 3;
     background: url('@/assets/MIMEYOIlogo.png') no-repeat 5% center/65%, radial-gradient(#ffd1d3, transparent 70% 100%);
+
+    @include md {
+      height: 12%;
+      width: 22%;
+      top: 23%;
+    }
+
+    @include lg {
+      background-size: 50%;
+      height: 22%;
+      width: 32%;
+      top: 33%;
+    }
 
     div {
       position: absolute;
-      bottom: 5%;
+      bottom: 20%;
+
+      @include md {
+        bottom: 5%;
+      }
     }
 
     a {
@@ -74,14 +95,26 @@
     height: 10%;
     width: 23%;
     left: 10%;
-    top: 40%;
+    top: 35%;
     background: url('@/assets/ALTERlogo.png') no-repeat center 50%/90%, radial-gradient($therd, transparent 73% 100%);
-    z-index: 1;
+    z-index: 3;
+
+    @include md {
+      top: 45%;
+    }
+
+    @include lg {
+      top: 59%;
+    }
 
     div {
       position: absolute;
       bottom: 5%;
       right: 10%;
+
+      @include lg {
+        bottom: -20px;
+      }
     }
 
     a {
@@ -101,12 +134,22 @@
   }
 
   .Mbox3 {
-    top: 60%;
+    top: 50%;
     left: 5%;
     height: 8%;
     width: 22%;
-    background: url('@/assets/DAIKI.jpg') no-repeat center/40%, radial-gradient(#014798 0 40%, #0147981f, transparent 70% 100%);
-    z-index: 1;
+    background: url('@/assets/DAIKI.jpg') no-repeat center/50%, radial-gradient(#014798 0 40%, #0147981f, transparent 70% 100%);
+    z-index: 3;
+
+    @include md {
+      top: 60%;
+      background: url('@/assets/DAIKI.jpg') no-repeat center/35%, radial-gradient(#014798 0 40%, #0147981f, transparent 70% 100%);
+    }
+
+    @include lg {
+      top: 75%;
+      left: 10%;
+    }
 
 
     div {
@@ -134,15 +177,34 @@
   .Mbox4 {
     height: 8%;
     width: 20%;
-    top: 75%;
-    left: 20%;
+    top: 65%;
+    left: 10%;
     background: url('@/assets/gsc_logo.png') no-repeat center 10%/100%;
-    z-index: 1;
+    z-index: 3;
+
+    @include md {
+      top: 75%;
+      left: 15%;
+    }
+
+    @include lg {
+      top: 90%;
+      left: 15%;
+    }
+
 
     div {
       position: absolute;
-      bottom: 10%;
-      // right: 0;
+      bottom: 20%;
+      right: 0;
+
+      @include lg {
+        bottom: 0%;
+      }
+
+      @include xl {
+        left: 0;
+      }
     }
 
     a {
@@ -161,12 +223,29 @@
     }
   }
 
-
+  .bocheigh {
+    height: 100vh;
+    width: 100vw;
+    background: url('@/assets/shabg3.png') no-repeat 80% center, linear-gradient(90deg, transparent, #fec3c8 100%);
+  }
 
   .shamiko {
-    left: 15%;
+    position: absolute;
+    height: 70vh;
+    width: 70vw;
+    z-index: 2;
+    top: 20%;
+    left: 35%;
 
+    @include lg {
+      height: 89vh;
+      width: 50vw;
+      left: 45%;
+      top: 30%;
+    }
   }
+
+
 }
 
 .Manfooter {
