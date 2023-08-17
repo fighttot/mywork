@@ -3,9 +3,8 @@
     <div class="show">
       文案等待決定
     </div>
-    <!-- <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg> -->
     <div class="scene">
-      <div class="imgbox" data-depth="-0.5">
+      <div class="imgbox" data-depth="0.5">
         <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
       </div>
     </div>
@@ -13,7 +12,7 @@
   <div class="bgbox2"></div>
   <section class="section01">
     <div class="text-center photo3title">
-      <p>最 新 上 架</p>
+      <p>NEW products</p>
     </div>
     <div class="four">
       <VRow>
@@ -193,7 +192,6 @@ onMounted(async () => {
     .to('.cubetextanimate5', { opacity: 1 })
 
   // 視差
-  // const scene = document.getElementById('scene')
   const scene = document.querySelector('.scene')
   const parallaxInstance = new parallax(scene, {
     // 位移量，預設 10

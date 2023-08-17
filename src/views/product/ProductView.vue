@@ -53,7 +53,7 @@
                     :style="`border-bottom: 15px solid ${product.color};`" class="underline">
                     <VTextField v-model.number="quantity.value.value" type="number" label="數量" min="0"
                       :error-messages="quantity.errorMessage.value"></VTextField>
-                    <VBtn :style="`background-color:${product.color};color: ${product.textColor};`" type="submit">加入購物車
+                    <VBtn :style="`background-color:${product.color};color: ${product.textColor};`" type="submit">加購物車
                     </VBtn>
                     <VBtn
                       :style="`background-color:${!colorLike ? product.color : product.textColor}; color:${!colorLike ? product.textColor : product.color}`"
@@ -75,7 +75,7 @@
       <h1 class="text-red"> 已下架 </h1>
       <VBtn to="/"> 回上頁</VBtn>
     </VOverlay>
-    <VNavigationDrawer v-model="drawer" location="right" temporary width="700"
+    <VNavigationDrawer v-model="drawer" location="right" temporary width="600"
       :style="`background-color:${product.color};`">
       <div>
         <VTable :style="`color:${product.textColor}; background-color:${product.color};`">

@@ -2,7 +2,11 @@
   <section class="ManufacturersView">
     <section class="othertitle">
       <div class="bgbox">
-        <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+        <div class="scene">
+          <div class="imgbox" data-depth="-0.5">
+            <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+          </div>
+        </div>
       </div>
       <div class="bgbox2"></div>
     </section>
@@ -45,6 +49,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
+import parallax from 'parallax-js'
 gsap.set('.bocheigh', {
   perspective: 300
 })
@@ -75,7 +80,6 @@ onMounted(() => {
       })
     } else {
       gsap.to('.shamiko', {
-
         scale: 1.3,
         duration: 1,
         ease: 'circ'
@@ -84,8 +88,8 @@ onMounted(() => {
 
     gsap.to('.introduce', {
       opacity: 1,
-      rotationX: 0,
-      rotationY: 180,
+      rotationX: 30,
+      rotationY: 190,
       duration: 2,
       transformOrigin: '0% 50% -100',
       ease: 'back',
@@ -106,6 +110,18 @@ onMounted(() => {
       ease: 'back',
       rotationY: 0
     })
+  })
+  const scene = document.querySelector('.scene')
+  const parallaxInstance = new parallax(scene, {
+    // 位移量，預設 10
+    scalarX: 10,
+    // scalarY: 10,
+    // 摩擦力，預設 0.1，0 ~ 1
+    frictionX: 0.1,
+    // frictionY: 0.1,
+    // 限制移動量
+    limitX: 100,
+    limitY: 0
   })
 })
 

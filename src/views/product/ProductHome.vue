@@ -49,7 +49,7 @@ onMounted(async () => {
         },
         backgroundColor: 'rgb(255,255,255)',
         boxShadow: '10px 10px 20px rgba(0, 0, 0, 0)',
-        duration: 3,
+        duration: 2,
         ease: 'none'
       })
     })

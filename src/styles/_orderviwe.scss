@@ -1,9 +1,10 @@
 .orderviwe {
   .othertitle {
+    background: $secondary;
+
     .bgbox {
       position: relative;
-      height: 23vw;
-      background: $secondary;
+      height: 25vw;
 
       .v-img__img {
         object-position: center 20%;
@@ -11,12 +12,12 @@
 
       @include md {
         height: 15vw;
+        width: 95%;
       }
 
       @include lg {
         .mainimg {
           height: 100%;
-          width: 95%;
           top: 25px;
         }
       }
@@ -37,4 +38,15 @@
       }
     }
   }
+
+  .v-btn {
+    transition: 1s;
+
+    &:hover {
+
+      box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
+
+    }
+  }
+
 }

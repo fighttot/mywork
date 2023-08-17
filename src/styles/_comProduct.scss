@@ -4,7 +4,14 @@
   }
 
   .box1 {
-    box-shadow: 5px 5px 10px 5px #30303088;
+
+    // box-shadow: 5px 5px 10px 5px #30303088;
+    transition: box-shadow 1s;
+    // transition: 1s;
+
+    &:hover {
+      box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12)) !important;
+    }
   }
 
   .mySwiper {
@@ -12,9 +19,6 @@
     height: 100%;
   }
 
-  // .v-responsive.v-img {
-  //   height: 600px;
-  // }
 
   .swiper-slide {
     height: 350px;

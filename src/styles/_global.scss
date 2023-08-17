@@ -1,3 +1,13 @@
-.v-snackbar__content {
-  text-align: center !important;
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Noto+Sans+TC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Noto+Sans+TC:wght@400;500&display=swap');
+
+body {
+  .v-snackbar__content {
+    text-align: center !important;
+  }
+
+  font-family: 'Caprasimo',
+  'Noto Sans TC',
+  cursive !important;
+
 }

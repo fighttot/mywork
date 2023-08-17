@@ -1,8 +1,6 @@
 .ManufacturersView {
   position: relative;
-  // background: url('@/assets/shabg3.png');
   background-repeat: no-repeat;
-  // background-position: right bottom;
   background-size: cover;
 
   .othertitle {
@@ -11,25 +9,34 @@
       height: 30vw;
       background: $secondary;
 
+      .scene {
+        height: 100%;
+        width: 105%;
+        overflow: hidden;
+
+        @include md {
+          width: 100%;
+        }
+      }
+
+      .imgbox {
+        width: 110%;
+        height: 100%;
+      }
+
       @include sm {
         height: 24vw;
       }
 
       @include lg {
         height: 18vw;
+
       }
 
       .v-img__img {
         object-position: center 20%;
       }
 
-      @include lg {
-        .mainimg {
-          height: 100%;
-          width: 95%;
-          top: 25px;
-        }
-      }
     }
 
     .bgbox2 {

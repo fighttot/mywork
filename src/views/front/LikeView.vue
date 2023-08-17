@@ -2,7 +2,11 @@
   <section class="likeview">
     <section class="othertitle">
       <div class="bgbox">
-        <VImg class="mainimg" src="@/assets/Shoukaku.jpg" cover></VImg>
+        <div class="scene">
+          <div class="imgbox" data-depth="-0.5">
+            <VImg class="mainimg" src="@/assets/Shoukaku.jpg" cover></VImg>
+          </div>
+        </div>
       </div>
       <div class="bgbox2"></div>
     </section>
@@ -32,7 +36,7 @@
                     {{ item.product.name }}
                   </router-link>
                 </td>
-                <td :style="`background-color: ${item.product.color};`">{{ item.product.price }}</td>
+                <td>{{ item.product.price }}</td>
                 <td>
                   <VIcon icon="mdi-check" v-if="item.product.sell"></VIcon>
                   <VIcon icon="mdi-close" v-if="!item.product.sell"></VIcon>
@@ -62,12 +66,13 @@
   </section>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
 import FooTer from '@/components/FooTer.vue'
+import parallax from 'parallax-js'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()
@@ -168,5 +173,20 @@ const submit = async (req, res) => {
     })
   }
 })()
+
+onMounted(() => {
+  const scene = document.querySelector('.scene')
+  const parallaxInstance = new parallax(scene, {
+    // 位移量，預設 10
+    scalarX: 10,
+    // scalarY: 10,
+    // 摩擦力，預設 0.1，0 ~ 1
+    frictionX: 0.1,
+    // frictionY: 0.1,
+    // 限制移動量
+    limitX: 100,
+    limitY: 0
+  })
+})
 
 </script>

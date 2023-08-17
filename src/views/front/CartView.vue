@@ -2,7 +2,11 @@
   <section class="cardview ">
     <section class="othertitle">
       <div class="bgbox">
-        <VImg class="mainimg" src="@/assets/Zuikaku.jpg" cover></VImg>
+        <div class="scene">
+          <div class="imgbox" data-depth="-0.5">
+            <VImg class="mainimg" src="@/assets/Zuikaku.jpg" cover></VImg>
+          </div>
+        </div>
       </div>
       <div class="bgbox2"></div>
     </section>
@@ -28,7 +32,7 @@
                 <td>
                   <VImg :src="item.product.images[0]" cover aspect-ratio="1"></VImg>
                 </td>
-                <td :style="`color: ${item.product.textColor};`">
+                <td>
                   <router-link :to="`/proHome/${item.product._id}`">{{ item.product.name }}</router-link>
                 </td>
                 <td>{{ item.product.price }}</td>
@@ -54,7 +58,7 @@
         </VCol>
         <VCol cols="12" class="text-center">
           <p>總金額:{{ total }}</p>
-          <VBtn color="green" @click="dialog = true">結帳</VBtn>
+          <VBtn @click="dialog = true" color="secondary">結帳</VBtn>
         </VCol>
       </VRow>
 
@@ -83,7 +87,7 @@
   <FooTer></FooTer>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
@@ -91,6 +95,7 @@ import { useRouter } from 'vue-router'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
 import FooTer from '@/components/FooTer.vue'
+import parallax from 'parallax-js'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()
@@ -218,5 +223,20 @@ const submit = handleSubmit(async (values) => {
       }
     })
   }
+})
+
+onMounted(() => {
+  const scene = document.querySelector('.scene')
+  const parallaxInstance = new parallax(scene, {
+    // 位移量，預設 10
+    scalarX: 10,
+    // scalarY: 10,
+    // 摩擦力，預設 0.1，0 ~ 1
+    frictionX: 0.1,
+    // frictionY: 0.1,
+    // 限制移動量
+    limitX: 100,
+    limitY: 0
+  })
 })
 </script>
