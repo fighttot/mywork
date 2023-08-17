@@ -30,7 +30,10 @@
         </div>
       </div>
 
-      <VImg src="@/assets/shamain.png" class="shamiko"></VImg>
+      <VImg src="@/assets/shamain.png" class="shamiko">
+        <div class="introduce">
+        </div>
+      </VImg>
     </section>
 
   </section>
@@ -62,12 +65,31 @@ onMounted(() => {
   const shamiko = document.querySelector('.shamiko')
 
   shamiko.addEventListener('mouseover', (event) => {
-    gsap.to('.shamiko', {
-      x: -200,
-      scale: 1.3,
+    const windowWidth = window.innerWidth
+    if (windowWidth > 1300) {
+      gsap.to('.shamiko', {
+        x: -200,
+        scale: 1.3,
+        duration: 1,
+        ease: 'circ'
+      })
+    } else {
+      gsap.to('.shamiko', {
+
+        scale: 1.3,
+        duration: 1,
+        ease: 'circ'
+      })
+    }
+
+    gsap.to('.introduce', {
+      opacity: 1,
+      rotationX: 0,
       rotationY: 180,
-      duration: 1,
-      ease: 'circ'
+      duration: 2,
+      transformOrigin: '0% 50% -100',
+      ease: 'back',
+      stagger: 0.1
     })
   })
 
@@ -75,9 +97,14 @@ onMounted(() => {
     gsap.to('.shamiko', {
       x: 0,
       scale: 1,
-      rotationY: 0,
       duration: 1,
       ease: 'circ'
+    })
+    gsap.to('.introduce', {
+      opacity: 0,
+      duration: 2,
+      ease: 'back',
+      rotationY: 0
     })
   })
 })

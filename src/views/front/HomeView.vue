@@ -3,7 +3,12 @@
     <div class="show">
       文案等待決定
     </div>
-    <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+    <!-- <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg> -->
+    <div class="scene">
+      <div class="imgbox" data-depth="-0.5">
+        <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+      </div>
+    </div>
   </div>
   <div class="bgbox2"></div>
   <section class="section01">
@@ -78,7 +83,7 @@
 import { api } from '@/plugins/axios'
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
-
+import parallax from 'parallax-js'
 // gsap動畫
 
 import { gsap } from 'gsap'
@@ -186,5 +191,20 @@ onMounted(async () => {
     .to('.cubetextanimate4', { opacity: 1 })
     .to('.cubetextanimate5', { opacity: 0 })
     .to('.cubetextanimate5', { opacity: 1 })
+
+  // 視差
+  // const scene = document.getElementById('scene')
+  const scene = document.querySelector('.scene')
+  const parallaxInstance = new parallax(scene, {
+    // 位移量，預設 10
+    scalarX: 10,
+    // scalarY: 10,
+    // 摩擦力，預設 0.1，0 ~ 1
+    frictionX: 0.1,
+    // frictionY: 0.1,
+    // 限制移動量
+    limitX: 100,
+    limitY: 0
+  })
 })
 </script>

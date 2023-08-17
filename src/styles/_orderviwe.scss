@@ -2,11 +2,15 @@
   .othertitle {
     .bgbox {
       position: relative;
-      height: 15vw;
+      height: 23vw;
       background: $secondary;
 
       .v-img__img {
         object-position: center 20%;
+      }
+
+      @include md {
+        height: 15vw;
       }
 
       @include lg {
@@ -20,7 +24,13 @@
 
     .bgbox2 {
       background: linear-gradient(90deg, white 0 80px, $secondary 80px 100%);
-      height: 4vw;
+      // height: 4vw;
+      height: 0vw;
+      // display: none;
+
+      @include md {
+        height: 4vw;
+      }
 
       @include lg {
         background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);

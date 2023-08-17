@@ -8,8 +8,12 @@
   .othertitle {
     .bgbox {
       position: relative;
-      height: 24vw;
+      height: 30vw;
       background: $secondary;
+
+      @include sm {
+        height: 24vw;
+      }
 
       @include lg {
         height: 18vw;
@@ -67,7 +71,7 @@
 
     div {
       position: absolute;
-      bottom: 20%;
+      bottom: 30%;
 
       @include md {
         bottom: 5%;
@@ -76,7 +80,7 @@
 
     a {
       color: #a47fd1;
-      font-size: 6px;
+      font-size: 15px;
       text-decoration: none;
       transition: 1s;
 
@@ -85,7 +89,9 @@
       }
 
       &:hover {
-        box-shadow: 3px 3px 1px 2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.507)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.363)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.39));
+
+        box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
+
       }
     }
   }
@@ -119,7 +125,7 @@
 
     a {
       color: #e60012;
-      font-size: 6px;
+      font-size: 15px;
       text-decoration: none;
       transition: 1s;
 
@@ -128,7 +134,7 @@
       }
 
       &:hover {
-        box-shadow: 3px 3px 1px 2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.507)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.363)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.39));
+        box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
       }
     }
   }
@@ -160,7 +166,7 @@
 
     a {
       color: #014789;
-      font-size: 6px;
+      font-size: 15px;
       text-decoration: none;
       transition: 1s;
 
@@ -169,7 +175,7 @@
       }
 
       &:hover {
-        box-shadow: 3px 3px 1px 2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.507)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.363)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.39));
+        box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
       }
     }
   }
@@ -195,8 +201,12 @@
 
     div {
       position: absolute;
-      bottom: 20%;
+      bottom: 35%;
       right: 0;
+
+      @include md {
+        bottom: 20%;
+      }
 
       @include lg {
         bottom: 0%;
@@ -209,7 +219,7 @@
 
     a {
       color: #ee7700;
-      font-size: 6px;
+      font-size: 15px;
       text-decoration: none;
       transition: 1s;
 
@@ -218,7 +228,7 @@
       }
 
       &:hover {
-        box-shadow: 3px 3px 1px 2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.507)), 0px 2px 2px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.363)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.39));
+        box-shadow: 3px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
       }
     }
   }
@@ -236,6 +246,31 @@
     z-index: 2;
     top: 20%;
     left: 35%;
+
+    .introduce {
+      min-width: 40px;
+      min-height: 120px;
+      position: absolute;
+      padding-top: 80px;
+      padding-bottom: 20px;
+      background: url('@/assets/kisspngblack.png') no-repeat center/contain;
+      font-size: 25px;
+      right: 5%;
+      top: 50%;
+      opacity: 0;
+
+      @include md {
+        min-width: 130px;
+        min-height: 390px;
+        top: 30%;
+        right: -10%;
+      }
+
+      @include xxxl {
+        right: 0%;
+      }
+    }
+
 
     @include lg {
       height: 89vh;

@@ -3,11 +3,23 @@
   height: 43vw;
   background: $secondary;
 
-  @include lg {
-    .mainimg {
+  .scene {
+    position: relative;
+    height: 105%;
+    width: 105%;
+    top: 25px;
+    overflow: hidden;
+    left: -5%;
+
+    @include md {
       height: 100%;
-      width: 95%;
-      top: 25px;
+      width: 100%;
+
+    }
+
+    .imgbox {
+      width: 120%;
+      height: 110%;
     }
   }
 }
@@ -71,8 +83,6 @@
     top: 10%;
     width: 100%;
     height: 100%;
-    transform: rotate(-6deg);
-
   }
 
   .toroup {
@@ -126,16 +136,12 @@
     background-color: $secondary;
     width: 90%;
     top: 120px;
-    height: 360px;
+    height: 330px;
 
-    @include sm {
-      top: 160px;
-      height: 450px;
-    }
 
     @include md {
       top: 200px;
-      height: 550px;
+      height: 530px;
     }
 
     @include lg {
@@ -234,7 +240,11 @@
   margin: 0;
   transition: 1s;
   color: $primary;
-  font-size: 40px;
+  font-size: 30px;
+
+  @include md {
+    font-size: 40px;
+  }
 
   &:hover {
     text-shadow: 2px 2px 2px $therd;
@@ -248,9 +258,6 @@
   width: 100%;
   height: 80px;
 
-  @include sm {
-    height: 100px;
-  }
 
   @include md {
     height: 120px;
