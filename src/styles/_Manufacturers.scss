@@ -265,7 +265,11 @@
     width: 70vw;
     z-index: 2;
     top: 20%;
-    left: 35%;
+    left: calc(100% - 70vw);
+
+    @include md {
+      left: calc(100% - 70vw);
+    }
 
     .introduce {
       min-width: 40px;
