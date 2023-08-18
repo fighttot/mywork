@@ -66,6 +66,26 @@ const routes = [
           login: false,
           admin: false
         }
+      },
+      {
+        path: 'forgetPass',
+        name: 'ForgetPass',
+        component: () => import(/* webpackChunkName: "forgetPass" */ '@/views/front/ForgetPass.vue'),
+        meta: {
+          title: '型影不離 | 忘記密碼',
+          login: false,
+          admin: false
+        }
+      },
+      {
+        path: 'editPass',
+        name: 'EditPass',
+        component: () => import(/* webpackChunkName: "editPass" */ '@/views/front/EditPass.vue'),
+        meta: {
+          title: '型影不離 | 更改密碼',
+          login: true,
+          admin: false
+        }
       }
     ]
 

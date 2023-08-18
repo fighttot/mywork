@@ -1,0 +1,144 @@
+<template>
+  <VContainer>
+    <VRow>
+      <VCol cols="12" class="text-center">
+        <h1>修改會員資料</h1>
+      </VCol>
+      <VDivider></VDivider>
+      <VCol cols="12" style="padding: 200px 10px 30px 10px ;">
+        <VForm :disabled="isSubmitting" @submit.prevent="submit">
+          <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
+            :error-messages="account.errorMessage.value"></VTextField>
+          <VTextField v-model="password.value.value" label="密碼:" counter max-length="20" type="password"
+            :error-messages="password.errorMessage.value"></VTextField>
+          <VTextField v-model="passwordConfirm.value.value" label="確認密碼:" counter max-length="20" type="password"
+            :error-messages="passwordConfirm.errorMessage.value">
+          </VTextField>
+          <VTextField v-model="email.value.value" label="信箱(不得重複):" type="email"
+            :error-messages="email.errorMessage.value">
+          </VTextField>
+          <VTextField v-model="name.value.value" label="暱稱(不得重複):" counter max-length="10"
+            :error-messages="name.errorMessage.value"></VTextField>
+          <div class="text-center">
+            <VBtn type="submit">修改會員資料</VBtn>
+            <VBtn @click="handleReset">重製</VBtn>
+          </div>
+        </VForm>
+      </VCol>
+    </VRow>
+  </VContainer>
+</template>
+
+<script setup>
+
+import validator from 'validator'
+import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
+import { apiAuth } from '@/plugins/axios'
+import { useSnackbar } from 'vuetify-use-dialog'
+import { useUserStore } from '@/store/user'
+import { useRouter } from 'vue-router'
+
+const createSnackbar = useSnackbar()
+const router = useRouter()
+const user = useUserStore()
+const schema = yup.object({
+  account: yup
+    .string()
+    .required('帳號必填')
+    .min(4, '最少四個字')
+    .max(20, '最多20'),
+  email: yup
+    .string()
+    .required('信箱必填')
+    .test(
+      'isEmail', '信箱格式錯誤',
+      (value) => validator.isEmail(value)
+    ),
+  password: yup
+    .string()
+    .required('密碼必填')
+    .min(4, '最少四個字')
+    .max(20, '最多20'),
+  passwordConfirm: yup
+    .string()
+    .required('密碼必填')
+    .min(4, '最少四個字')
+    .max(20, '最多20')
+    .oneOf([yup.ref('password')], '密碼不一致'),
+  name: yup
+    .string()
+    .required('暱稱必填')
+    .max(10, '最多10')
+})
+
+const { handleSubmit, isSubmitting, handleReset } = useForm({
+  validationSchema: schema
+})
+
+const account = useField('account')
+const email = useField('email')
+const password = useField('password')
+const passwordConfirm = useField('passwordConfirm')
+const name = useField('name')
+
+const submit = handleSubmit(async (values) => {
+  try {
+    const { data } = await apiAuth.patch('/users/edit', {
+      account: values.account,
+      email: values.email,
+      name: values.name,
+      password: values.password
+    })
+    user.account = data.result.account
+    user.email = data.result.email
+    user.name = data.result.name
+    createSnackbar({
+      text: '修改成功',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
+      }
+    })
+
+    handleReset()
+    router.push('/')
+  } catch (error) {
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
+      }
+    })
+  }
+});
+
+(async () => {
+  try {
+    account.value.value = user.account
+    email.value.value = user.email
+    name.value.value = user.name
+  } catch (error) {
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
+      }
+    })
+  }
+})()
+</script>
