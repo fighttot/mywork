@@ -6,7 +6,13 @@
       </div>
       <div class="scene">
         <div class="imgbox" data-depth="0.5">
-          <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+          <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover>
+            <template v-slot:placeholder>
+              <div class="d-flex align-center justify-center fill-height">
+                <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+              </div>
+            </template>
+          </VImg>
         </div>
       </div>
     </div>
@@ -20,7 +26,13 @@
           <VCol cols="12" md="4" class="d-flex align-center photo3" v-for="card in cards" :key="card._id">
             <RouterLink :to="/proHome/ + card._id" class=toroup>
               <div class="text">
-                <VImg class="textimg" :src="card.images[0]" cover></VImg>
+                <VImg class="textimg" :src="card.images[0]" cover>
+                  <template v-slot:placeholder>
+                    <div class="d-flex align-center justify-center fill-height">
+                      <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                    </div>
+                  </template>
+                </VImg>
               </div>
             </RouterLink>
           </VCol>

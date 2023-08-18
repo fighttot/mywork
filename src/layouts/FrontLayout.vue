@@ -174,7 +174,7 @@ onMounted(() => {
     paused: false,
     duration: 0.5,
     scrollTrigger: {
-      start: '400 60',
+      start: '400 30',
       end: () => '+=' + document.documentElement.scrollHeight, // 整份文件的高度
       onEnter(self) {
         // console.log(self) // 捲動軸 scrollTrigger 自己

@@ -24,9 +24,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
-gsap.set('.Alter', {
-  perspective: 300
-})
+
 onMounted(() => {
   gsap.from('.text', {
     x: 100,

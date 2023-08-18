@@ -59,8 +59,8 @@
                       :style="`background-color:${!colorLike ? product.color : product.textColor}; color:${!colorLike ? product.textColor : product.color}`"
                       @click="addLike">{{ !colorLike ? '加入收藏' : '已加收藏'
                       }}</VBtn>
-                    <VBtn :style="`background-color:${product.color};color: ${product.textColor};`"
-                      @click="drawer = !drawer"> 查看評論 </VBtn>
+                    <VBtn :style="`background-color:${product.color};color: ${product.textColor};`" @click="allsaywidth">
+                      查看評論 </VBtn>
                   </VForm>
                 </VCol>
               </VRow>
@@ -75,7 +75,7 @@
       <h1 class="text-red"> 已下架 </h1>
       <VBtn to="/"> 回上頁</VBtn>
     </VOverlay>
-    <VNavigationDrawer v-model="drawer" location="right" temporary width="600"
+    <VNavigationDrawer v-model="drawer" location="right" temporary :width="watchallsaywidth"
       :style="`background-color:${product.color};`">
       <div>
         <VTable :style="`color:${product.textColor}; background-color:${product.color};`">
@@ -217,6 +217,14 @@ watch(drawer, () => {
     document.documentElement.style.height = ''
   }
 })
+
+// 評論寬度
+const watchallsaywidth = ref(0)
+const allsaywidth = () => {
+  drawer.value = true
+  const windowWidth = window.innerWidth
+  if (windowWidth > 1200) { watchallsaywidth.value = 600 } else { watchallsaywidth.value = windowWidth / 2 }
+}
 
 const review = async (i, id) => {
   console.log(product.value._id)

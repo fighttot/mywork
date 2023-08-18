@@ -4,7 +4,13 @@
       <div class="bgbox">
         <div class="scene">
           <div class="imgbox" data-depth="-0.5">
-            <VImg class="mainimg" src="@/assets/Zuikaku3.jpg" cover></VImg>
+            <VImg class="mainimg" src="@/assets/Zuikaku3.jpg" cover>
+              <template v-slot:placeholder>
+                <div class="d-flex align-center justify-center fill-height">
+                  <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                </div>
+              </template>
+            </VImg>
           </div>
         </div>
       </div>

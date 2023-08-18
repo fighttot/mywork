@@ -4,7 +4,13 @@
       <div class="bgbox">
         <div class="scene">
           <div class="imgbox" data-depth="-0.5">
-            <VImg class="mainimg" src="@/assets/Shoukaku.jpg" cover></VImg>
+            <VImg class="mainimg" src="@/assets/Shoukaku.jpg" cover>
+              <template v-slot:placeholder>
+                <div class="d-flex align-center justify-center fill-height">
+                  <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                </div>
+              </template>
+            </VImg>
           </div>
         </div>
       </div>
@@ -104,6 +110,8 @@ const updateLike = async (product) => {
     })
   }
 }
+//
+
 const canCheckout = computed(() => {
   return like.value.length > 0 && !like.value.some(item => !item.product.sell)
 })

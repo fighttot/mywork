@@ -4,7 +4,13 @@
       <div class="bgbox">
         <div class="scene">
           <div class="imgbox" data-depth="-0.5">
-            <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+            <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover>
+              <template v-slot:placeholder>
+                <div class="d-flex align-center justify-center fill-height">
+                  <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                </div>
+              </template>
+            </VImg>
           </div>
         </div>
       </div>
@@ -50,9 +56,7 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 import parallax from 'parallax-js'
-gsap.set('.bocheigh', {
-  perspective: 300
-})
+
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: {
