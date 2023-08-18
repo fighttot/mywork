@@ -121,6 +121,8 @@ const navItems = computed(() => {
     { to: '/orders', text: '訂單', icon: 'mdi-format-list-numbered', show: user.isLogin },
     { to: '/proHome', text: '商品一覽', icon: 'mdi-tag', show: true },
     { to: '/manufacturers', text: '廠商介紹', icon: 'mdi-package-variant', show: true },
+    { to: '/forgetPass', text: '忘記密碼', icon: 'mdi-lock-reset', show: !user.isLogin },
+    { to: '/editPass', text: '編輯會員資料', icon: 'mdi-account-edit', show: user.isLogin },
     { to: '/admin', text: '管理', icon: 'mdi-cog', show: user.isLogin && user.isAdmin },
     { to: '/', text: '回首頁', icon: 'mdi-home', show: true }
   ]

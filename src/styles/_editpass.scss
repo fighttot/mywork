@@ -1,4 +1,7 @@
-.orderviwe {
+.editpass {
+  background: $secondary;
+  height: 100vh;
+
   .othertitle {
     background: $secondary;
 
@@ -24,22 +27,20 @@
     }
 
     .bgbox2 {
-      background: linear-gradient(90deg, white 0 80px, $secondary 80px 100%);
+      background: $secondary ;
       height: 0vw;
 
       @include md {
         height: 4vw;
       }
-
-      @include lg {
-        background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
-      }
     }
   }
+
 
   .v-btn {
     transition: 1s;
     box-shadow: 0 0 0;
+    margin-right: 15px;
 
     &:hover {
 
@@ -47,5 +48,4 @@
 
     }
   }
-
 }

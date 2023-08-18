@@ -82,7 +82,7 @@ const routes = [
         name: 'EditPass',
         component: () => import(/* webpackChunkName: "editPass" */ '@/views/front/EditPass.vue'),
         meta: {
-          title: '型影不離 | 更改密碼',
+          title: '型影不離 | 會員資料修正',
           login: true,
           admin: false
         }

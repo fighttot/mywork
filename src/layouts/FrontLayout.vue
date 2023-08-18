@@ -70,13 +70,22 @@
                   <v-btn rounded variant="text" v-if="!user.isLogin" to='/loginRrgister' prepend-icon="mdi-account-plus">
                     登入/註冊
                   </v-btn>
-                  <v-divider class="my-3" v-if="user.isLogin && user.isAdmin"></v-divider>
-                  <v-btn rounded variant="text" v-if="user.isLogin && user.isAdmin" to='/admin' prepend-icon="mdi-cog">
-                    後台管理
+                  <v-btn rounded variant="text" v-if="!user.isLogin" to='/forgetPass' prepend-icon="mdi-lock-reset">
+                    忘記密碼
                   </v-btn>
-                  <v-divider class="my-3" v-if="user.isLogin"></v-divider>
+                  <v-divider class="my-3" v-if="user.isLogin && user.isAdmin"></v-divider>
+
+                  <v-btn rounded variant="text" v-if="user.isLogin" to='/editPass' prepend-icon="mdi-account-edit">
+                    我的資料
+                  </v-btn>
+                  <v-divider class="my-3" v-if="user.isLogin && user.isAdmin"></v-divider>
+
                   <v-btn rounded variant="text" v-if="user.isLogin" to='/orders' prepend-icon="mdi-format-list-numbered">
                     我的訂單
+                  </v-btn>
+                  <v-divider class="my-3" v-if="user.isLogin"></v-divider>
+                  <v-btn rounded variant="text" v-if="user.isLogin && user.isAdmin" to='/admin' prepend-icon="mdi-cog">
+                    後台管理
                   </v-btn>
                   <v-divider class="my-3" v-if="user.isLogin"></v-divider>
                   <v-btn rounded variant="text" v-if="user.isLogin" @click="logout" prepend-icon="mdi-logout">
@@ -127,6 +136,8 @@ const navItems = computed(() => {
     { to: '/orders', text: '訂單', icon: 'mdi-format-list-numbered', show: user.isLogin },
     { to: '/proHome', text: '商品一覽', icon: 'mdi-tag', show: true },
     { to: '/manufacturers', text: '廠商介紹', icon: 'mdi-package-variant', show: true },
+    { to: '/forgetPass', text: '忘記密碼', icon: 'mdi-lock-reset', show: !user.isLogin },
+    { to: '/editPass', text: '編輯會員資料', icon: 'mdi-account-edit', show: user.isLogin },
     { to: '/', text: '回首頁', icon: 'mdi-home', show: true },
     { to: '/admin', text: '管理', icon: 'mdi-cog', show: user.isLogin && user.isAdmin }
   ]
