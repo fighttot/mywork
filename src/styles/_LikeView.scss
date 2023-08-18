@@ -23,37 +23,60 @@
   .othertitle {
     .bgbox {
       position: relative;
-      height: 27vw;
+      height: 30vw;
       background: $secondary;
 
-      @include md {
-        height: 20vw;
+      .v-img__img {
+        object-position: center center;
       }
 
-      .v-img__img {
-        object-position: 44%;
+      @include sm {
+        height: 24vw;
+      }
+
+      @include lg {
+        height: 20vw;
+
+      }
+
+      .scene {
+        position: absolute;
+        height: 100%;
+        width: 105%;
+        overflow: hidden;
+        left: -5%;
+
+        @include md {
+          height: 105%;
+          width: 100%;
+        }
+
+        @include lg {
+          height: 110%;
+        }
       }
 
       .imgbox {
         width: 110%;
-        height: 100%;
+        height: 105%;
       }
+
+
+
     }
 
     .bgbox2 {
       background: linear-gradient(90deg, white 0 80px, $secondary 80px 100%);
 
       @include md {
-        height: 6vw;
+        height: 4vw;
       }
 
       @include lg {
         background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
-        height: 4vw;
+        height: 5vw;
       }
     }
-
-
   }
 
   .btnlick {

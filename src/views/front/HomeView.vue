@@ -1,81 +1,83 @@
 <template>
-  <div class="bgbox">
-    <div class="show">
-      文案等待決定
-    </div>
-    <div class="scene">
-      <div class="imgbox" data-depth="0.5">
-        <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+  <section class="homeview">
+    <div class="bgbox">
+      <div class="show">
+        文案等待決定
+      </div>
+      <div class="scene">
+        <div class="imgbox" data-depth="0.5">
+          <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="bgbox2"></div>
-  <section class="section01">
-    <div class="text-center photo3title">
-      <p>NEW products</p>
-    </div>
-    <div class="four">
-      <VRow>
-        <VCol cols="12" md="4" class="d-flex align-center photo3" v-for="card in cards" :key="card._id">
-          <RouterLink :to="/proHome/ + card._id" class=toroup>
-            <div class="text">
-              <VImg class="textimg" :src="card.images[0]" cover></VImg>
-            </div>
-          </RouterLink>
-        </VCol>
-      </VRow>
-
-    </div>
-  </section>
-
-  <section class="section02">
-    <v-parallax src="@/assets/littorio004.jpg">
-      <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="text-h4 font-weight-thin mb-4">
-          Vuetify
-        </h1>
-        <h4 class="subheading">
-          Build your application today!
-        </h4>
+    <div class="bgbox2"></div>
+    <section class="section01">
+      <div class="text-center photo3title">
+        <p>NEW products</p>
       </div>
-    </v-parallax>
-  </section>
-  <div class="hottitle">
-    <h1>
-      <pre>現  正  熱  銷</pre>
-    </h1>
-  </div>
-  <section class="section03">
+      <div class="four">
+        <VRow>
+          <VCol cols="12" md="4" class="d-flex align-center photo3" v-for="card in cards" :key="card._id">
+            <RouterLink :to="/proHome/ + card._id" class=toroup>
+              <div class="text">
+                <VImg class="textimg" :src="card.images[0]" cover></VImg>
+              </div>
+            </RouterLink>
+          </VCol>
+        </VRow>
 
-    <div class="eightwidth">
-      <swiper :effect="'cube'" :grabCursor="true" :cubeEffect="{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }" :speed="1000" :pagination="true" :modules="modules" class="mySwiper">
-        <swiper-slide v-for="thcube in thcubes" :key="thcube._id">
-          <RouterLink :to="/proHome/ + thcube._id">
-            <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
-          </RouterLink>
-        </swiper-slide>
-      </swiper>
-
-      <VImg src="@/assets/aqa.png" class="photo"></VImg>
-      <!-- <img src="@/assets/aua.jpg"> -->
-      <div class="d-flex flex-column  justify-center align-center cubetext">
-        <span class="cubetextanimate">主</span>
-        <span class="cubetextanimate1">打</span>
-        <span class="cubetextanimate2">商</span>
-        <span class="cubetextanimate3">品</span>
-        <span class="cubetextanimate4">喲</span>
-        <span class="cubetextanimate5">!</span>
       </div>
+    </section>
+
+    <section class="section02">
+      <v-parallax src="@/assets/littorio004.jpg">
+        <div class="d-flex flex-column fill-height justify-center align-center text-white">
+          <h1 class="text-h4 font-weight-thin mb-4">
+            Vuetify
+          </h1>
+          <h4 class="subheading">
+            Build your application today!
+          </h4>
+        </div>
+      </v-parallax>
+    </section>
+    <div class="hottitle">
+      <h1>
+        <pre>現  正  熱  銷</pre>
+      </h1>
     </div>
-  </section>
+    <section class="section03">
 
-  <section class="homefooter">
+      <div class="eightwidth">
+        <swiper :effect="'cube'" :grabCursor="true" :cubeEffect="{
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        }" :speed="1000" :pagination="true" :modules="modules" class="mySwiper">
+          <swiper-slide v-for="thcube in thcubes" :key="thcube._id">
+            <RouterLink :to="/proHome/ + thcube._id">
+              <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
+            </RouterLink>
+          </swiper-slide>
+        </swiper>
 
+        <VImg src="@/assets/aqa.png" class="photo"></VImg>
+        <!-- <img src="@/assets/aua.jpg"> -->
+        <div class="d-flex flex-column  justify-center align-center cubetext">
+          <span class="cubetextanimate">主</span>
+          <span class="cubetextanimate1">打</span>
+          <span class="cubetextanimate2">商</span>
+          <span class="cubetextanimate3">品</span>
+          <span class="cubetextanimate4">喲</span>
+          <span class="cubetextanimate5">!</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="homefooter">
+
+    </section>
   </section>
 </template>
 <script setup>
@@ -196,13 +198,13 @@ onMounted(async () => {
   const parallaxInstance = new parallax(scene, {
     // 位移量，預設 10
     scalarX: 10,
-    // scalarY: 10,
+    scalarY: 10,
     // 摩擦力，預設 0.1，0 ~ 1
     frictionX: 0.1,
-    // frictionY: 0.1,
+    frictionY: 0.1,
     // 限制移動量
     limitX: 100,
-    limitY: 0
+    limitY: 100
   })
 })
 </script>

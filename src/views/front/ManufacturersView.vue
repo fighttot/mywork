@@ -115,13 +115,13 @@ onMounted(() => {
   const parallaxInstance = new parallax(scene, {
     // 位移量，預設 10
     scalarX: 10,
-    // scalarY: 10,
+    scalarY: 10,
     // 摩擦力，預設 0.1，0 ~ 1
     frictionX: 0.1,
-    // frictionY: 0.1,
+    frictionY: 0.1,
     // 限制移動量
     limitX: 100,
-    limitY: 0
+    limitY: 100
   })
 })
 

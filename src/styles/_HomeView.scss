@@ -1,266 +1,277 @@
-.bgbox {
-  position: relative;
-  height: 43vw;
-  background: $secondary;
-
-  .scene {
+.homeview {
+  .bgbox {
     position: relative;
-    height: 105%;
-    width: 105%;
-    top: 25px;
-    overflow: hidden;
-    left: -5%;
+    height: 37vw;
+    background: $secondary;
+
+    .v-img__img {
+      object-position: center 44%;
+    }
+
+    .scene {
+      position: absolute;
+      height: calc(100% + 20px);
+      width: 105%;
+      overflow: hidden;
+      left: -5%;
+      top: -20px;
+
+      @include md {
+        width: 100%;
+        height: calc(100% + 15px);
+        top: -15px;
+      }
+
+      .imgbox {
+        height: 110%;
+        width: 105%;
+      }
+    }
+  }
+
+  .bgbox2 {
+    background: linear-gradient(90deg, white 0 80px, $secondary 80px 100%);
 
     @include md {
-      height: 100%;
-      width: 100%;
-
+      height: 5vw;
     }
 
-    .imgbox {
-      width: 120%;
-      height: 110%;
-    }
-  }
-}
 
-.bgbox2 {
-  background: linear-gradient(90deg, white 0 80px, $secondary 80px 100%);
-  height: 8vw;
-
-  @include lg {
-    background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
-  }
-}
-
-.show {
-  position: absolute;
-  width: 25%;
-  height: 50%;
-  top: 25%;
-  left: 60%;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  display: none;
-
-  @include md {
-    display: block;
-  }
-}
-
-
-.section01 {
-  width: 100%;
-
-  .four {
-    position: relative;
-    width: 90%;
-    margin: 20px auto;
-    margin-bottom: 50px;
-  }
-
-
-
-  .text {
-    height: 1000px;
-    position: relative;
-    overflow: hidden;
-
-    &::after {
-      position: absolute;
-      content: ' ';
-      height: 100%;
-      width: 100%;
-      background: url('@/assets/photo3.png') no-repeat;
-      background-position: 60% top;
-      background-size: cover;
+    @include lg {
+      background: linear-gradient(90deg, white 0 160px, $secondary 160px 100%);
+      height: 6vw;
     }
   }
 
-  .textimg {
+  .show {
     position: absolute;
-    top: 10%;
+    width: 25%;
+    height: 50%;
+    top: 25%;
+    left: 60%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: none;
+
+    @include md {
+      display: block;
+    }
+  }
+
+
+  .section01 {
     width: 100%;
-    height: 100%;
+
+    .four {
+      position: relative;
+      width: 90%;
+      margin: 20px auto;
+      margin-bottom: 50px;
+    }
+
+
+
+    .text {
+      height: 1000px;
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        content: ' ';
+        height: 100%;
+        width: 100%;
+        background: url('@/assets/photo3.png') no-repeat;
+        background-position: 60% top;
+        background-size: cover;
+      }
+    }
+
+    .textimg {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .toroup {
+      display: inline-block;
+      width: 100%
+    }
+
+    .photo3title {
+      margin-top: 20px;
+      font-size: 3rem;
+      font-weight: bolder;
+      color: $primary;
+      transition: 1s;
+
+      &:hover {
+        text-shadow: 3px 2px 4px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
+      }
+    }
   }
 
-  .toroup {
-    display: inline-block;
-    width: 100%
+  .section03 {
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    position: relative;
+
+    @include md {
+      padding-top: 100px;
+      padding-bottom: 30px;
+    }
+
+    @include xl {
+      padding-top: 100px;
+      padding-bottom: 30px;
+    }
+
+    @include xxl {
+      padding-top: 140px;
+      padding-bottom: 50px;
+    }
+
+    .eightwidth {
+      width: 80%;
+      margin: auto;
+      position: relative;
+    }
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      background-color: $secondary;
+      width: 90%;
+      top: 120px;
+      height: 330px;
+
+
+      @include md {
+        top: 200px;
+        height: 530px;
+      }
+
+      @include lg {
+        top: 200px;
+        height: 690px;
+      }
+
+
+      @include xl {
+        top: 300px;
+        height: 730px;
+      }
+
+      @include xxl {
+        top: 350px;
+        height: 860px;
+      }
+
+      @include xxxl {
+        top: 390px;
+        height: 1020px;
+      }
+
+      @include xxxxl {
+        top: 390px;
+        height: 1100px;
+      }
+    }
+
+    .mySwiper {
+      position: absolute;
+      width: 30%;
+      height: 90%;
+      left: 17%;
+      top: -70px;
+    }
+
+    .swiper-wrapper {
+      transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: $primary;
+    }
+
+    .photo {
+      // height: 500px
+      width: 50%;
+      left: 50%;
+      z-index: 1;
+    }
+
+    .cubetext {
+      position: absolute;
+      top: 35%;
+      right: 8%;
+
+      @include sm {
+        top: 40%;
+        right: 8%;
+      }
+
+      span {
+        margin-top: 5px;
+        color: $therd;
+        font-weight: bolder;
+        font-size: 20px;
+
+        @include sm {
+          font-size: 25px;
+        }
+
+        @include md {
+          font-size: 32px;
+        }
+
+        @include lg {
+          font-size: 40px;
+        }
+
+        @include xl {
+          font-size: 50px;
+        }
+
+        @include xxl {
+          font-size: 60px;
+        }
+      }
+    }
+
   }
 
-  .photo3title {
-    margin-top: 20px;
-    font-size: 3rem;
-    font-weight: bolder;
-    color: $primary;
+  .hottitle {
+    padding-top: 50px;
+    text-align: center;
+    margin: 0;
     transition: 1s;
+    color: $primary;
+    font-size: 30px;
+
+    @include md {
+      font-size: 40px;
+    }
 
     &:hover {
       text-shadow: 3px 2px 4px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
     }
-  }
-}
 
-.section03 {
-  width: 100%;
-  padding-top: 80px;
-  padding-bottom: 50px;
-  position: relative;
-
-  @include md {
-    padding-top: 100px;
-    padding-bottom: 30px;
   }
 
-  @include xl {
-    padding-top: 100px;
-    padding-bottom: 30px;
-  }
-
-  @include xxl {
-    padding-top: 140px;
-    padding-bottom: 50px;
-  }
-
-  .eightwidth {
-    width: 80%;
-    margin: auto;
-    position: relative;
-  }
-
-  &::before {
-    content: ' ';
+  .homefooter {
+    background: linear-gradient(90deg, $secondary 0 5%, $therd 5% 100%);
     position: absolute;
-    background-color: $secondary;
-    width: 90%;
-    top: 120px;
-    height: 330px;
+    width: 100%;
+    height: 80px;
 
 
     @include md {
-      top: 200px;
-      height: 530px;
+      height: 120px;
     }
 
-    @include lg {
-      top: 200px;
-      height: 690px;
-    }
-
-
-    @include xl {
-      top: 300px;
-      height: 730px;
-    }
-
-    @include xxl {
-      top: 350px;
-      height: 860px;
-    }
-
-    @include xxxl {
-      top: 390px;
-      height: 1020px;
-    }
-
-    @include xxxxl {
-      top: 390px;
-      height: 1100px;
-    }
   }
-
-  .mySwiper {
-    position: absolute;
-    width: 30%;
-    height: 90%;
-    left: 17%;
-    top: -70px;
-  }
-
-  .swiper-wrapper {
-    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: $primary;
-  }
-
-  .photo {
-    // height: 500px
-    width: 50%;
-    left: 50%;
-    z-index: 1;
-  }
-
-  .cubetext {
-    position: absolute;
-    top: 35%;
-    right: 8%;
-
-    @include sm {
-      top: 40%;
-      right: 8%;
-    }
-
-    span {
-      margin-top: 5px;
-      color: $therd;
-      font-weight: bolder;
-      font-size: 20px;
-
-      @include sm {
-        font-size: 25px;
-      }
-
-      @include md {
-        font-size: 32px;
-      }
-
-      @include lg {
-        font-size: 40px;
-      }
-
-      @include xl {
-        font-size: 50px;
-      }
-
-      @include xxl {
-        font-size: 60px;
-      }
-    }
-  }
-
-}
-
-.hottitle {
-  padding-top: 50px;
-  text-align: center;
-  margin: 0;
-  transition: 1s;
-  color: $primary;
-  font-size: 30px;
-
-  @include md {
-    font-size: 40px;
-  }
-
-  &:hover {
-    text-shadow: 3px 2px 4px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
-  }
-
-}
-
-.homefooter {
-  background: linear-gradient(90deg, $secondary 0 5%, $therd 5% 100%);
-  position: absolute;
-  width: 100%;
-  height: 80px;
-
-
-  @include md {
-    height: 120px;
-  }
-
 }
