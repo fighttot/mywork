@@ -6,7 +6,7 @@
           <h1>註冊</h1>
         </VCol>
         <VDivider></VDivider>
-        <VCol cols="12" style="padding: 250px 10px 0px 10px ;">
+        <VCol cols="12" style="padding: 200px 10px 30px 10px ;">
           <VForm :disabled="isSubmitting" @submit.prevent="submit">
             <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
               :error-messages="account.errorMessage.value"></VTextField>
