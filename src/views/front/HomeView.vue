@@ -5,7 +5,7 @@
         文案等待決定
       </div>
       <div class="scene">
-        <div class="imgbox" data-depth="0.5">
+        <div class="imgbox" data-depth="-0.5">
           <VImg src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover>
             <template v-slot:placeholder>
               <div class="d-flex align-center justify-center fill-height">
@@ -207,6 +207,7 @@ onMounted(async () => {
 
   // 視差
   const scene = document.querySelector('.scene')
+  const bgbox = document.querySelector('.bgbox')
   const parallaxInstance = new parallax(scene, {
     // 位移量，預設 10
     scalarX: 10,
@@ -216,7 +217,14 @@ onMounted(async () => {
     frictionY: 0.1,
     // 限制移動量
     limitX: 100,
-    limitY: 100
+    limitY: 110
+  })
+  parallaxInstance.disable()
+  bgbox.addEventListener('mouseover', (event) => {
+    parallaxInstance.enable()
+  })
+  bgbox.addEventListener('mouseout', (event) => {
+    parallaxInstance.disable()
   })
 })
 </script>

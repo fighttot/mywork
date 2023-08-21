@@ -184,6 +184,7 @@ const submit = async (req, res) => {
 
 onMounted(() => {
   const scene = document.querySelector('.scene')
+  const bgbox = document.querySelector('.bgbox')
   const parallaxInstance = new parallax(scene, {
     // 位移量，預設 10
     scalarX: 10,
@@ -194,6 +195,13 @@ onMounted(() => {
     // 限制移動量
     limitX: 100,
     limitY: 100
+  })
+  parallaxInstance.disable()
+  bgbox.addEventListener('mouseover', (event) => {
+    parallaxInstance.enable()
+  })
+  bgbox.addEventListener('mouseout', (event) => {
+    parallaxInstance.disable()
   })
 })
 

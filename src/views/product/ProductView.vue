@@ -464,7 +464,9 @@ const addLike = async () => {
     const idp = togather.result.findIndex(item => item._id === product.value._id)
     toga.value.splice(idp, 1)
     document.title = '購物網 |' + product.value.name
+    user.loding = false
   } catch (error) {
+    console.log(error)
     createSnackbar({
       text: error.response.data.message,
       showCloseButton: false,

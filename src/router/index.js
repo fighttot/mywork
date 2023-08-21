@@ -207,7 +207,7 @@ router.beforeEach(async (to, from, next) => {
   if (from === START_LOCATION) {
     await user.getProfile()
   }
-
+  user.loding = true
   if (user.isLogin && ['/loginRrgister'].includes(to.path)) {
     next('/')
   } else if (to.meta.login && !user.isLogin) {

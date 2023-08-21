@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const role = ref(UserRole.USER)
   const like = ref(0)
   const name = ref('')
+  const loding = ref(true)
 
   const login = (data) => {
     token.value = data.token
@@ -72,7 +73,8 @@ export const useUserStore = defineStore('user', () => {
     isAdmin,
     avatar,
     getProfile,
-    lougot
+    lougot,
+    loding
   }
 }, {
   persist: {

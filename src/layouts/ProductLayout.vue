@@ -1,5 +1,8 @@
 <template>
-  <section id="prolaout">
+  <div v-show="user.loding" class="lodindpage">
+    <VImg src="@/assets/gawr-gura-gura.gif" cover></VImg>
+  </div>
+  <section id="prolaout" v-show="!user.loding">
     <VNavigationDrawer v-model="drawer" location="right" temporary v-if="isMobile">
       <VList nav>
         <v-avatar color="brown" size="large" v-if="user.isLogin">
@@ -92,7 +95,7 @@
       </VContainer>
     </VAppBar>
   </section>
-  <VMain>
+  <VMain v-show="!user.loding">
     <RouterView :key="$route.path"></RouterView>
   </VMain>
 </template>
