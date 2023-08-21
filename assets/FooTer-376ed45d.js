@@ -1,1 +1,0 @@
-import{as as e,f as o,h as s,x as t}from"./index-3263188b.js";const c={},n={class:"footer"},r=t("div",null,null,-1),_=[r];function a(i,l){return o(),s("section",n,_)}const f=e(c,[["render",a]]);export{f as F};
