@@ -72,7 +72,7 @@
   </section>
 </template>
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
@@ -161,12 +161,32 @@ const submit = async (req, res) => {
       }
     })
   }
-};
+}
 
-(async () => {
+// (async () => {
+//   try {
+//     const { data } = await apiAuth.get('/users/like')
+//     like.value.push(...data.result)
+//   } catch (error) {
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom',
+//         rounded: 'pill',
+//         variant: 'tonal'
+//       }
+//     })
+//   }
+// })()
+
+onMounted(async () => {
   try {
     const { data } = await apiAuth.get('/users/like')
     like.value.push(...data.result)
+    user.loding = false
   } catch (error) {
     createSnackbar({
       text: error.response.data.message,
@@ -180,9 +200,7 @@ const submit = async (req, res) => {
       }
     })
   }
-})()
-
-onMounted(() => {
+  await nextTick()
   const scene = document.querySelector('.scene')
   const bgbox = document.querySelector('.bgbox')
   const parallaxInstance = new parallax(scene, {

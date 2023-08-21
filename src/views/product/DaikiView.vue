@@ -22,8 +22,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
 
 onMounted(() => {
+  user.loding = false
   gsap.from('.text', {
     x: 100,
     rotationY: 90,

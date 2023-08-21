@@ -25,7 +25,8 @@ import { gsap } from 'gsap'
 import { onMounted, ref } from 'vue'
 import LoginView from '@/components/LoginView.vue'
 import RegisterView from '@/components/RegisterView.vue'
-
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
 const tween = ref(null)
 const contro = ref('')
 const rand = Math.floor(Math.random() * 2) + 1
@@ -57,5 +58,6 @@ onMounted(() => {
       contro.value = true
     }
   }
+  user.loding = false
 })
 </script>

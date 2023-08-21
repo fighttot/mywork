@@ -1,5 +1,8 @@
 <template>
-  <section id="homelaout">
+  <div v-show="user.loding" class="lodindpage">
+    <VImg src="@/assets/gawr-gura-gura.gif" cover></VImg>
+  </div>
+  <section id="homelaout" v-show="!user.loding">
     <router-link to="/">
       <VImg src="@/assets/logo2.png" id="logo" v-if="$route.path !== '/loginRrgister'"></VImg>
     </router-link>

@@ -24,7 +24,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
-
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
 onMounted(() => {
   gsap.from('.text', {
     x: 100,
@@ -42,5 +43,6 @@ onMounted(() => {
     ease: 'back',
     duration: 2
   })
+  user.loding = false
 })
 </script>

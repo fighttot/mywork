@@ -138,6 +138,7 @@ const submit = handleSubmit(async (values) => {
     account.value.value = user.account
     email.value.value = user.email
     name.value.value = user.name
+    user.loding = false
   } catch (error) {
     createSnackbar({
       text: error.response.data.message,

@@ -47,6 +47,7 @@ import { api } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
+import { onMounted } from 'vue'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()
@@ -145,4 +146,7 @@ const submit = handleSubmit(async (values) => {
   }
 })
 
+onMounted(() => {
+  user.loding = false
+})
 </script>

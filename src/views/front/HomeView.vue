@@ -97,6 +97,7 @@ import { api } from '@/plugins/axios'
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
 import parallax from 'parallax-js'
+
 // gsap動畫
 
 import { gsap } from 'gsap'
@@ -112,6 +113,9 @@ import 'swiper/css/pagination'
 
 // import required modules
 import { EffectCube, Pagination, Autoplay } from 'swiper/modules'
+
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
 const modules = [EffectCube, Pagination, Autoplay]
 const createSnackbar = useSnackbar()
 
@@ -143,6 +147,7 @@ onMounted(async () => {
       }
     })
   }
+  user.loding = false
   await nextTick()
   gsap.from('.photo3', {
     scrollTrigger: {

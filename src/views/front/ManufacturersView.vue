@@ -53,11 +53,12 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 import parallax from 'parallax-js'
-
-onMounted(() => {
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
+onMounted(async () => {
   const tl = gsap.timeline({
     defaults: {
       duration: 1,
@@ -135,6 +136,8 @@ onMounted(() => {
   bgbox.addEventListener('mouseout', (event) => {
     parallaxInstance.disable()
   })
+  await nextTick()
+  user.loding = false
 })
 
 </script>

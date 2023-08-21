@@ -93,7 +93,7 @@
   <FooTer></FooTer>
 </template>
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
@@ -145,26 +145,26 @@ const canCheckout = computed(() => {
 
 const total = computed(() => {
   return cart.value.reduce((total, current) => total + (current.quantity * current.product.price), 0)
-});
+})
 
-(async () => {
-  try {
-    const { data } = await apiAuth.get('/users/cart')
-    cart.value.push(...data.result)
-  } catch (error) {
-    createSnackbar({
-      text: error.response.data.message,
-      showCloseButton: false,
-      snackbarProps: {
-        timeout: 2000,
-        color: 'red',
-        location: 'bottom',
-        rounded: 'pill',
-        variant: 'tonal'
-      }
-    })
-  }
-})()
+// (async () => {
+//   try {
+//     const { data } = await apiAuth.get('/users/cart')
+//     cart.value.push(...data.result)
+//   } catch (error) {
+//     createSnackbar({
+//       text: error.response.data.message,
+//       showCloseButton: false,
+//       snackbarProps: {
+//         timeout: 2000,
+//         color: 'red',
+//         location: 'bottom',
+//         rounded: 'pill',
+//         variant: 'tonal'
+//       }
+//     })
+//   }
+// })()
 
 const schema = yup.object({
   seventhome: yup
@@ -231,7 +231,25 @@ const submit = handleSubmit(async (values) => {
   }
 })
 
-onMounted(() => {
+onMounted(async () => {
+  try {
+    const { data } = await apiAuth.get('/users/cart')
+    cart.value.push(...data.result)
+  } catch (error) {
+    createSnackbar({
+      text: error.response.data.message,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom',
+        rounded: 'pill',
+        variant: 'tonal'
+      }
+    })
+  }
+  user.loding = false
+  await nextTick()
   const scene = document.querySelector('.scene')
   const bgbox = document.querySelector('.bgbox')
   const parallaxInstance = new parallax(scene, {

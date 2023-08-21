@@ -176,7 +176,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 import { api, apiAuth } from '@/plugins/axios'
 import { useRoute } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
@@ -227,7 +227,7 @@ const allsaywidth = () => {
 }
 
 const review = async (i, id) => {
-  console.log(product.value._id)
+  // console.log(product.value._id)
   try {
     await apiAuth.patch(`products/${product.value._id}/review`, {
       id
@@ -440,9 +440,10 @@ const addLike = async () => {
       })
     }
   }
-};
+}
 
-(async () => {
+gsap.registerPlugin(ScrollTrigger)
+onMounted(async () => {
   try {
     const { data } = await api.get('/products/' + router.params.id)
     product.value = data.result
@@ -457,6 +458,7 @@ const addLike = async () => {
         colorLike.value = false
       }
     }
+
     const { data: togather } = await api.get('/products')
     toga.value = togather.result.filter((item) => {
       return item.category === data.result.category
@@ -477,10 +479,8 @@ const addLike = async () => {
       }
     })
   }
-})()
-
-gsap.registerPlugin(ScrollTrigger)
-onMounted(() => {
+  await nextTick()
+  // 動畫
   gsap.from('.animationtable', {
     scrollTrigger: {
       trigger: '.animationtable',

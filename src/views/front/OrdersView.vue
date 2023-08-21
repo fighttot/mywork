@@ -149,7 +149,8 @@ import { ref } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import FooTer from '@/components/FooTer.vue'
-
+import { useUserStore } from '@/store/user'
+const user = useUserStore()
 const createSnackbar = useSnackbar()
 const orders = ref([])
 
@@ -187,6 +188,7 @@ const editorder = async (id, check) => {
       order.total = order.cart.reduce((total, current) => total + (current.product.price * current.quantity), 0)
       return order
     }))
+    user.loding = false
   } catch (error) {
     console.log(error)
     createSnackbar({
