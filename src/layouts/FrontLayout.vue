@@ -3,9 +3,6 @@
     <VImg src="@/assets/gawr-gura-gura.gif" cover></VImg>
   </div>
   <section id="homelaout" v-show="!user.loding">
-    <router-link to="/">
-      <VImg src="@/assets/logo2.png" id="logo" v-if="$route.path !== '/loginRrgister'"></VImg>
-    </router-link>
     <VNavigationDrawer v-model="drawer" location="right" temporary v-if="isMobile">
       <VList nav>
         <v-avatar color="brown" size="large" v-if="user.isLogin">
@@ -39,6 +36,9 @@
     <VAppBar class="flayoutapbar" v-if="$route.path !== '/loginRrgister'" :elevation="0" scroll-behavior="hide"
       scroll-threshold="200">
       <!-- <VContainer class="d-flex align-center"> -->
+      <router-link to="/">
+        <img src="@/assets/logo2.png" id="logo" v-if="$route.path !== '/loginRrgister'" />
+      </router-link>
       <div class="d-flex align-center">
 
         <!-- <VAppBarTitle>型影不離</VAppBarTitle> -->
@@ -112,17 +112,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useUserStore } from '@/store/user'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
-
-// gsap動畫
-
-import { gsap } from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
@@ -176,32 +171,5 @@ const logout = async () => {
     })
   }
 }
-
-// gsap
-gsap.registerPlugin(ScrollTrigger)
-onMounted(() => {
-  gsap.fromTo('#logo', {
-    yPercent: 0,
-    opacity: 1
-  }, {
-    yPercent: -100,
-    paused: false,
-    duration: 0.5,
-    scrollTrigger: {
-      start: '400 30',
-      end: () => '+=' + document.documentElement.scrollHeight, // 整份文件的高度
-      onEnter(self) {
-        // console.log(self) // 捲動軸 scrollTrigger 自己
-        // console.log(self.animation) // scrollTrigger 物件會有一些自己的屬性可以操作
-        self.animation.play() // 可以抓到控制的補間動畫，使用它的方法
-      },
-      onUpdate(self) {
-        // console.log(self.direction)
-        self.direction === 1 ? self.animation.play() : self.animation.reverse() // -1 往上時正向播放，1 往下時反向播放
-      }
-    },
-    markers: true
-  })
-})
 
 </script>

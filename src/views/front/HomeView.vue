@@ -59,7 +59,15 @@
       </h1>
     </div>
     <section class="section03">
-
+      <VImg src="@/assets/watame-dance.gif" class="imggif one" cover></VImg>
+      <VImg src="@/assets/takane-lui-hololive.gif" class="imggif two" cover></VImg>
+      <VImg src="@/assets/hololive.gif" class="imggif three"></VImg>
+      <div class="d-flex flex-column  justify-center align-center cubetexttwo">
+        <span class="cubetextanimate">►</span>
+        <span class="cubetextanimate1">可</span>
+        <span class="cubetextanimate2">旋</span>
+        <span class="cubetextanimate3">轉</span>
+      </div>
       <div class="eightwidth">
         <swiper :effect="'cube'" :grabCursor="true" :cubeEffect="{
           shadow: true,
@@ -76,7 +84,7 @@
 
         <VImg src="@/assets/aqa.png" class="photo"></VImg>
         <!-- <img src="@/assets/aua.jpg"> -->
-        <div class="d-flex flex-column  justify-center align-center cubetext">
+        <div class="d-flex flex-column  justify-center align-center cubetextone">
           <span class="cubetextanimate">主</span>
           <span class="cubetextanimate1">打</span>
           <span class="cubetextanimate2">商</span>
@@ -152,7 +160,7 @@ onMounted(async () => {
   gsap.from('.photo3', {
     scrollTrigger: {
       trigger: '.four',
-      start: 'top 60%',
+      start: 'top 80%',
       end: 'bottom center'
     },
     stagger: {
@@ -186,6 +194,16 @@ onMounted(async () => {
     opacity: 0,
     duration: 0.5,
     ease: 'back.in(5)'
+  })
+  gsap.from('.imggif.two', {
+    scrollTrigger: {
+      trigger: '.section03',
+      start: 'top top',
+      end: 'bottom center'
+    },
+    y: 100,
+    opacity: 0,
+    duration: 1
   })
   const tl = gsap.timeline({
     defaults: {

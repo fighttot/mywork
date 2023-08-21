@@ -1,14 +1,34 @@
 #homelaout {
   .flayoutapbar {
-    background-color: $secondary !important;
+    background-color: transparent !important;
     color: $therd;
-    width: calc(100% - 90px) !important;
-    left: 90px !important;
     transition: width 0.5s ease;
+    padding-left: 90px;
+    position: relative;
+    overflow: visible !important;
+    height: 190px;
+
+    .v-toolbar__content {
+      background-color: $secondary;
+    }
+
+    #logo {
+      position: absolute;
+      left: -90px;
+      width: 90px !important;
+      height: 90px !important;
+
+      @include lg {
+        left: -190px;
+        width: 190px !important;
+        height: 190px !important;
+      }
+    }
+
+    padding-left: 90px;
 
     @include lg {
-      width: calc(100% - 190px) !important;
-      left: 190px !important;
+      padding-left: 190px;
     }
   }
 
@@ -47,14 +67,4 @@
     }
   }
 
-  #logo {
-    position: fixed !important;
-    z-index: 1000;
-    width: 90px;
-    transition: width 0.5s ease;
-
-    @include lg {
-      width: 190px;
-    }
-  }
 }

@@ -13,7 +13,9 @@
         </VCol>
         <VDivider></VDivider>
         <VRow>
-          <VCol cols="6"></VCol>
+          <VCol cols="6">
+            <VImg src="@/assets/alice-shimada-girls-und-panzer.gif" style="height: 500px;"></VImg>
+          </VCol>
           <VCol cols="6">
             <VForm :disabled="isSubmitting" @submit.prevent="submit">
               <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
