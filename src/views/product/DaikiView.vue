@@ -11,7 +11,6 @@
         宮沢模型(株)、(株)ハピネット・ホビーマーケティング</p><br>
       <p>キャラクターフィギュアの企画、製造、販売</p><br>
       <p>キャラクターグッズの企画、製造、販売</p><br>
-      <p>特色:</p>
     </div>
     <div class="footer">
       Copyright © PFSK. All figure in here.

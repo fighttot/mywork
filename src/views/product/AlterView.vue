@@ -10,7 +10,7 @@
       <p>Established 2005/03</p><br>
       <p> CEO 三上 隆</p><br>
       <p>玩具・フィギュアの企画、開発、製造、販売業務</p><br>
-      <p>フィギュア<br>主に女性キャラクターを立体化したハイクオリティ塗装済完成品シリーズ</p>
+      <p>フィギュア<br>主に女性キャラクターを立体化したハイクオリティ<br>塗装済完成品シリーズ</p>
     </div>
     <div class="footer">
       Copyright © PFSK. All figure in here.

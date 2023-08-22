@@ -26,7 +26,7 @@
       </VCol>
     </VRow>
   </VContainer>
-  <div style="text-align: center; margin: 10px 0 20px 0; color:#B8860B; text-shadow: 0px 0px 10px #000000;">
+  <div style="text-align: center; margin: 10px 0 20px 0; color:#e2b749; text-shadow: 2px 2px 5px #000000;">
     Copyright © PFSK. All figure in here.
   </div>
 </template>
@@ -135,12 +135,12 @@ onMounted(async () => {
     const { data } = await api.get('/products/')
     products.value.push(...data.result)
     user.loding = false
-    // 下次渲染
     gsap.to('.productsearch', {
       y: -100,
       opacity: 1,
       duration: 1
     })
+    // 下次渲染
     await nextTick()
     applyAnimations()
   } catch (error) {
