@@ -1,5 +1,11 @@
 <template>
   <section class="likeview">
+    <VImg src="@/assets/kokkoro.gif" cover class="scrolling"></VImg>
+    <VImg src="@/assets/kokkoro1.gif" cover class="scrolling1"></VImg>
+    <VImg src="@/assets/kokkoro2.gif" cover class="scrolling2"></VImg>
+    <VImg src="@/assets/kokkoro3.gif" cover class="scrolling3"></VImg>
+    <VImg src="@/assets/kokkoro4.gif" cover class="scrolling4"></VImg>
+    <VImg src="@/assets/kokkoro5.gif" cover class="scrolling5"></VImg>
     <section class="othertitle">
       <div class="bgbox">
         <div class="scene">
@@ -79,6 +85,7 @@ import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
 import FooTer from '@/components/FooTer.vue'
 import parallax from 'parallax-js'
+import { gsap } from 'gsap'
 
 const createSnackbar = useSnackbar()
 const router = useRouter()
@@ -186,7 +193,6 @@ onMounted(async () => {
   try {
     const { data } = await apiAuth.get('/users/like')
     like.value.push(...data.result)
-    user.loding = false
   } catch (error) {
     createSnackbar({
       text: error.response.data.message,
@@ -201,6 +207,33 @@ onMounted(async () => {
     })
   }
   await nextTick()
+  const windowWidth = window.innerWidth
+  const windowHeight = window.innerHeight
+  const tl = gsap.timeline({
+    defaults: {
+      duration: 6,
+      ease: 'linear'
+    },
+    // timeline 屬性設定(指整體時間軸)
+    repeat: -1
+  })
+  tl
+    .to('.scrolling1', { y: windowHeight / 2 })
+    .to('.scrolling1', { opacity: 0, duration: 0 })
+    .to('.scrolling', { opacity: 1, duration: 0 })
+    .to('.scrolling', { x: windowWidth - 100, duration: 10 })
+    .to('.scrolling', { opacity: 0, duration: 0 })
+    .to('.scrolling2', { opacity: 1, duration: 0 })
+    .to('.scrolling2', { y: -windowHeight / 2 })
+    .to('.scrolling2', { opacity: 0, duration: 0 })
+    .to('.scrolling3', { opacity: 1, duration: 0 })
+    .to('.scrolling3', { y: windowHeight / 2 })
+    .to('.scrolling3', { opacity: 0, duration: 0 })
+    .to('.scrolling4', { opacity: 1, duration: 0 })
+    .to('.scrolling4', { x: -windowWidth + 100, duration: 10 })
+    .to('.scrolling4', { opacity: 0, duration: 0 })
+    .to('.scrolling5', { opacity: 1, duration: 0 })
+    .to('.scrolling5', { y: -windowHeight / 2 })
   const scene = document.querySelector('.scene')
   const bgbox = document.querySelector('.bgbox')
   const parallaxInstance = new parallax(scene, {
@@ -221,6 +254,7 @@ onMounted(async () => {
   bgbox.addEventListener('mouseout', (event) => {
     parallaxInstance.disable()
   })
+  user.loding = false
 })
 
 </script>

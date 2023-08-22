@@ -1,5 +1,8 @@
 <template>
   <section class="orderviwe">
+    <VImg src="@/assets/chair.gif" cover class="scrolling"></VImg>
+    <VImg src="@/assets/chairone.gif" cover class="scrolling1"></VImg>
+    <VImg src="@/assets/chairtwo.gif" cover class="scrolling2"></VImg>
     <section class="othertitle">
       <div class="bgbox">
         <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
@@ -145,11 +148,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import FooTer from '@/components/FooTer.vue'
 import { useUserStore } from '@/store/user'
+import { gsap } from 'gsap'
 const user = useUserStore()
 const createSnackbar = useSnackbar()
 const orders = ref([])
@@ -181,14 +185,33 @@ const editorder = async (id, check) => {
   }
 }
 
-(async () => {
+onMounted(async () => {
   try {
     const { data } = await apiAuth.get('/orders')
     orders.value.push(...data.result.map(order => {
       order.total = order.cart.reduce((total, current) => total + (current.product.price * current.quantity), 0)
       return order
     }))
-    user.loding = false
+    await nextTick()
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 6,
+        ease: 'linear'
+      },
+      // timeline 屬性設定(指整體時間軸)
+      repeat: -1,
+      yoyo: true
+    })
+    tl
+      .to('.scrolling1', { y: windowHeight / 2 })
+      .to('.scrolling1', { opacity: 0, duration: 0 })
+      .to('.scrolling', { opacity: 1, duration: 0 })
+      .to('.scrolling', { x: windowWidth - 100, duration: 10 })
+      .to('.scrolling', { opacity: 0, duration: 0 })
+      .to('.scrolling2', { opacity: 1, duration: 0 })
+      .to('.scrolling2', { y: -windowHeight / 2 })
   } catch (error) {
     console.log(error)
     createSnackbar({
@@ -203,5 +226,6 @@ const editorder = async (id, check) => {
       }
     })
   }
-})()
+  user.loding = false
+})
 </script>

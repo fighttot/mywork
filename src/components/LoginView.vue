@@ -69,7 +69,8 @@ const submit = handleSubmit(async (values) => {
       email: data.result.email,
       cart: data.result.cart,
       role: data.result.role,
-      like: data.result.like
+      like: data.result.like,
+      image: data.result.image
     })
     createSnackbar({
       text: '登入成功',

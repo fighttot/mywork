@@ -46,7 +46,7 @@ onMounted(() => {
   tween.value = gsap.to('.lidcover', {
     x: '50vw',
     duration: 1,
-    ease: 'power',
+    ease: 'linear',
     paused: true
   })
   if (tween.value) {

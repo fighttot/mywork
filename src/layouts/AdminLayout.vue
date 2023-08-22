@@ -1,7 +1,7 @@
 <template>
   <VNavigationDrawer permanent>
     <VList>
-      <VListItem :prepend-avatar="user.avatar" :title="user.account"></VListItem>
+      <VListItem :prepend-avatar="user.image ? user.image : user.avatar" :title="user.account"></VListItem>
       <h1>
         {{ user.name }}
       </h1>

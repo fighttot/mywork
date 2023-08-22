@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const role = ref(UserRole.USER)
   const like = ref(0)
   const name = ref('')
+  const image = ref('')
   const loding = ref(true)
 
   const login = (data) => {
@@ -22,6 +23,7 @@ export const useUserStore = defineStore('user', () => {
     role.value = data.role
     like.value = data.like
     name.value = data.name
+    image.value = data.image
   }
 
   const isLogin = computed(() => {
@@ -46,6 +48,7 @@ export const useUserStore = defineStore('user', () => {
       cart.value = data.result.cart
       like.value = data.result.like
       name.value = data.result.name
+      image.value = data.result.image
     } catch (error) {
       token.value = ''
     }
@@ -58,6 +61,7 @@ export const useUserStore = defineStore('user', () => {
     role.value = UserRole.USER
     like.value = []
     name.value = ''
+    image.value = ''
   }
 
   return {
@@ -74,7 +78,8 @@ export const useUserStore = defineStore('user', () => {
     avatar,
     getProfile,
     lougot,
-    loding
+    loding,
+    image
   }
 }, {
   persist: {

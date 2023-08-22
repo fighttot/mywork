@@ -244,9 +244,13 @@
 
     .cubetexttwo {
       position: absolute;
-      left: 21%;
+      left: 19%;
       top: 30%;
       color: $therd;
+
+      @include md {
+        left: 21%;
+      }
     }
 
     .imggif {
@@ -261,8 +265,12 @@
     }
 
     .two {
-      top: 7.7%;
+      top: 12%;
       left: 7%;
+
+      @include xxxl {
+        top: 7.7%;
+      }
     }
 
     .three {

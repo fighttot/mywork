@@ -77,12 +77,12 @@
         }" :speed="1000" :pagination="true" :modules="modules" class="mySwiper">
           <swiper-slide v-for="thcube in thcubes" :key="thcube._id">
             <RouterLink :to="/proHome/ + thcube._id">
-              <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" />
+              <img style="object-fit: cover; height: 100%; width: 100%;" :src="thcube.images[0]" @load="onImgLoad" />
             </RouterLink>
           </swiper-slide>
         </swiper>
 
-        <VImg src="@/assets/aqa.png" class="photo"></VImg>
+        <VImg src="@/assets/aqa.png" class="photo" @load="onImgLoad"></VImg>
         <!-- <img src="@/assets/aua.jpg"> -->
         <div class="d-flex flex-column  justify-center align-center cubetextone">
           <span class="cubetextanimate">主</span>
@@ -135,7 +135,92 @@ const cards = computed(() => {
 const thcubes = computed(() => {
   return products.value.slice(products.value.length - 7, products.value.length - 3)
 })
+const imgLoaded = ref(0)
+const onImgLoad = () => {
+  imgLoaded.value++
+  if (imgLoaded.value >= thcubes.value.length + 1) {
+    console.log(imgLoaded.value)
+    hologif()
+  }
+}
+const hologif = () => {
+  const windowWidth = window.innerWidth
 
+  gsap.from('.imggif.two', {
+    scrollTrigger: {
+      trigger: '.imggif.two',
+      start: 'top 70%',
+      end: 'bottom center'
+    },
+    y: 100,
+    opacity: 0,
+    duration: 2
+  })
+  if (windowWidth > 1400) {
+    gsap.from('.imggif.three', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'bottom top',
+        end: 'bottom center'
+      },
+      x: 100,
+      opacity: 0,
+      duration: 2
+    })
+    gsap.from('.imggif.one', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'bottom top',
+        end: 'bottom center'
+      },
+      x: -100,
+      opacity: 0,
+      duration: 2
+    })
+  } else if (windowWidth > 700) {
+    gsap.from('.imggif.three', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'top center',
+        end: 'bottom center'
+      },
+      x: 100,
+      opacity: 0,
+      duration: 2
+    })
+    gsap.from('.imggif.one', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'top center',
+        end: 'bottom center'
+      },
+      x: -100,
+      opacity: 0,
+      duration: 2
+    })
+  } else {
+    gsap.from('.imggif.three', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'top 65%',
+        end: 'bottom center'
+      },
+      x: 100,
+      opacity: 0,
+      duration: 2
+    })
+    gsap.from('.imggif.one', {
+      scrollTrigger: {
+        trigger: '.homefooter',
+        start: 'top 65%',
+        end: 'bottom center'
+      },
+      x: -100,
+      opacity: 0,
+      duration: 2
+    })
+  }
+}
 gsap.registerPlugin(ScrollTrigger)
 onMounted(async () => {
   try {
@@ -195,16 +280,7 @@ onMounted(async () => {
     duration: 0.5,
     ease: 'back.in(5)'
   })
-  gsap.from('.imggif.two', {
-    scrollTrigger: {
-      trigger: '.section03',
-      start: 'top top',
-      end: 'bottom center'
-    },
-    y: 100,
-    opacity: 0,
-    duration: 1
-  })
+
   const tl = gsap.timeline({
     defaults: {
       duration: 0.5,

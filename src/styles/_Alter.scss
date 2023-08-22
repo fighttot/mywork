@@ -41,12 +41,8 @@
     text-shadow: 2px 2px 5px white;
 
     @include lg {
-      left: 12%;
+      left: 10%;
       text-shadow: 2px 2px 10px #e60012;
-    }
-
-    @include xxl {
-      left: 14%;
     }
   }
 

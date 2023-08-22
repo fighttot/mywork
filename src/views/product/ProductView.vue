@@ -106,9 +106,9 @@
               <tr v-for="(item, i) in product.peopleSay" :key="i">
                 <td>
 
-                  <VImg style="display: inline-block;  vertical-align: middle;"
-                    :src="`https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`"
-                    width="50px">
+                  <VImg style="display: inline-block;  vertical-align: middle; border-radius: 50%;"
+                    :src="user.image ? item.user.image : `https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`"
+                    width="50px" cover="">
                   </VImg>
                   {{ item.user.name }}
                 </td>

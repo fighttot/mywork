@@ -57,7 +57,7 @@
             <template v-slot:activator="{ props }">
               <v-btn icon v-bind="props">
                 <v-avatar color="brown" size="large" v-if="user.isLogin">
-                  <VImg :src="user.avatar"></VImg>
+                  <VImg :src="user.image ? user.image : user.avatar" cover></VImg>
                 </v-avatar>
                 <v-avatar color="brown" size="large" v-if="!user.isLogin">
                   <span>遊客</span>

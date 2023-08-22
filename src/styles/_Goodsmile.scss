@@ -35,16 +35,16 @@
     text-shadow: 2px 2px 5px white;
 
     @include md {
-      top: 40%;
+      top: 30%;
     }
 
     @include lg {
       left: 5%;
-      text-shadow: 2px 2px 10px #ee7700;
+      text-shadow: 2px 2px 2px #5ee9fc;
     }
 
     @include xxl {
-      left: 10%;
+      left: 5%;
     }
   }
 

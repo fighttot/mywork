@@ -4,6 +4,65 @@
     color: $therd;
   }
 
+  .scrolling {
+    opacity: 0;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(100% - 100px);
+    left: 0px;
+    z-index: 2;
+  }
+
+  .scrolling1 {
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(50% - 100px);
+    left: 0px;
+    z-index: 2;
+  }
+
+  .scrolling2 {
+    opacity: 0;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(100% - 100px);
+    right: 0px;
+    z-index: 2;
+  }
+
+  .scrolling3 {
+    opacity: 0;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(50% - 100px);
+    right: 0px;
+    z-index: 2;
+  }
+
+  .scrolling4 {
+    opacity: 0;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(100% - 100px);
+    right: 0px;
+    z-index: 2;
+  }
+
+  .scrolling5 {
+    opacity: 0;
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: calc(100% - 100px);
+    left: 0px;
+    z-index: 2;
+  }
+
   .likeheight {
     min-height: 60vh;
 
