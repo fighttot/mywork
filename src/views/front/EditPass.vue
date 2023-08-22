@@ -20,7 +20,7 @@
             <VueFileAgent v-model="files" v-model:raw-model-value="rawFiles" :max-files="1" max-size="1MB"
               accept="image/jpg,image/jpeg,image/png" :multiple="false" :error-text="{ type: '檔案格式錯誤', size: '檔案太大' }"
               help-text="選擇檔案或拖放到這裡" deletable ref="fileAgent"></VueFileAgent>
-            <VBtn @click="upimg">送出大頭貼</VBtn>
+            <VBtn @click="upimg" :loading="uploding">送出大頭貼</VBtn>
             <!-- <VImg src="@/assets/alice-shimada-girls-und-panzer.gif" style="height: 500px;"></VImg> -->
           </VCol>
           <VCol cols="6">
@@ -146,8 +146,10 @@ const submit = handleSubmit(async (values) => {
 const files = ref([])
 const rawFiles = ref([])
 const fileAgent = ref(null)
+const uploding = ref(false)
 
 const upimg = async () => {
+  uploding.value = true
   try {
     const fd = new FormData()
     if (files.value.length > 0) fd.append('image', files.value[0].file)
@@ -179,6 +181,7 @@ const upimg = async () => {
       }
     })
   }
+  uploding.value = false
 }
   ;
 
