@@ -85,4 +85,9 @@
     color: $therd;
     text-shadow: 2px 2px 2px $primary;
   }
+
+  .v-row,
+  .v-col {
+    margin: 0;
+  }
 }
