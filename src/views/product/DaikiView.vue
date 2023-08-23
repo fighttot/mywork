@@ -12,7 +12,7 @@
       <p>キャラクターフィギュアの企画、製造、販売</p><br>
       <p>キャラクターグッズの企画、製造、販売</p><br>
     </div>
-    <div class="footer">
+    <div class="footerman4">
       Copyright © PFSK. All figure in here.
     </div>
   </section>

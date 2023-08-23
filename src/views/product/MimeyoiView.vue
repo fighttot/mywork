@@ -9,7 +9,7 @@
       <p> CEO Yuichiro Kurokawa</p><br>
       <p>Address 1-4-8 Koya Ichikawa-shi Chiba</p>
     </div>
-    <div class="footer">
+    <div class="footerman4">
       Copyright © PFSK. All figure in here.
     </div>
   </section>

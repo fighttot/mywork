@@ -7,8 +7,8 @@
       <div class="bgbox2"></div>
     </section>
     <VContainer>
-      <VRow class="h-100 align-center">
-        <VCol cols="12">
+      <VRow class="align-center">
+        <VCol cols="12" style="height: 51.6vh;">
           <h1 class="text-center">選擇管理項目</h1>
         </VCol>
       </VRow>

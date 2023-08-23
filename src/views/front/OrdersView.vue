@@ -249,11 +249,11 @@ onMounted(async () => {
       opacity: 1
     }, {
       opacity: 0,
-      duration: 3,
+      duration: 2,
       repeat: -1,
       ease: 'back',
       yoyo: true,
-      repeatDelay: 3
+      repeatDelay: 1
     })
   } catch (error) {
     console.log(error)

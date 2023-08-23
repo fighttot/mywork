@@ -2,7 +2,16 @@
   <section class="homeview">
     <div class="bgbox">
       <div class="show">
-        文案等待決定
+        夢，開始的地方，也是結束的地方，<br>
+        是否一直祈禱著，夢有實現的一天。<br>
+        秋天過去，春天來到，夏天結束，冬天又再開始，<br>
+        你期待著的夢，永遠的夢。
+        <br>
+        <br>
+        <br>
+        歡迎您的到來，<br>
+        進入夢幻的世界，<br>
+        與可愛的美少女模型一起冒險!
       </div>
       <div class="scene">
         <div class="imgbox" data-depth="-0.5">
@@ -45,11 +54,13 @@
       <v-parallax src="@/assets/littorio004.jpg">
         <div class="d-flex flex-column fill-height justify-center align-center text-white">
           <h1 class="text-h4 font-weight-thin mb-4">
-            Vuetify
+            30% OFF
           </h1>
           <h4 class="subheading">
-            Build your application today!
+            暑假特別優惠! 加入會員即可領取折價優惠券
           </h4>
+          <p>加入LINE 接收最新商品以及熱門推薦喔!</p>
+          <p>ID:@473kooid</p>
         </div>
       </v-parallax>
     </section>
@@ -96,7 +107,24 @@
     </section>
 
     <section class="homefooter">
-
+      <VRow>
+        <VCol>
+          <h4> 聯絡我們:</h4>
+          <p>信箱: PFSKContactus@gmail.com</p>
+          <p>地址: 24302新北市泰山區貴子里致遠新村55之1號</p>
+        </VCol>
+        <VCol>
+          <h4>營業時間:</h4>
+          <p>每周二到每週日</p>
+          <p>上午 10:00 ~ 晚上 22:00</p>
+        </VCol>
+        <VCol>
+          <p>加入LINE 接收最新商品以及熱門推薦喔!</p>
+          <p>ID:@473kooid</p>
+          此為泰山職訓專題製作網站，並無任何實際商業用途。<br>
+          <p>如需反應任何狀況，可於line聯絡製作者</p>
+        </VCol>
+      </VRow>
     </section>
   </section>
 </template>

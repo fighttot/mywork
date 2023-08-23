@@ -16,7 +16,7 @@
         Max Factory企劃及開發、Good Smile Company發售的可動式人物模型系列。<br>比例大約是1/12。
       </p>
     </div>
-    <div class="footer">
+    <div class="footerman4">
       Copyright © PFSK. All figure in here.
     </div>
   </section>
