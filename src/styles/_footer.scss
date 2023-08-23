@@ -4,10 +4,15 @@
   color: $therd;
   background: linear-gradient(0deg, rgba($primary , $alpha: 1), transparent), ;
 
+  .v-row {
+    margin: 0;
+  }
+
   .v-col {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    margin: 0;
 
   }
 

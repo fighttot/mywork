@@ -216,7 +216,7 @@ onMounted(async () => {
     vtabal.forEach(item => {
       item.addEventListener('mouseover', (event) => {
         const yPosition = item.getBoundingClientRect()
-        const height = item.offsetHeight
+        // const height = item.offsetHeight
         gsap.to('.yamada', {
           opacity: 1,
           x: -270,
