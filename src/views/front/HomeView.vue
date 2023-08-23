@@ -145,23 +145,13 @@ const onImgLoad = () => {
 }
 const hologif = () => {
   const windowWidth = window.innerWidth
-
-  gsap.from('.imggif.two', {
-    scrollTrigger: {
-      trigger: '.imggif.two',
-      start: 'top 70%',
-      end: 'bottom center'
-    },
-    y: 100,
-    opacity: 0,
-    duration: 2
-  })
   if (windowWidth > 1400) {
     gsap.from('.imggif.three', {
       scrollTrigger: {
-        trigger: '.homefooter',
+        trigger: '.section03',
         start: 'bottom top',
-        end: 'bottom center'
+        end: 'bottom center',
+        markers: true
       },
       x: 100,
       opacity: 0,
@@ -169,9 +159,10 @@ const hologif = () => {
     })
     gsap.from('.imggif.one', {
       scrollTrigger: {
-        trigger: '.homefooter',
+        trigger: '.section03',
         start: 'bottom top',
-        end: 'bottom center'
+        end: 'bottom center',
+        markers: true
       },
       x: -100,
       opacity: 0,
@@ -180,9 +171,10 @@ const hologif = () => {
   } else if (windowWidth > 700) {
     gsap.from('.imggif.three', {
       scrollTrigger: {
-        trigger: '.homefooter',
-        start: 'top center',
-        end: 'bottom center'
+        trigger: '.section03',
+        start: 'top 35%',
+        end: 'bottom center',
+        markers: true
       },
       x: 100,
       opacity: 0,
@@ -190,9 +182,10 @@ const hologif = () => {
     })
     gsap.from('.imggif.one', {
       scrollTrigger: {
-        trigger: '.homefooter',
-        start: 'top center',
-        end: 'bottom center'
+        trigger: '.section03',
+        start: 'top 35%',
+        end: 'bottom center',
+        markers: true
       },
       x: -100,
       opacity: 0,
@@ -201,9 +194,10 @@ const hologif = () => {
   } else {
     gsap.from('.imggif.three', {
       scrollTrigger: {
-        trigger: '.homefooter',
-        start: 'top 65%',
-        end: 'bottom center'
+        trigger: '.section03',
+        start: 'top 60%',
+        end: 'bottom center',
+        markers: true
       },
       x: 100,
       opacity: 0,
@@ -211,9 +205,10 @@ const hologif = () => {
     })
     gsap.from('.imggif.one', {
       scrollTrigger: {
-        trigger: '.homefooter',
-        start: 'top 65%',
-        end: 'bottom center'
+        trigger: '.section03',
+        start: 'top 60%',
+        end: 'bottom center',
+        markers: true
       },
       x: -100,
       opacity: 0,
@@ -242,6 +237,31 @@ onMounted(async () => {
   }
   user.loding = false
   await nextTick()
+  const windowWidth = window.innerWidth
+  if (windowWidth > 1200) {
+    gsap.from('.imggif.two', {
+      scrollTrigger: {
+        trigger: '.section03',
+        start: 'top 10%',
+        end: 'bottom center'
+      },
+      y: 100,
+      opacity: 0,
+      duration: 2
+    })
+  } else {
+    gsap.from('.imggif.two', {
+      scrollTrigger: {
+        trigger: '.section03',
+        start: 'top 50%',
+        end: 'bottom center'
+      },
+      y: 100,
+      opacity: 0,
+      duration: 2
+    })
+  }
+
   gsap.from('.photo3', {
     scrollTrigger: {
       trigger: '.four',
