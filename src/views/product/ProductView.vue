@@ -144,7 +144,7 @@
       <VForm :disabled="isSAY" @submit.prevent="submitText" style="width: 400px;">
         <VCard :style="`background-color:${product.color};color: ${product.textColor};`">
           <VCardTitle>
-            <VImg :src="user.avatar" style="width: 20%; display: inline-block;"></VImg>
+            <VImg :src="user.image ? user.image : user.avatar" style="width: 20%; display: inline-block;"></VImg>
             <span> {{ user.name }}</span>
           </VCardTitle>
           <VCardText>
