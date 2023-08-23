@@ -33,11 +33,11 @@
   }
 
 
-  .v-main {
-    @include md {
-      background: linear-gradient(180deg, $secondary 0 200px, white 200px 100%);
-    }
-  }
+  // .v-main {
+  //   @include md {
+  //     background: linear-gradient(180deg, $secondary 0 200px, white 200px 100%);
+  //   }
+  // }
 
   .v-toolbar__content {
     height: 65px !important;

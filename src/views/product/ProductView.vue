@@ -91,12 +91,22 @@
             <template v-if="user.role === 0">
               <tr v-for="(item, i) in product.peopleSay" :key="i">
                 <template v-if="!item.review">
-                  <td>{{ item.user.name }}</td>
+                  <td class="userimgTD">
+                    <VImg class="userimgavter" width="50px" height="50px" cover
+                      :src="item.user.image ? item.user.image : `https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`">
+                    </VImg><br>
+                    {{ item.user.name }}
+                  </td>
                   <td>{{ item.text }}</td>
                   <td>{{ new Date(item.date).toLocaleString() }}</td>
                 </template>
                 <template v-if="item.review">
-                  <td>{{ item.user.name }}</td>
+                  <td class="userimgTD">
+                    <VImg class="userimgavter" width="50px" height="50px" cover
+                      :src="item.user.image ? item.user.image : `https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`">
+                    </VImg><br>
+                    {{ item.user.name }}
+                  </td>
                   <td>管理員審核中</td>
                   <td>{{ new Date(item.date).toLocaleString() }}</td>
                 </template>
@@ -104,12 +114,10 @@
             </template>
             <template v-if="user.role === 1">
               <tr v-for="(item, i) in product.peopleSay" :key="i">
-                <td>
-
-                  <VImg style="display: inline-block;  vertical-align: middle; border-radius: 50%;"
-                    :src="user.image ? item.user.image : `https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`"
-                    width="50px" cover="">
-                  </VImg>
+                <td class="userimgTD">
+                  <VImg class="userimgavter" width="50px" height="50px" cover
+                    :src="item.user.image ? item.user.image : `https://source.boringavatars.com/beam/120/${item.user.account}?colors=0db2ac,f5dd7e,fc8d4d,fc694d,faba32`">
+                  </VImg><br>
                   {{ item.user.name }}
                 </td>
                 <td>{{ item.text }}</td>

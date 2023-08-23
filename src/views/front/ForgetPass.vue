@@ -14,26 +14,32 @@
         <VDivider></VDivider>
         <VRow>
           <VCol cols="6">
-            <VImg src="@/assets/rikka-takanashi-takanashi-rikka.gif" style="height: 500px;"></VImg>
-
+            <VImg src="@/assets/rikka-takanashi-takanashi-rikka.gif" style="height: 500px;">
+              <p>再<br>想<br>想<br>?</p>
+            </VImg>
+            <!-- <P>想想?</P> -->
           </VCol>
           <VCol cols="6">
-            <VForm :disabled="isSubmitting" @submit.prevent="submit">
-              <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
-                :error-messages="account.errorMessage.value"></VTextField>
-              <VTextField v-model="password.value.value" label="密碼:" counter max-length="20" type="password"
-                :error-messages="password.errorMessage.value"></VTextField>
-              <VTextField v-model="passwordConfirm.value.value" label="確認密碼:" counter max-length="20" type="password"
-                :error-messages="passwordConfirm.errorMessage.value">
-              </VTextField>
-              <VTextField v-model="email.value.value" label="確認信箱" type="email"
-                :error-messages="email.errorMessage.value">
-              </VTextField>
-              <div class="text-center">
-                <VBtn type="submit">創新密碼</VBtn>
-                <VBtn @click="handleReset">重製</VBtn>
+            <div class="shadow">
+              <div class="shadowbox">
+                <VForm :disabled="isSubmitting" @submit.prevent="submit">
+                  <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
+                    :error-messages="account.errorMessage.value"></VTextField>
+                  <VTextField v-model="password.value.value" label="密碼:" counter max-length="20" type="password"
+                    :error-messages="password.errorMessage.value"></VTextField>
+                  <VTextField v-model="passwordConfirm.value.value" label="確認密碼:" counter max-length="20" type="password"
+                    :error-messages="passwordConfirm.errorMessage.value">
+                  </VTextField>
+                  <VTextField v-model="email.value.value" label="確認信箱" type="email"
+                    :error-messages="email.errorMessage.value">
+                  </VTextField>
+                  <div class="text-center">
+                    <VBtn type="submit">創新密碼</VBtn>
+                    <VBtn @click="handleReset">重製</VBtn>
+                  </div>
+                </VForm>
               </div>
-            </VForm>
+            </div>
           </VCol>
         </VRow>
       </VRow>

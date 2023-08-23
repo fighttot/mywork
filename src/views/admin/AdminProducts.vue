@@ -1,102 +1,104 @@
 <template>
-  <section class="backtop">
-    <div class="bgbox">
-      <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
-    </div>
-    <div class="bgbox2"></div>
+  <section class="backadminP">
+    <section class="backtop">
+      <div class="bgbox">
+        <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
+      </div>
+      <div class="bgbox2"></div>
+    </section>
+    <VContainer>
+      <VRow>
+        <VCol cols="12">
+          <h1 class="text-center">商品管理</h1>
+        </VCol>
+        <VDivider></VDivider>
+        <VCol cols="12">
+          <!-- <VBtn color="green" @click="openDialog">新增商品</VBtn> -->
+          <VDataTableServer v-model:items-per-page="tableItemsPerPage" v-model:sort-by="tableSortBy"
+            v-model:page="tablePage" :items="tableProducts" :headers="tableHeaders" :loading="tableLoading"
+            :items-length="tableItemsLength" hover @update:items-per-page="tableLoadItems"
+            @update:sort-by="tableLoadItems" @update:page="tableLoadItems" :search="tableSearch">
+            <template v-slot:top>
+              <v-toolbar flat>
+                <v-toolbar-title>我的商品</v-toolbar-title>
+                <VTextField label="搜尋" append-icon="mdi-magnify" v-model="tableSearch" @click:append="tableApplySearch"
+                  @keydown.enter="tableApplySearch"></VTextField>
+                <v-divider class="mx-4" inset vertical></v-divider>
+                <v-spacer></v-spacer>
+                <v-dialog v-model="dialog" max-width="500px">
+                  <template #activator="{ props }">
+                    <v-btn dark class="mb-2" v-bind="props" @click="openDialog">
+                      新增商品
+                    </v-btn>
+                  </template>
+
+                </v-dialog>
+              </v-toolbar>
+            </template>
+            <template #[`item.images`]="{ item }">
+              <VImg :src="item.raw.images[0]" :key="i" cover aspect-ratio="16/9"></VImg>
+            </template>
+            <template #[`item.sell`]="{ item }">
+              <VIcon icon="mdi-check" v-if="item.raw.sell"></VIcon>
+            </template>
+            <template #[`item.edit`]="{ item }">
+              <VBtn icon="mdi-pencil" @click="tableEditItem(item.raw)" variant="text"></VBtn>
+            </template>
+          </VDataTableServer>
+        </VCol>
+      </VRow>
+      <!-- 一定要放在 VContainer裡面-->
+      <VDialog persistent v-model="dialog" width="800px" scrollable>
+        <VForm :disabled="isSubmitting" @submit.prevent="submit">
+          <VCard style="height:80vh;">
+            <VCardTitle>{{ dialogId.length > 0 ? '編輯商品' : '新增商品' }}</VCardTitle>
+            <VCardText>
+              <VTextField label="名稱" v-model="name.value.value" :error-messages="name.errorMessage.value">
+              </VTextField>
+              <VTextField label="價格" v-model.number="price.value.value" :error-messages="price.errorMessage.value"
+                type="number" min="0">
+              </VTextField>
+              <VTextField label="分類" v-model="category.value.value" :error-messages="category.errorMessage.value">
+              </VTextField>
+              <VSelect :items="manufacturersItems" label="製造商" v-model="manufacturers.value.value"
+                :error-messages="manufacturers.errorMessage.value">
+              </VSelect>
+              <VTextField label="主題色" v-model="color.value.value" :error-messages="color.errorMessage.value">
+              </VTextField>
+              <VTextField label="文字主題色" v-model="textColor.value.value" :error-messages="textColor.errorMessage.value">
+              </VTextField>
+              <VTextarea label="說明" v-model="description.value.value" :error-messages="description.errorMessage.value">
+              </VTextarea>
+              <VCheckbox label="上架" v-model="sell.value.value"></VCheckbox>
+
+              <VueFileAgent v-model="files" v-model:raw-model-value="rawFiles" :max-files="6" max-size="5MB"
+                accept="image/jpg,image/jpeg,image/png" :multiple="true" :error-text="{ type: '檔案格式錯誤', size: '檔案太大' }"
+                help-text="選擇檔案或拖曳至此" deletable ref="fileAgent" v-if="!imageEditView.length > 0">
+              </VueFileAgent>
+              <VRow v-if="imageEditView.length > 0">
+                <VCol v-for="(item, i) in imageEditView" :key="i" cover aspect-ratio="16/9">
+                  <VImg :src="item">
+                  </VImg>
+                </VCol>
+              </VRow>
+
+              <p v-if="!files.length > 0 && !imageEditView.length > 0" class="text-center">需要圖片</p>
+              <VBtn v-if="imageEditView.length > 0" @click="imageEditView = []">重新上傳圖片</VBtn>
+            </VCardText>
+            <VCardActions>
+              <VSpacer>
+                <VBtn color="red" @click="closeDialog" :loading="isSubmitting">取消</VBtn>
+                <VBtn color="primary" @click="Reset" :loading="isSubmitting">重製</VBtn>
+                <VBtn color="green" type="submit" :loading="isSubmitting">送出</VBtn>
+              </VSpacer>
+            </VCardActions>
+          </VCard>
+        </VForm>
+      </VDialog>
+    </VContainer>
+    <VBtn @click="pushline">推送最新商品</VBtn>
+    <FooTer></FooTer>
   </section>
-  <VContainer>
-    <VRow>
-      <VCol cols="12">
-        <h1 class="text-center">商品管理</h1>
-      </VCol>
-      <VDivider></VDivider>
-      <VCol cols="12">
-        <!-- <VBtn color="green" @click="openDialog">新增商品</VBtn> -->
-        <VDataTableServer v-model:items-per-page="tableItemsPerPage" v-model:sort-by="tableSortBy"
-          v-model:page="tablePage" :items="tableProducts" :headers="tableHeaders" :loading="tableLoading"
-          :items-length="tableItemsLength" hover @update:items-per-page="tableLoadItems" @update:sort-by="tableLoadItems"
-          @update:page="tableLoadItems" :search="tableSearch">
-          <template v-slot:top>
-            <v-toolbar flat>
-              <v-toolbar-title>我的商品</v-toolbar-title>
-              <VTextField label="搜尋" append-icon="mdi-magnify" v-model="tableSearch" @click:append="tableApplySearch"
-                @keydown.enter="tableApplySearch"></VTextField>
-              <v-divider class="mx-4" inset vertical></v-divider>
-              <v-spacer></v-spacer>
-              <v-dialog v-model="dialog" max-width="500px">
-                <template #activator="{ props }">
-                  <v-btn color="primary" dark class="mb-2" v-bind="props" @click="openDialog">
-                    新增商品
-                  </v-btn>
-                </template>
-
-              </v-dialog>
-            </v-toolbar>
-          </template>
-          <template #[`item.images`]="{ item }">
-            <VImg :src="item.raw.images[0]" :key="i" cover aspect-ratio="16/9"></VImg>
-          </template>
-          <template #[`item.sell`]="{ item }">
-            <VIcon icon="mdi-check" v-if="item.raw.sell"></VIcon>
-          </template>
-          <template #[`item.edit`]="{ item }">
-            <VBtn icon="mdi-pencil" @click="tableEditItem(item.raw)" variant="text"></VBtn>
-          </template>
-        </VDataTableServer>
-      </VCol>
-    </VRow>
-    <!-- 一定要放在 VContainer裡面-->
-    <VDialog persistent v-model="dialog" width="800px" scrollable>
-      <VForm :disabled="isSubmitting" @submit.prevent="submit">
-        <VCard style="height:80vh;">
-          <VCardTitle>{{ dialogId.length > 0 ? '編輯商品' : '新增商品' }}</VCardTitle>
-          <VCardText>
-            <VTextField label="名稱" v-model="name.value.value" :error-messages="name.errorMessage.value">
-            </VTextField>
-            <VTextField label="價格" v-model.number="price.value.value" :error-messages="price.errorMessage.value"
-              type="number" min="0">
-            </VTextField>
-            <VTextField label="分類" v-model="category.value.value" :error-messages="category.errorMessage.value">
-            </VTextField>
-            <VSelect :items="manufacturersItems" label="製造商" v-model="manufacturers.value.value"
-              :error-messages="manufacturers.errorMessage.value">
-            </VSelect>
-            <VTextField label="主題色" v-model="color.value.value" :error-messages="color.errorMessage.value">
-            </VTextField>
-            <VTextField label="文字主題色" v-model="textColor.value.value" :error-messages="textColor.errorMessage.value">
-            </VTextField>
-            <VTextarea label="說明" v-model="description.value.value" :error-messages="description.errorMessage.value">
-            </VTextarea>
-            <VCheckbox label="上架" v-model="sell.value.value"></VCheckbox>
-
-            <VueFileAgent v-model="files" v-model:raw-model-value="rawFiles" :max-files="6" max-size="5MB"
-              accept="image/jpg,image/jpeg,image/png" :multiple="true" :error-text="{ type: '檔案格式錯誤', size: '檔案太大' }"
-              help-text="選擇檔案或拖曳至此" deletable ref="fileAgent" v-if="!imageEditView.length > 0">
-            </VueFileAgent>
-            <VRow v-if="imageEditView.length > 0">
-              <VCol v-for="(item, i) in imageEditView" :key="i" cover aspect-ratio="16/9">
-                <VImg :src="item">
-                </VImg>
-              </VCol>
-            </VRow>
-
-            <p v-if="!files.length > 0 && !imageEditView.length > 0" class="text-center">需要圖片</p>
-            <VBtn v-if="imageEditView.length > 0" @click="imageEditView = []">重新上傳圖片</VBtn>
-          </VCardText>
-          <VCardActions>
-            <VSpacer>
-              <VBtn color="red" @click="closeDialog" :loading="isSubmitting">取消</VBtn>
-              <VBtn color="primary" @click="Reset" :loading="isSubmitting">重製</VBtn>
-              <VBtn color="green" type="submit" :loading="isSubmitting">送出</VBtn>
-            </VSpacer>
-          </VCardActions>
-        </VCard>
-      </VForm>
-    </VDialog>
-  </VContainer>
-  <VBtn @click="pushline">推送最新商品</VBtn>
-  <FooTer></FooTer>
 </template>
 
 <script setup>

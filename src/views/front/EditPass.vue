@@ -1,29 +1,19 @@
 <template>
   <section class="editpass">
-    <section class="othertitle">
+    <!-- <section class="othertitle">
       <div class="bgbox">
         <VImg class="mainimg" src="@/assets/71b8e0fl+cL._AC_SL1500.jpg" cover></VImg>
       </div>
       <div class="bgbox2"></div>
-    </section>
+    </section> -->
     <VContainer>
       <VRow>
         <VCol cols="12" class="text-center">
           <h1>修改會員資料</h1>
         </VCol>
         <VDivider></VDivider>
-        <VRow>
-          <VCol cols="6" class="ppopp">
-            <VImg :src="user.image ? user.image : user.avatar" style="height: 200px; width: 200px; border-radius: 50%;"
-              cover="">
-            </VImg>
-            <VueFileAgent v-model="files" v-model:raw-model-value="rawFiles" :max-files="1" max-size="1MB"
-              accept="image/jpg,image/jpeg,image/png" :multiple="false" :error-text="{ type: '檔案格式錯誤', size: '檔案太大' }"
-              help-text="選擇檔案或拖放到這裡" deletable ref="fileAgent"></VueFileAgent>
-            <VBtn @click="upimg" :loading="uploding">送出大頭貼</VBtn>
-            <!-- <VImg src="@/assets/alice-shimada-girls-und-panzer.gif" style="height: 500px;"></VImg> -->
-          </VCol>
-          <VCol cols="6">
+        <VRow justify-xl="space-around" justify-lg="space-between">
+          <VCol cols="6" lg="3">
             <VForm :disabled="isSubmitting" @submit.prevent="submit">
               <VTextField v-model="account.value.value" label="帳號:" counter max-length="20"
                 :error-messages="account.errorMessage.value"></VTextField>
@@ -42,6 +32,15 @@
                 <VBtn @click="handleReset">重製</VBtn>
               </div>
             </VForm>
+          </VCol>
+          <VCol cols="6" lg="2" class="userimage">
+            <VImg :src="user.image ? user.image : user.avatar" style="height: 200px; width: 200px; border-radius: 50%;"
+              cover="">
+            </VImg>
+            <VueFileAgent v-model="files" v-model:raw-model-value="rawFiles" :max-files="1" max-size="1MB"
+              accept="image/jpg,image/jpeg,image/png" :multiple="false" :error-text="{ type: '檔案格式錯誤', size: '檔案太大' }"
+              help-text="選擇檔案或拖放到這裡" deletable ref="fileAgent" class="userimageinpute"></VueFileAgent>
+            <VBtn @click="upimg" :loading="uploding">送出大頭貼</VBtn>
           </VCol>
         </VRow>
       </VRow>

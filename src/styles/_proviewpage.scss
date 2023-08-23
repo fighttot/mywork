@@ -99,6 +99,15 @@
     margin: 0 5px;
   }
 
+  .userimgTD {
+    text-align: center;
+
+    .userimgavter {
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+  }
 }
 
 

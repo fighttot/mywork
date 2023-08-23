@@ -236,7 +236,7 @@ onMounted(async () => {
     gsap.from('.imggif.two', {
       scrollTrigger: {
         trigger: '.section03',
-        start: 'top 10%',
+        start: 'top top',
         end: 'bottom center'
       },
       y: 100,
