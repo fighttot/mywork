@@ -150,54 +150,49 @@ const hologif = () => {
       scrollTrigger: {
         trigger: '.section03',
         start: 'bottom top',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: 100,
       opacity: 0,
-      duration: 2
+      duration: 3
     })
     gsap.from('.imggif.one', {
       scrollTrigger: {
         trigger: '.section03',
         start: 'bottom top',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: -100,
       opacity: 0,
-      duration: 2
+      duration: 3
     })
   } else if (windowWidth > 700) {
     gsap.from('.imggif.three', {
       scrollTrigger: {
         trigger: '.section03',
         start: 'top 35%',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: 100,
       opacity: 0,
-      duration: 2
+      duration: 3
     })
     gsap.from('.imggif.one', {
       scrollTrigger: {
         trigger: '.section03',
         start: 'top 35%',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: -100,
       opacity: 0,
-      duration: 2
+      duration: 3
     })
   } else {
     gsap.from('.imggif.three', {
       scrollTrigger: {
         trigger: '.section03',
         start: 'top 60%',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: 100,
       opacity: 0,
@@ -207,8 +202,7 @@ const hologif = () => {
       scrollTrigger: {
         trigger: '.section03',
         start: 'top 60%',
-        end: 'bottom center',
-        markers: true
+        end: 'bottom center'
       },
       x: -100,
       opacity: 0,
