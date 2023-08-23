@@ -324,6 +324,7 @@
   }
 
 
+
 }
 
 .Manfooter {
@@ -334,4 +335,8 @@
   color: $secondary;
   padding-top: 10px;
   padding-left: 6%;
+
+  .v-row {
+    margin: 0;
+  }
 }
