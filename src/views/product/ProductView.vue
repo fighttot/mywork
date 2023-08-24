@@ -43,12 +43,11 @@
               </VTable>
             </VCol>
             <VCol :style="`color: ${product.color};`" class="txt">
-              <VRow class="d-flex align-center flex-column justify-center animationfield"
-                style="text-align: center; height: 100%;">
-                <VCol>
-                  <p>{{ product.description }}</p>
+              <VRow class="d-flex align-center justify-center animationfield" style="text-align: center; height: 100%;">
+                <VCol cols="12">
+                  <pre>{{ product.description }}</pre>
                 </VCol>
-                <VCol>
+                <VCol cols="12">
                   <VForm :disabled="isSubmitting" @submit.prevent="submitCart"
                     :style="`border-bottom: 15px solid ${product.color};`" class="underline">
                     <VTextField v-model.number="quantity.value.value" type="number" label="數量" min="0"
