@@ -42,7 +42,7 @@
                 </thead>
               </VTable>
             </VCol>
-            <VCol :style="`color: ${product.color};`" class="txt">
+            <VCol :style="`color: ${product.color};`" class="txt" cols="6">
               <VRow class="d-flex align-center justify-center animationfield" style="text-align: center; height: 100%;">
                 <VCol cols="12">
                   <pre>{{ product.description }}</pre>
